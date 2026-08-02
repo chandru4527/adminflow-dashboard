@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import logo from "../assets/images/logo2.svg";
+import cooklogo from "../assets/images/cookdin.svg";
+
 import {
   FaThLarge,
   FaUsers,
@@ -10,13 +13,24 @@ import {
   FaHandsHelping,
   FaConciergeBell,
   FaCog,
+  FaChevronDown,
 } from "react-icons/fa";
 
+import { MdDashboard, MdPeople, MdCheckCircle, MdSubscriptions } from "react-icons/md";
+
 const menuItems = [
-  { name: "Dashboards", path: "/admin/dashboard", icon: <FaThLarge /> },
-  { name: "Users Management", path: "/admin/users", icon: <FaUsers /> },
-  { name: "Approval", path: "/admin/approval", icon: <FaCheckCircle /> },
-  { name: "Subscription", path: "/admin/subscription", icon: <FaCrown /> },
+  { name: "Dashboard", path: "/admin/dashboard", icon: <MdDashboard /> },
+  {
+    name: "Users Management",
+    icon: <MdPeople />,
+    children: [
+      { name: "All Users", path: "/admin/users" },
+      { name: "Customers", path: "/admin/customers" },
+      { name: "Chefs", path: "/admin/chefs" },
+    ],
+  },
+  { name: "Approval", path: "/admin/approval", icon: <MdCheckCircle /> },
+  { name: "Subscription", path: "/admin/subscription", icon: <MdSubscriptions /> },
   { name: "Booking Track", path: "/admin/booking", icon: <FaRoute /> },
   { name: "Revenue Management", path: "/admin/revenue", icon: <FaChartLine /> },
   { name: "Food Donation Tracking", path: "/admin/donation", icon: <FaHandsHelping /> },
@@ -24,71 +38,103 @@ const menuItems = [
   { name: "Admin Settings", path: "/admin/settings", icon: <FaCog /> },
 ];
 
-export default function Sidebar({ collapsed }) {
+const Sidebar = ({ collapsed }) => {
+  const [openMenu, setOpenMenu] = useState(null);
+
+  const toggleMenu = (menu) => {
+    setOpenMenu((prev) => (prev === menu ? null : menu));
+  };
+
   return (
     <aside
-      className={` bg-white border-r border-gray-200 shadow-sm min-h-screen transition-all duration-300 ${
-        collapsed ? "w-20" : "w-64"
-      }`}
+      className={`sticky top-0 h-screen overflow-y-auto bg-[#14ae5c] border-r border-gray-200 shadow-sm transition-all duration-300 ${collapsed ? "w-20" : "w-64"
+        }`}
     >
       {/* Logo */}
-      <div className="h-16 flex items-center px-6 border-b border-gray-200">
-        <h1
-          className={`text-xl font-bold text-blue-600 whitespace-nowrap transition-all ${
-            collapsed
-              ? "opacity-0 w-0 group-hover:opacity-100 group-hover:w-auto"
-              : "opacity-100"
-          }`}
-        >
-          Admin Panel
-        </h1>
-
-        {collapsed && (
-          <span className="text-xl font-bold text-blue-600 group-hover:hidden">
-            A
-          </span>
-        )}
+      <div className="flex items-center justify-center h-16 mb-6">
+        <img
+          src={collapsed ? logo : cooklogo}
+          alt="Logo"
+          className="h-10 object-contain"
+        />
       </div>
 
       {/* Menu Title */}
-      <div
-        className={`px-6 py-3 text-xs font-semibold text-gray-400 uppercase transition-all ${
-          collapsed
-            ? "opacity-0 h-0 overflow-hidden group-hover:opacity-100 group-hover:h-auto"
-            : "opacity-100"
-        }`}
-      >
-        Menu
-      </div>
+      {!collapsed && (
+        <p className="text-xs uppercase px-2 mb-3 tracking-wider">
+          Menu
+        </p>
+      )}
 
-      {/* Navigation */}
-      <nav className="space-y-1 px-2">
+      <nav className="space-y-2">
         {menuItems.map((item) => (
-          <NavLink
-            key={item.path}
-            to={item.path}
-            className={({ isActive }) =>
-              `flex items-center rounded-xl px-4 py-3 transition-all ${
-                isActive
-                  ? "bg-blue-600 text-white shadow-md"
-                  : "text-gray-700 hover:bg-gray-100"
-              }`
-            }
-          >
-            <span className="text-lg min-w-6">{item.icon}</span>
+          <div key={item.name}>
+            {item.children ? (
+              <>
+                {/* Accordion Header */}
+                <button
+                  onClick={() => toggleMenu(item.name)}
+                  className="w-full flex items-center justify-between px-3 py-3 rounded-xl hover:bg-white/10 transition-colors duration-200"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="text-lg">{item.icon}</span>
+                    {!collapsed && <span>{item.name}</span>}
+                  </div>
 
-            <span
-              className={`ml-3 whitespace-nowrap transition-all ${
-                collapsed
-                  ? "opacity-0 w-0 overflow-hidden group-hover:opacity-100 group-hover:w-auto"
-                  : "opacity-100"
-              }`}
-            >
-              {item.name}
-            </span>
-          </NavLink>
+                  {!collapsed && (
+                    <FaChevronDown
+                      className={`text-xs transition-transform duration-300 ${openMenu === item.name ? "rotate-180" : ""
+                        }`}
+                    />
+                  )}
+                </button>
+
+                {/* Smooth Accordion Content */}
+                {!collapsed && (
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ease-in-out ${openMenu === item.name
+                      ? "max-h-48 opacity-100"
+                      : "max-h-0 opacity-0"
+                      }`}
+                  >
+                    <div className="ml-6 mt-2 pl-3 space-y-1 pb-2">
+                      {item.children.map((child, index) => (
+                        <NavLink
+                          key={index}
+                          to={child.path}
+                          className={({ isActive }) =>
+                            `block rounded-lg px-3 py-2 text-sm transition-colors duration-200 ${isActive
+                              ? "bg-white text-[#14ae5c] font-semibold"
+                              : "text-green-100 hover:bg-white/10 hover:text-white"
+                            }`
+                          }
+                        >
+                          {child.name}
+                        </NavLink>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </>
+            ) : (
+              <NavLink
+                to={item.path}
+                className={({ isActive }) =>
+                  `flex items-center gap-3 px-3 py-3 rounded-xl transition-colors duration-200 ${isActive
+                    ? "bg-white text-[#14ae5c] font-semibold"
+                    : "text-white hover:bg-white/10"
+                  }`
+                }
+              >
+                <span className="text-lg">{item.icon}</span>
+                {!collapsed && <span>{item.name}</span>}
+              </NavLink>
+            )}
+          </div>
         ))}
       </nav>
     </aside>
   );
-}
+};
+
+export default Sidebar;
