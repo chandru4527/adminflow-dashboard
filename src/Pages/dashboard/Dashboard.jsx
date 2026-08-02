@@ -6,60 +6,69 @@ import {
   FaUserFriends,
   FaClipboardList,
 } from "react-icons/fa";
+
 import {
-  PieChart,
-  Pie,
-  Cell,
   ResponsiveContainer,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
   Tooltip,
-  Legend,
 } from "recharts";
 
 const COLORS = ["#F59E0B", "#3B82F6", "#10B981", "#EF4444"];
 
 const Dashboard = () => {
   const { data: stats, isLoading, isError } = useDashboardStats();
-
+  console.log("Dashboard stats:", stats?.data);
 
   const cards = [
     {
       title: "Total Users",
-      value: stats?.totalUsers || 0,
+      value: stats?.data?.totalUsers || 0,
       icon: <FaUsers />,
       color: "bg-blue-100 text-blue-600",
     },
     {
       title: "Total Chefs",
-      value: stats?.totalChefs || 0,
+      value: stats?.data?.chefCount || 0,
       icon: <FaUserTie />,
       color: "bg-green-100 text-green-600",
     },
     {
       title: "Total Customers",
-      value: stats?.totalCustomers || 0,
+      value: stats?.data?.customerCount || 0,
       icon: <FaUserFriends />,
       color: "bg-yellow-100 text-yellow-600",
     },
     {
       title: "Total Bookings",
-      value: stats?.totalBookings || 0,
+      value: stats?.data?.totalBookings || 0,
       icon: <FaClipboardList />,
       color: "bg-purple-100 text-purple-600",
     },
   ];
 
   const bookingsSummaryData = [
-    { name: "Total", value: stats?.totalBookings || 0 },
-    { name: "Today", value: stats?.todayBookings || 0 },
-    { name: "Yesterday", value: stats?.yesterdayBookings || 0 },
+    { name: "Total", value: stats?.data?.totalBookings || 0 },
+    { name: "Today", value: stats?.data?.todayBookings || 0 },
+    { name: "Yesterday", value: stats?.data?.yesterdayBookings || 0 },
   ];
 
+  const bookingStatusData =
+    stats?.data?.bookingStatusCounts?.map(({ _id, count }) => ({
+      name: _id ? _id.charAt(0).toUpperCase() + _id.slice(1) : "",
+      count: count ?? 0,
+    }));
+
+    console.log("Booking Status Data:", bookingStatusData);
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>Failed to load dashboard.</p>;
 
   return (
     <div className="space-y-6">
-      
+
       {/* Stats Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
         {cards.map((card) => (
@@ -88,31 +97,56 @@ const Dashboard = () => {
       {/* Booking Status Chart */}
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
         <h2 className="text-xl font-semibold text-gray-800 mb-4">
+          Bookings Summary
+        </h2>
+
+        <div className="h-80">
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart
+              data={bookingsSummaryData}
+              margin={{ top: 10, right: 20, left: 0, bottom: 10 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" vertical={false} />
+              <XAxis dataKey="name" />
+              <YAxis allowDecimals={false} />
+              <Tooltip />
+              <Bar
+                dataKey="value"
+                radius={[8, 8, 0, 0]}
+                fill="#14ae5c"
+                barSize={60}
+              />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
+
+      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+        <h2 className="text-xl font-semibold text-gray-800 mb-4">
           Booking Status
         </h2>
 
         <div className="h-80">
           <ResponsiveContainer width="100%" height="100%">
-            <PieChart>
-              <Pie
-                data={bookingsSummaryData}
-                dataKey="value"
-                nameKey="name"
-                innerRadius={70}
-                outerRadius={110}
-                paddingAngle={3}
-              >
-                {bookingsSummaryData.map((_, index) => (
-                  <Cell key={index} fill={COLORS[index]} />
-                ))}
-              </Pie>
-
+            <BarChart
+              data={bookingStatusData}
+              margin={{ top: 10, right: 20, left: 0, bottom: 10 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" vertical={false} />
+              <XAxis dataKey="name" />
+              <YAxis allowDecimals={false} />
               <Tooltip />
-              <Legend />
-            </PieChart>
+              <Bar
+                dataKey="count"
+                fill="#14ae5c"
+                radius={[8, 8, 0, 0]}
+                barSize={50}
+              />
+            </BarChart>
           </ResponsiveContainer>
         </div>
       </div>
+
     </div>
   );
 };

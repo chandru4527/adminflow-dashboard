@@ -2,7 +2,7 @@ import React from "react";
 import { FaBars } from "react-icons/fa";
 import { useMatches } from "react-router-dom";
 
-const Navbar = ({ collapsed, setCollapsed }) => {
+const Navbar = ({ collapsed, setCollapsed ,setMobileOpen}) => {
 
   const matches = useMatches();
   const title = matches[matches.length - 1]?.handle?.title || "Dashboard";
@@ -13,10 +13,19 @@ const Navbar = ({ collapsed, setCollapsed }) => {
       {/* Left */}
       <div className="flex items-center gap-4">
         <button
-          onClick={() => setCollapsed(!collapsed)}
-          className="p-2 cursor-pointer"
+          onClick={() => {
+
+            if (window.innerWidth < 998) {
+              setMobileOpen(true);
+            }
+            else {
+              setCollapsed(!collapsed);
+            }
+
+          }}
+          className="p-2"
         >
-          <FaBars className="text-xl text-gray-600" />
+          <FaBars />
         </button>
 
         <h1 className="text-lg font-bold text-gray-800 uppercase">
@@ -35,7 +44,7 @@ const Navbar = ({ collapsed, setCollapsed }) => {
           C
         </div>
       </div>
-      
+
     </header>
   );
 };

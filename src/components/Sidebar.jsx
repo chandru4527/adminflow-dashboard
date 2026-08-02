@@ -1,140 +1,393 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+
 import logo from "../assets/images/logo2.svg";
 import cooklogo from "../assets/images/cookdin.svg";
 
 import {
-  FaThLarge,
-  FaUsers,
-  FaCheckCircle,
-  FaCrown,
-  FaRoute,
-  FaChartLine,
-  FaHandsHelping,
-  FaConciergeBell,
-  FaCog,
-  FaChevronDown,
-} from "react-icons/fa";
+  MdDashboard,
+  MdPeople,
+  MdCheckCircle,
+  MdRoute,
+  MdBarChart,
+  MdSubscriptions,
+  MdVolunteerActivism,
+  MdRestaurant,
+  MdSettings,
+  MdExpandMore,
+} from "react-icons/md";
 
-import { MdDashboard, MdPeople, MdCheckCircle, MdSubscriptions } from "react-icons/md";
 
 const menuItems = [
-  { name: "Dashboard", path: "/admin/dashboard", icon: <MdDashboard /> },
+  {
+    name: "Dashboard",
+    path: "/admin/dashboard",
+    icon: <MdDashboard />,
+  },
+
   {
     name: "Users Management",
     icon: <MdPeople />,
     children: [
-      { name: "All Users", path: "/admin/users" },
-      { name: "Customers", path: "/admin/customers" },
-      { name: "Chefs", path: "/admin/chefs" },
+      {
+        name: "All Users",
+        path: "/admin/users",
+      },
+      {
+        name: "Customers",
+        path: "/admin/customers",
+      },
+      {
+        name: "Chefs",
+        path: "/admin/chefs",
+      },
     ],
   },
-  { name: "Approval", path: "/admin/approval", icon: <MdCheckCircle /> },
-  { name: "Subscription", path: "/admin/subscription", icon: <MdSubscriptions /> },
-  { name: "Booking Track", path: "/admin/booking", icon: <FaRoute /> },
-  { name: "Revenue Management", path: "/admin/revenue", icon: <FaChartLine /> },
-  { name: "Food Donation Tracking", path: "/admin/donation", icon: <FaHandsHelping /> },
-  { name: "Services", path: "/admin/services", icon: <FaConciergeBell /> },
-  { name: "Admin Settings", path: "/admin/settings", icon: <FaCog /> },
+
+
+  {
+    name: "Approvals",
+    icon: <MdCheckCircle />,
+    children: [
+      {
+        name: "Chef Approval",
+        path: "/admin/chef-approval",
+      },
+      {
+        name: "User Approval",
+        path: "/admin/user-approval",
+      },
+    ],
+  },
+
+
+  {
+    name: "Booking Track",
+    icon: <MdRoute />,
+    children: [
+      {
+        name: "All Bookings",
+        path: "/admin/bookings",
+      },
+      {
+        name: "Pending Bookings",
+        path: "/admin/bookings/pending",
+      },
+      {
+        name: "Completed Bookings",
+        path: "/admin/bookings/completed",
+      },
+    ],
+  },
+
+
+  {
+    name: "Revenue Management",
+    icon: <MdBarChart />,
+    children: [
+      {
+        name: "Revenue",
+        path: "/admin/revenue",
+      },
+      {
+        name: "Transactions",
+        path: "/admin/transactions",
+      },
+    ],
+  },
+
+
+  {
+    name: "Subscription",
+    path: "/admin/subscription",
+    icon: <MdSubscriptions />,
+  },
+
+
+  {
+    name: "Food Donation Tracking",
+    path: "/admin/donation",
+    icon: <MdVolunteerActivism />,
+  },
+
+
+  {
+    name: "Services",
+    path: "/admin/services",
+    icon: <MdRestaurant />,
+  },
+
+
+  {
+    name: "Admin Settings",
+    path: "/admin/settings",
+    icon: <MdSettings />,
+  },
 ];
 
-const Sidebar = ({ collapsed }) => {
+const Sidebar = ({ collapsed, mobileOpen, setMobileOpen }) => {
+
   const [openMenu, setOpenMenu] = useState(null);
 
-  const toggleMenu = (menu) => {
-    setOpenMenu((prev) => (prev === menu ? null : menu));
+
+  const handleAccordion = (name) => {
+    setOpenMenu(
+      openMenu === name ? null : name
+    );
   };
 
+
   return (
+
     <aside
-      className={`sticky top-0 h-screen overflow-y-auto bg-[#14ae5c] border-r border-gray-200 shadow-sm transition-all duration-300 ${collapsed ? "w-20" : "w-64"
-        }`}
+      className={`
+    bg-[#14ae5c]
+    h-screen
+    transition-all duration-300
+    fixed lg:static
+    top-0 left-0
+    z-50
+
+    ${mobileOpen
+          ? "translate-x-0"
+          : "-translate-x-full lg:translate-x-0"
+        }
+
+
+    ${collapsed
+          ? "lg:w-20 w-64"
+          : "w-64"
+        }
+  `}
     >
+
       {/* Logo */}
-      <div className="flex items-center justify-center h-16 mb-6">
+
+      <div className="h-16 flex items-center justify-center">
+
         <img
           src={collapsed ? logo : cooklogo}
-          alt="Logo"
-          className="h-10 object-contain"
+          alt="logo"
+          className="h-10"
         />
+
       </div>
 
+
       {/* Menu Title */}
+
       {!collapsed && (
-        <p className="text-xs uppercase px-2 mb-3 tracking-wider">
+        <div className="
+          px-5 py-3
+          text-xs
+          uppercase
+          text-white
+          font-semibold
+        ">
           Menu
-        </p>
+        </div>
       )}
 
-      <nav className="space-y-2">
+
+
+      <nav className="px-3 space-y-1">
+
+
         {menuItems.map((item) => (
+
+
           <div key={item.name}>
+
+
+            {/* Accordion */}
+
             {item.children ? (
+
               <>
-                {/* Accordion Header */}
+
                 <button
-                  onClick={() => toggleMenu(item.name)}
-                  className="w-full flex items-center justify-between px-3 py-3 rounded-xl hover:bg-white/10 transition-colors duration-200"
+
+                  onClick={() =>
+                    handleAccordion(item.name)
+                  }
+
+                  className="
+                    w-full
+                    flex
+                    items-center
+                    justify-between
+                    px-4
+                    py-2.5
+                    rounded-lg
+                    text-sm
+                    text-white
+                    hover:text-black
+                    transition-all
+                  "
+
                 >
+
                   <div className="flex items-center gap-3">
-                    <span className="text-lg">{item.icon}</span>
-                    {!collapsed && <span>{item.name}</span>}
+
+                    <span className="text-xl">
+                      {item.icon}
+                    </span>
+
+
+                    {!collapsed && (
+                      <span>
+                        {item.name}
+                      </span>
+                    )}
+
                   </div>
+
 
                   {!collapsed && (
-                    <FaChevronDown
-                      className={`text-xs transition-transform duration-300 ${openMenu === item.name ? "rotate-180" : ""
-                        }`}
+
+                    <MdExpandMore
+
+                      className={`
+                        text-xl
+                        transition-transform
+                        duration-300
+                        ${openMenu === item.name
+                          ? "rotate-180"
+                          : ""
+                        }
+                      `}
+
                     />
+
                   )}
+
+
                 </button>
 
-                {/* Smooth Accordion Content */}
-                {!collapsed && (
-                  <div
-                    className={`overflow-hidden transition-all duration-300 ease-in-out ${openMenu === item.name
-                      ? "max-h-48 opacity-100"
-                      : "max-h-0 opacity-0"
-                      }`}
-                  >
-                    <div className="ml-6 mt-2 pl-3 space-y-1 pb-2">
-                      {item.children.map((child, index) => (
-                        <NavLink
-                          key={index}
-                          to={child.path}
-                          className={({ isActive }) =>
-                            `block rounded-lg px-3 py-2 text-sm transition-colors duration-200 ${isActive
-                              ? "bg-white text-[#14ae5c] font-semibold"
-                              : "text-green-100 hover:bg-white/10 hover:text-white"
-                            }`
+
+
+                {/* Children */}
+
+                <div
+                  className={`
+                    overflow-hidden
+                    transition-all
+                    duration-300
+                    ${openMenu === item.name
+                      ? "max-h-60 mt-1"
+                      : "max-h-0"
+                    }
+                  `}
+                >
+
+                  <div className="ml-10 space-y-1">
+
+
+                    {item.children.map((child) => (
+
+
+                      <NavLink
+
+                        key={child.path}
+
+                        to={child.path}
+
+
+                        className={({ isActive }) =>
+                          `
+                          block
+                          py-2
+                          text-sm
+                          transition
+
+                          ${isActive
+                            ? "text-black font-semibold"
+                            : "text-white hover:text-black"
                           }
-                        >
-                          {child.name}
-                        </NavLink>
-                      ))}
-                    </div>
+
+                          `
+                        }
+
+                      >
+
+                        {child.name}
+
+                      </NavLink>
+
+
+                    ))}
+
+
                   </div>
-                )}
+
+
+                </div>
+
+
               </>
+
+
             ) : (
+
+
               <NavLink
+
                 to={item.path}
+
+
                 className={({ isActive }) =>
-                  `flex items-center gap-3 px-3 py-3 rounded-xl transition-colors duration-200 ${isActive
-                    ? "bg-white text-[#14ae5c] font-semibold"
-                    : "text-white hover:bg-white/10"
-                  }`
+                  `
+                  flex
+                  items-center
+                  gap-3
+                  px-4
+                  py-2.5
+                  rounded-lg
+                  text-sm
+                  transition-all
+
+                  ${isActive
+                    ? "text-black font-semibold"
+                    : "text-white hover:text-black"
+                  }
+
+                  `
                 }
+
               >
-                <span className="text-lg">{item.icon}</span>
-                {!collapsed && <span>{item.name}</span>}
+
+
+                <span className="text-xl">
+                  {item.icon}
+                </span>
+
+
+                {!collapsed && (
+                  <span>
+                    {item.name}
+                  </span>
+                )}
+
+
               </NavLink>
+
+
             )}
+
+
           </div>
+
+
         ))}
+
+
       </nav>
+
+
     </aside>
+
   );
 };
+
 
 export default Sidebar;

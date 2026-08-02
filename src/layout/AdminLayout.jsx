@@ -1,31 +1,63 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 
 const AdminLayout = () => {
+
   const [collapsed, setCollapsed] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  useEffect(() => {
+
+    const handleResize = () => {
+
+      if (window.innerWidth < 998) {
+        setCollapsed(true);
+      } else {
+        setCollapsed(false);
+        setMobileOpen(false);
+      }
+
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () =>
+      window.removeEventListener("resize", handleResize);
+
+  }, []);
 
   return (
-    <div className="flex h-screen overflow-hidden bg-gray-100">
+
+    <div className="h-screen flex overflow-hidden bg-gray-100">
+
       {/* Sidebar */}
-      <Sidebar collapsed={collapsed} />
+      <Sidebar
+        collapsed={collapsed}
+        mobileOpen={mobileOpen}
+        setMobileOpen={setMobileOpen}
+      />
 
-      {/* Right Side */}
-      <div className="flex flex-col flex-1 overflow-hidden">
-        {/* Navbar */}
-        <Navbar collapsed={collapsed} setCollapsed={setCollapsed} />
+      {/* Right */}
+      <div className="flex-1 flex flex-col overflow-hidden">
 
-        {/* Scrollable Content */}
-        <main className="flex flex-col p-6 pb-20">
+        <Navbar
+          collapsed={collapsed}
+          setCollapsed={setCollapsed}
+          setMobileOpen={setMobileOpen}
+        />
+
+        <main className="flex-1 overflow-y-auto p-6">
           <Outlet />
         </main>
 
-        {/* Footer */}
-        <Footer />
       </div>
+
     </div>
+
   );
 };
 
