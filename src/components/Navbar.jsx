@@ -2,7 +2,7 @@ import React from "react";
 import { FaBars } from "react-icons/fa";
 import { useMatches } from "react-router-dom";
 
-const Navbar = ({ collapsed, setCollapsed ,setMobileOpen}) => {
+const Navbar = ({ collapsed, setCollapsed, setMobileOpen }) => {
 
   const matches = useMatches();
   const title = matches[matches.length - 1]?.handle?.title || "Dashboard";
@@ -15,7 +15,7 @@ const Navbar = ({ collapsed, setCollapsed ,setMobileOpen}) => {
         <button
           onClick={() => {
 
-            if (window.innerWidth < 998) {
+            if (window.innerWidth < 1024) {
               setMobileOpen(true);
             }
             else {
@@ -23,7 +23,7 @@ const Navbar = ({ collapsed, setCollapsed ,setMobileOpen}) => {
             }
 
           }}
-          className="p-2"
+          className="p-2 cursor-pointer"
         >
           <FaBars />
         </button>

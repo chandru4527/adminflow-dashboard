@@ -14,6 +14,8 @@ import AdminSettings from '../Pages/AdminSettings'
 import ErrorPage from '../components/ErrorPage'
 import Error from '../components/Error'
 
+// import adminRoutes_pages from './AdminRoutes'
+
 
 const router = createBrowserRouter([
 
@@ -31,6 +33,10 @@ const router = createBrowserRouter([
             { index: true, element: <AdminLogin /> }
         ]
     },
+    
+    // adminRoutes_pages,
+
+
 
     // admin protect and element
     {

@@ -1,23 +1,12 @@
 import React from "react";
 import { useDashboardStats } from "../../hooks/apiHooks";
+import LodingPage from '../../components/LoadingPage'
 import {
-  FaUsers,
-  FaUserTie,
-  FaUserFriends,
-  FaClipboardList,
-} from "react-icons/fa";
+  MdGroups, MdRestaurant, MdPerson, MdEventNote, MdVolunteerActivism, MdHistory,
+  MdToday, MdChecklist,
+} from "react-icons/md";
 
-import {
-  ResponsiveContainer,
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-} from "recharts";
-
-const COLORS = ["#F59E0B", "#3B82F6", "#10B981", "#EF4444"];
+import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Cell, PieChart, Pie } from "recharts";
 
 const Dashboard = () => {
   const { data: stats, isLoading, isError } = useDashboardStats();
@@ -27,26 +16,50 @@ const Dashboard = () => {
     {
       title: "Total Users",
       value: stats?.data?.totalUsers || 0,
-      icon: <FaUsers />,
+      icon: <MdGroups />,
       color: "bg-blue-100 text-blue-600",
     },
     {
       title: "Total Chefs",
       value: stats?.data?.chefCount || 0,
-      icon: <FaUserTie />,
+      icon: <MdRestaurant />,
       color: "bg-green-100 text-green-600",
     },
     {
       title: "Total Customers",
       value: stats?.data?.customerCount || 0,
-      icon: <FaUserFriends />,
+      icon: <MdPerson />,
       color: "bg-yellow-100 text-yellow-600",
     },
     {
       title: "Total Bookings",
       value: stats?.data?.totalBookings || 0,
-      icon: <FaClipboardList />,
+      icon: <MdEventNote />,
       color: "bg-purple-100 text-purple-600",
+    },
+    {
+      title: "Total Donations",
+      value: stats?.data?.totalDonations || 0,
+      icon: <MdVolunteerActivism />,
+      color: "bg-pink-100 text-pink-600",
+    },
+    {
+      title: "Yesterday Bookings",
+      value: stats?.data?.yesterdayBookings || 0,
+      icon: <MdHistory />,
+      color: "bg-orange-100 text-orange-600",
+    },
+    {
+      title: "Today Bookings",
+      value: stats?.data?.todayBookings || 0,
+      icon: <MdToday />,
+      color: "bg-teal-100 text-teal-600",
+    },
+    {
+      title: "Total Booking Status Count",
+      value: stats?.data?.bookingStatusCounts?.length || 0,
+      icon: <MdChecklist />,
+      color: "bg-indigo-100 text-indigo-600",
     },
   ];
 
@@ -56,14 +69,17 @@ const Dashboard = () => {
     { name: "Yesterday", value: stats?.data?.yesterdayBookings || 0 },
   ];
 
-  const bookingStatusData =
-    stats?.data?.bookingStatusCounts?.map(({ _id, count }) => ({
-      name: _id ? _id.charAt(0).toUpperCase() + _id.slice(1) : "",
-      count: count ?? 0,
-    }));
+  const bookingStatusData = stats?.data?.bookingStatusCounts?.map(({ _id, count }) => ({
+    name: _id ? _id.charAt(0).toUpperCase() + _id.slice(1) : "",
+    count: count ?? 0,
+  }));
 
-    console.log("Booking Status Data:", bookingStatusData);
-  if (isLoading) return <p>Loading...</p>;
+  const userDistributionData = [
+    { name: "Chefs", value: stats?.data?.chefCount || 0 },
+    { name: "Customers", value: stats?.data?.customerCount || 0 },
+  ];
+
+  if (isLoading) return <LodingPage/>
   if (isError) return <p>Failed to load dashboard.</p>;
 
   return (
@@ -71,14 +87,14 @@ const Dashboard = () => {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
-        {cards.map((card) => (
+        {cards.map((card, index) => (
           <div
-            key={card.title}
-            className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6"
+            key={index}
+            className="bg-white rounded-lg shadow-sm border border-gray-100 p-6"
           >
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-500 text-sm">{card.title}</p>
+                <p className="text-gray-600 text-sm font-semibold">{card.title}</p>
                 <h2 className="text-3xl font-bold text-gray-800 mt-2">
                   {card.value}
                 </h2>
@@ -95,8 +111,8 @@ const Dashboard = () => {
       </div>
 
       {/* Booking Status Chart */}
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
-        <h2 className="text-xl font-semibold text-gray-800 mb-4">
+      <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+        <h2 className="text-xl font-bold mb-4">
           Bookings Summary
         </h2>
 
@@ -104,6 +120,8 @@ const Dashboard = () => {
           <ResponsiveContainer width="100%" height="100%">
             <BarChart
               data={bookingsSummaryData}
+              barCategoryGap="10%"
+              barGap={2}
               margin={{ top: 10, right: 20, left: 0, bottom: 10 }}
             >
               <CartesianGrid strokeDasharray="3 3" vertical={false} />
@@ -111,9 +129,10 @@ const Dashboard = () => {
               <YAxis allowDecimals={false} />
               <Tooltip />
               <Bar
+                barSize={60}
                 dataKey="value"
-                radius={[8, 8, 0, 0]}
-                fill="#14ae5c"
+                radius={[4, 4, 0, 0]}
+                fill="#2563EB"
                 barSize={60}
               />
             </BarChart>
@@ -121,29 +140,85 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
-        <h2 className="text-xl font-semibold text-gray-800 mb-4">
-          Booking Status
-        </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 
-        <div className="h-80">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart
-              data={bookingStatusData}
-              margin={{ top: 10, right: 20, left: 0, bottom: 10 }}
-            >
-              <CartesianGrid strokeDasharray="3 3" vertical={false} />
-              <XAxis dataKey="name" />
-              <YAxis allowDecimals={false} />
-              <Tooltip />
-              <Bar
-                dataKey="count"
-                fill="#14ae5c"
-                radius={[8, 8, 0, 0]}
-                barSize={50}
-              />
-            </BarChart>
-          </ResponsiveContainer>
+        {/* Booking Status */}
+        <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6 lg:col-span-2">
+          <h2 className="text-xl font-bold mb-4">
+            Booking Status
+          </h2>
+
+          <div className="h-64 md:h-72 lg:h-80 w-full">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart
+                data={bookingStatusData}
+                margin={{ top: 10, right: 20, left: 0, bottom: 10 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                <XAxis dataKey="name" />
+                <YAxis allowDecimals={false} />
+                <Tooltip />
+
+                <Bar dataKey="count" radius={[8, 8, 0, 0]} barSize={40}>
+                  {bookingStatusData.map((entry, index) => {
+                    const colorMap = {
+                      active: "#2563EB",      // Blue
+                      completed: "#16A34A",   // Green
+                      upcoming: "#F97316",    // Orange
+                      canceled: "#DC2626",    // Red
+                      cancelled: "#DC2626",   // Red (British spelling)
+                    };
+
+                    return (
+                      <Cell
+                        key={`status-${index}`}
+                        fill={colorMap[entry.name?.toLowerCase()] || "#6366F1"}
+                      />
+                    );
+                  })}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+
+        {/* Users Pie Chart */}
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-5">
+          <div className="flex items-center justify-between mb-4">
+            <h5 className="text-lg font-bold">Users</h5>
+          </div>
+
+          {userDistributionData.some((item) => item.value > 0) ? (
+            <div className="h-64 md:h-72 lg:h-80 w-full">
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={userDistributionData}
+                    dataKey="value"
+                    nameKey="name"
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={90}
+                    label
+                  >
+                    {userDistributionData.map((entry, index) => (
+                      <Cell
+                        key={`user-${entry.name}-${index}`}
+                        fill={entry.name === "Chefs" ? "#10B981" : "#3B82F6"}
+                      />
+                    ))}
+                  </Pie>
+
+                  <Tooltip />
+                  <Legend />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
+          ) : (
+            <div className="flex items-center justify-center h-64 md:h-72 lg:h-80 text-gray-500">
+              No user data
+            </div>
+          )}
         </div>
       </div>
 
