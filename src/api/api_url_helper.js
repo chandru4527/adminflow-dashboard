@@ -1,87 +1,46 @@
-// src/api/endpoints.js
+export const API_ENDPOINTS = {
+    
+  users: "v1/admin/allUsers",
+  usersRole: "v1/users/all-users",
 
-const endpoints = {
-    auth: {
-        login: "v1/auth/admin-login",
-    },
+  mediaUpload: "v1/media/upload",
 
-    users: {
-        list: "v1/admin/allUsers",
-        all: "v1/users/all-users",
-        updateStatus: "v1/users/user/update-profile",
-    },
+  userStatusUpdate: "v1/users/user/update-profile",
 
-    media: {
-        upload: "v1/media/upload",
-    },
+  // Artist/Chef Approval
+  approveChef: "v1/users/all-users",
+  approveDoc: "v1/admin/approve",
+  approveDocReject: "v1/admin/reject",
+  adminVerification: "v1/admin/verification",
 
-    verification: {
-        pendingChefs: "v1/users/all-users",
-        approve: "v1/admin/approve",
-        reject: "v1/admin/reject",
-        list: "v1/admin/verification",
-        assignArtist: "v1/admin/assignArtist",
-        availableArtists: "v1/admin/availableArtists",
-    },
+  // Subscription
+  subscriptionList: "v1/plans",
+  subscriptionListStatus: "v1/plans/toggle-status",
+  subscriptionAdd: "v1/plans/add-plan",
+  subscriptionUpdate: "v1/plans/add-chef",
+  subscriptionDelete: "v1/plans/delete",
 
-    bookings: {
-        all: "v1/bookings/all-bookings",
-        client: "v1/bookings/client",
-        user: "v1/bookings/user",
-    },
+  // Registration
+  oneTimeRegistration: "v1/services/registration-records",
 
-    coupons: {
-        list: "v1/coupons/allCoupons",
-        create: "v1/coupons/create",
-        update: "v1/coupons/update",
-        delete: "v1/coupons/delete",
-    },
+  // Donation
+  donationList: "v1/donations/all-donations",
 
-    payments: {
-        records: "v1/payments/paymentDetails",
-        search: "v1/payments/client?",
-        refund: "v1/payments/refundPayment",
-    },
+  // Dashboard
+  dashboard: "v1/admin/dashboard",
 
-    dashboard: {
-        stats: "v1/admin/dashboard/stats",
-        overview: "v1/admin/dashboard",
-    },
+  // Bookings
+  allBookings: "v1/bookings/all-bookings",
+  refundBookings: "v1/payments/refundPayment",
 
-    services: {
-        create: "v1/services",
-        list: "v1/services/all-services",
-        update: "v1/services/update",
-        registrationRecords: "v1/services/registration-records",
-    },
+  // Services
+  services: "v1/services/all-services",
+  serviceUpdate: "v1/services/update",
 
-    categories: {
-        list: "v1/categories",
-        active: "v1/categories/active",
-    },
+  // Admin Settings
+  adminSettings: "v1/adminSettings/getAll",
+  adminSettingsDelete: "v1/adminSettings",
 
-    adminSettings: {
-        add: "v1/adminSettings/addSettings",
-        list: "v1/adminSettings/getAll",
-        delete: "v1/adminSettings",
-    },
-
-    withdrawals: {
-        list: "v1/withdraws/all-withdraws",
-        update: "v1/withdraws/update",
-    },
-
-    subscriptions: {
-        list: "v1/plans",
-        add: "v1/plans/add-plan",
-        update: "v1/plans/add-chef",
-        delete: "v1/plans/delete",
-        toggleStatus: "v1/plans/toggle-status",
-    },
-
-    donations: {
-        list: "v1/donations/all-donations",
-    },
+  // Withdrawals
+  withdrawals: "v1/withdraws/all-withdraws",
 };
-
-export default endpoints;

@@ -1,4 +1,4 @@
-import React, { useState,useMemo } from 'react'
+import React, { useState, useMemo } from 'react'
 import { useUserDetails } from '../../hooks/apiHooks'
 import usePagination from '../../hooks/pagination'
 import { useNavigate } from 'react-router-dom'
@@ -19,61 +19,61 @@ const CustomerManege = () => {
     // API call here
   };
 
-const columns = useMemo(
-  () => [
-    {
-      Header: "Name",
-      accessor: "name",
-      Cell: ({ value }) => value || "N/A",
-    },
-    {
-      Header: "Gender",
-      accessor: "gender",
-      Cell: ({ value }) => value || "N/A",
-    },
-    {
-      Header: "Phone",
-      accessor: "phone",
-      Cell: ({ value }) => value || "N/A",
-    },
-    {
-      Header: "Email",
-      accessor: "email",
-      Cell: ({ value }) => value || "N/A",
-    },
-    {
-      Header: "Location",
-      accessor: "location",
-      Cell: ({ value }) => value || "N/A",
-    },
-    {
-      Header: "Favorites",
-      accessor: "favorites",
-      Cell: ({ value }) => (value?.length ? value.length : "N/A"),
-    },
-    {
-      Header: "Verification Status",
-      accessor: "verificationStatus",
-      Cell: ({ value }) => value || "N/A",
-    },
-    {
-      Header: "Active Status",
-      accessor: "activeStatus",
-      Cell: ({ row }) => {
-        const { id, activeStatus } = row.original;
-        const isActive = Boolean(activeStatus);
-
-        return (
-          <IOSSwitch
-            checked={isActive}
-            onChange={() => handleStatusToggle(id, isActive)}
-          />
-        );
+  const columns = useMemo(
+    () => [
+      {
+        Header: "Name",
+        accessor: "name",
+        Cell: ({ value }) => value || "N/A",
       },
-    },
-  ],
-  [handleStatusToggle]
-);
+      {
+        Header: "Gender",
+        accessor: "gender",
+        Cell: ({ value }) => value || "N/A",
+      },
+      {
+        Header: "Phone",
+        accessor: "phone",
+        Cell: ({ value }) => value || "N/A",
+      },
+      {
+        Header: "Email",
+        accessor: "email",
+        Cell: ({ value }) => value || "N/A",
+      },
+      {
+        Header: "Location",
+        accessor: "location",
+        Cell: ({ value }) => value || "N/A",
+      },
+      {
+        Header: "Favorites",
+        accessor: "favorites",
+        Cell: ({ value }) => (value?.length ? value.length : "N/A"),
+      },
+      {
+        Header: "Verification Status",
+        accessor: "verificationStatus",
+        Cell: ({ value }) => value || "N/A",
+      },
+      {
+        Header: "Active Status",
+        accessor: "activeStatus",
+        Cell: ({ row }) => {
+          const { id, activeStatus } = row.original;
+          const isActive = Boolean(activeStatus);
+
+          return (
+            <IOSSwitch
+              checked={isActive}
+              onChange={() => handleStatusToggle(id, isActive)}
+            />
+          );
+        },
+      },
+    ],
+    [handleStatusToggle]
+  );
 
   const navigate = useNavigate()
 
@@ -97,22 +97,22 @@ const columns = useMemo(
       </div>
 
       <DataTable
-          columns={columns}
-          data={user?.results || []}
-          page={page}
-          totalPages={totalPages}
-          firstPage={firstPage}
-          prevPage={prevPage}
-          nextPage={nextPage}
-          lastPage={lastPage}
-          pageInput={pageInput}
-          setPageInput={setPageInput}
-          goToPage={(pageNumber) => {
-            if (pageNumber >= 1 && pageNumber <= totalPages) {
-              setPage(pageNumber);
-            }
-          }}
-        />
+        columns={columns}
+        data={user?.results || []}
+        page={page}
+        totalPages={totalPages}
+        firstPage={firstPage}
+        prevPage={prevPage}
+        nextPage={nextPage}
+        lastPage={lastPage}
+        pageInput={pageInput}
+        setPageInput={setPageInput}
+        goToPage={(pageNumber) => {
+          if (pageNumber >= 1 && pageNumber <= totalPages) {
+            setPage(pageNumber);
+          }
+        }}
+      />
 
     </div>
   )

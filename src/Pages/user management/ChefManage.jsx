@@ -134,7 +134,7 @@ const ChefManage = () => {
           <MdKeyboardBackspace />
         </span>
 
-        <span>Customer Management</span>
+        <span>Chef Management</span>
       </div>
 
       <div>
