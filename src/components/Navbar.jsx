@@ -8,7 +8,7 @@ const Navbar = ({ collapsed, setCollapsed, setMobileOpen }) => {
   const title = matches[matches.length - 1]?.handle?.title || "Dashboard";
 
   return (
-    <header className="h-16 sticky top-0 z-10 bg-white border-b border-gray-200 px-6 flex items-center justify-between">
+    <header className="h-16 sticky top-0 z-50 bg-white border-b border-gray-200 px-6 flex items-center justify-between">
 
       {/* Left */}
       <div className="flex items-center gap-4">
@@ -28,7 +28,7 @@ const Navbar = ({ collapsed, setCollapsed, setMobileOpen }) => {
           <FaBars />
         </button>
 
-        <h1 className="text-lg font-bold text-gray-800 uppercase">
+        <h1 className="text-lg font-bold text-gray-800 capitalize">
           {title}
         </h1>
       </div>

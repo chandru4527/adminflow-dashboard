@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Navigate, NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 import logo from "../assets/images/logo2.svg";
 import cooklogo from "../assets/images/cookdin.svg";
@@ -28,7 +28,6 @@ const menuItems = [
     name: "Users Management",
     icon: <MdPeople />,
     children: [
-      { name: "All Users", path: "/admin/users" },
       { name: "Customers", path: "/admin/customers" },
       { name: "Chefs", path: "/admin/chefs" },
     ],
@@ -37,8 +36,7 @@ const menuItems = [
     name: "Approvals",
     icon: <MdCheckCircle />,
     children: [
-      { name: "Chef Approval", path: "/admin/chef-approval" },
-      { name: "User Approval", path: "/admin/user-approval" },
+      { name: "Chef Approval", path: "/admin/chef-approve" },
     ],
   },
   {
@@ -50,22 +48,23 @@ const menuItems = [
     name: "Booking Track",
     icon: <MdEventNote />,
     children: [
-      { name: "All Bookings", path: "/admin/bookings" },
-      { name: "Pending Bookings", path: "/admin/bookings/pending" },
-      { name: "Completed Bookings", path: "/admin/bookings/completed" },
+      { name: "Upcoming Bookings", path: "/admin/upcoming-bookings" },
+      { name: "Ongoing Bookings", path: "/admin/ongoing-bookings" },
+      { name: "Completed Bookings", path: "/admin/completed-booking" },
     ],
   },
   {
     name: "Revenue Management",
     icon: <MdBarChart />,
     children: [
-      { name: "Revenue", path: "/admin/revenue" },
-      { name: "Transactions", path: "/admin/transactions" },
+      { name: "One-Time-Registration", path: "/admin/one-time-registeration" },
+      { name: "Withdrawals", path: "/admin/withdrawals" },
+      { name: "Refunds", path: "/admin/refunds" },
     ],
   },
   {
     name: "Food Donation Tracking",
-    path: "/admin/donation",
+    path: "/admin/food-donation",
     icon: <MdVolunteerActivism />,
   },
   {
@@ -78,34 +77,58 @@ const menuItems = [
     path: "/admin/settings",
     icon: <MdSettings />,
   },
-];
+]; 
 
-const Sidebar = ({ collapsed, mobileOpen, setMobileOpen }) => {
-
+const Sidebar = ({ collapsed, mobileOpen, setMobileOpen, setCollapsed}) => {
+  
   const [openMenu, setOpenMenu] = useState(null);
 
-  // Show text on desktop when expanded OR always on mobile when sidebar is open
+  useEffect(() => {
+  if (collapsed) {
+    setOpenMenu(null);
+  }
+}, [collapsed]);
+
   const showText = !collapsed || mobileOpen;
 
+  // Toggle accordion
   const handleAccordion = (name) => {
-    setOpenMenu(openMenu === name ? null : name);
+    if (collapsed && !mobileOpen) {
+      setCollapsed(false);
+      setOpenMenu(name); // open this accordion after expanding
+      return;
+    }
+
+    setOpenMenu((prev) => (prev === name ? null : name));
+  };
+
+  // Close all accordions
+  const closeAllAccordions = () => {
+    setOpenMenu(null);
   };
 
   return (
     <aside
-    className={` bg-[#14ae5c] h-screen z-50 overflow-hiddentransition-[width,transform] ease-in-out
-
-    fixed top-0 left-0 w-64 ${mobileOpen ? "translate-x-0" : "-translate-x-full" } lg:translate-x-0
-    lg:sticky lg:top-0 ${collapsed ? "lg:w-20" : "lg:w-64"} `}
+      className={`bg-[#14ae5c] h-screen z-50 overflow-hidden transition-all duration-300 ease-in-out
+      fixed top-0 left-0 w-64 ${
+        mobileOpen ? "translate-x-0 " : "-translate-x-full z-99"
+      } lg:translate-x-0
+      lg:sticky lg:top-0 ${collapsed ? "lg:w-20" : "lg:w-64"}`}
     >
       {/* Logo */}
-      <div className="h-16 flex items-center justify-between px-4">
-        <NavLink to= "/admin/dashboard">
-          <img 
-          src={collapsed && !mobileOpen ? logo : cooklogo}
-          alt="logo"
-          className="h-10 transition-all duration-300"
-        />
+      <div className="h-16 flex items-center justify-between px-4 w-full">
+        <NavLink
+          to="/admin/dashboard"
+          onClick={() => {
+            closeAllAccordions();
+            setMobileOpen(false);
+          }}
+        >
+          <img
+            src={collapsed && !mobileOpen ? logo : cooklogo}
+            alt="logo"
+            className="h-10 transition-all duration-300"
+          />
         </NavLink>
 
         {/* Mobile Close Button */}
@@ -115,12 +138,14 @@ const Sidebar = ({ collapsed, mobileOpen, setMobileOpen }) => {
         >
           <MdClose />
         </button>
+
       </div>
 
       {/* Menu Title */}
       <div
-        className={`px-5 py-3 text-xs uppercase text-white font-semibold whitespace-nowrap overflow-hidden transition-all duration-300 ${showText ? "opacity-100 w-full" : ""
-          }`}
+        className={`px-5 py-3 text-xs uppercase text-white font-semibold whitespace-nowrap overflow-hidden transition-all duration-300 ${
+          showText ? "opacity-100 w-full" : ""
+        }`}
       >
         Menu
       </div>
@@ -141,32 +166,35 @@ const Sidebar = ({ collapsed, mobileOpen, setMobileOpen }) => {
                     {showText && <span>{item.name}</span>}
                   </div>
 
-                  <span
-                    className={`transition-all duration-300 ${showText ? "opacity-100" : "opacity-0"
-                      }`}
-                  >
+                  {showText && (
                     <MdExpandMore
-                      className={`text-xl transition-transform duration-300 ${openMenu === item.name ? "rotate-180" : ""
-                        }`}
+                      className={`text-xl transition-transform duration-300 ${
+                        openMenu === item.name ? "rotate-180" : ""
+                      }`}
                     />
-                  </span>
+                  )}
                 </button>
 
                 {/* Accordion Content */}
                 <div
-                  className={`overflow-hidden transition-all duration-300 ${openMenu === item.name ? "max-h-60 mt-1" : "max-h-0"
-                    }`}
+                  className={`overflow-hidden transition-all duration-300 ${
+                    openMenu === item.name ? "max-h-60 mt-1" : "max-h-0"
+                  }`}
                 >
                   <div className="ml-10 space-y-1">
                     {item.children.map((child) => (
                       <NavLink
                         key={child.path}
                         to={child.path}
-                        onClick={() => setMobileOpen(false)}
+                        onClick={() => {
+                          setOpenMenu(item.name); // keep current accordion open
+                          setMobileOpen(false);
+                        }}
                         className={({ isActive }) =>
-                          `flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-all duration-300 ${isActive
-                            ? "text-black font-semibold"
-                            : "text-white hover:text-black"
+                          `flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-all duration-300 ${
+                            isActive
+                              ? "text-black font-semibold"
+                              : "text-white hover:text-black"
                           }`
                         }
                       >
@@ -180,11 +208,15 @@ const Sidebar = ({ collapsed, mobileOpen, setMobileOpen }) => {
               /* Normal NavLink */
               <NavLink
                 to={item.path}
-                onClick={() => setMobileOpen(false)}
+                onClick={() => {
+                  closeAllAccordions();
+                  setMobileOpen(false);
+                }}
                 className={({ isActive }) =>
-                  `flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-all ${isActive
-                    ? "text-black font-semibold"
-                    : "text-white hover:text-black"
+                  `flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-all ${
+                    isActive
+                      ? "text-black font-semibold"
+                      : "text-white hover:text-black"
                   }`
                 }
               >

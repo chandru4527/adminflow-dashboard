@@ -9,7 +9,7 @@ const AdminLayout = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <div className="h-screen flex overflow-hidden bg-gray-100">
+    <div className="h-screen flex bg-gray-100 overflow-hidden">
       {/* Sidebar */}
       <Sidebar
         collapsed={collapsed}
@@ -18,22 +18,20 @@ const AdminLayout = () => {
         setMobileOpen={setMobileOpen}
       />
 
-      {/* Right side */}
-      <div className="flex-1 flex flex-col overflow-hidden lg:ml-0">
-        {/* Sticky Navbar */}
+      {/* Right Side */}
+      <div className="flex-1 flex flex-col min-w-0">
+        {/* Fixed Navbar */}
         <Navbar
           collapsed={collapsed}
           setCollapsed={setCollapsed}
           setMobileOpen={setMobileOpen}
         />
 
-        {/* Scrollable Main Content */}
+        {/* ONLY MAIN SCROLLS */}
         <main className="flex-1 overflow-y-auto p-6">
-          <div className="min-h-full flex flex-col">
-            <Outlet />
-            <Footer />
-          </div>
+          <Outlet />
         </main>
+          <Footer />
       </div>
     </div>
   );

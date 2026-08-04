@@ -1,3 +1,5 @@
+import { Navigate } from "react-router-dom";
+
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import CustomerManege from "../Pages/user management/CustomerManege";
 import ChefManagement from "../Pages/user management/ChefManage";
@@ -8,10 +10,17 @@ import OngoingBooking from "../Pages/booking/OngoingBooking";
 import CompletedBooking from "../Pages/booking/CompletedBooking";
 import OneTimeRegister from "../Pages/revenue management/OneTimeRegister";
 import Withdrawals from "../Pages/revenue management/Withdrawals";
-
+import Refunds from '../Pages/revenue management/Refunds'
+import FoodDonation from '../Pages/FoodDonation'
+import Services from '../Pages/Services'
+import AdminSettings from '../Pages/AdminSettings'
+ 
 // permission route
-import PermissionRoute from '../protected routes/PermissionRoute' 
+import PermissionRoute from '../protected routes/PermissionRoute'
 import Error from "../components/Error";
+import AdminRoute from "../protected routes/AdminRoute";
+import AdminLayout from '../layout/adminLayout'
+
 
 const adminPages = [
   {
@@ -21,13 +30,13 @@ const adminPages = [
     title: "Dashboard",
   },
   {
-    path: "customer",
+    path: "customers",
     element: <CustomerManege />,
     permission: "customer",
     title: "Customers",
   },
   {
-    path: "chef",
+    path: "chefs",
     element: <ChefManagement />,
     permission: "chef",
     title: "Chef",
@@ -45,13 +54,13 @@ const adminPages = [
     title: "Subscription",
   },
   {
-    path: "upcoming-book",
+    path: "upcoming-bookings",
     element: <UpcomingBooking />,
     permission: "upcoming-book",
     title: "Upcoming Bookings",
   },
   {
-    path: "ongoing-book",
+    path: "ongoing-bookings",
     element: <OngoingBooking />,
     permission: "ongoing-book",
     title: "Ongoing Bookings",
@@ -72,14 +81,38 @@ const adminPages = [
     path: "withdrawals",
     element: <Withdrawals />,
     permission: "withdrawals",
-    title: "Withdrawals Management",
+    title: "Withdrawals",
+  },
+  {
+    path: "refunds",
+    element: <Refunds/>,
+    permission: "refunds",
+    title: "refunds",
+  },
+   {
+    path: "food-donation",
+    element: <FoodDonation/>,
+    permission: "food-donation",
+    title: "food donation management",
+  },
+   {
+    path: "services",
+    element: <Services/>,
+    permission: "services",
+    title: "services",
+  },
+   {
+    path: "settings",
+    element: <AdminSettings/>,
+    permission: "admin-settings",
+    title: "admin settings",
   },
 ];
 
 const adminRoutes_pages = {
   path: "/admin",
   element: <AdminRoute />,
-  errorElement:<Error/>,
+  errorElement: <Error />,
   children: [
     {
       element: <AdminLayout />,
