@@ -74,9 +74,26 @@ export const useFoodDonation = (page = 1, limit = 10) => {
   });
 };
 
-export const useUpcomingBookings = () => {
+// bookings
+export const useBookings = () => {
   return useQuery({
     queryKey:['upcoming-bookings'],
     queryFn: () => get(API_ENDPOINTS.allBookings)
+  })
+}
+
+// withdrawals
+export const useWithdrawals = () => {
+  return useQuery({
+    queryKey:['withdrawals'],
+    queryFn: () => get(API_ENDPOINTS.withdrawals)
+  })
+}
+
+// refunds
+export const useRefunds = () => {
+  return useQuery({
+    queryKey:['refunds'],
+    queryFn: () => get(`${API_ENDPOINTS.allBookings}?status=cancelled`)
   })
 }

@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import {
   MdKeyboardBackspace, MdKeyboardDoubleArrowLeft,
@@ -9,7 +10,7 @@ import {
 } from 'react-icons/md'
 
 // data fetch
-import { useUpcomingBookings } from '../../hooks/apiHooks'
+import { useBookings } from '../../hooks/apiHooks'
 import usePagination from '../../hooks/pagination';
 
 // pages
@@ -19,12 +20,14 @@ import BookingModel from '../../components/modals/BookingModel';
 
 const UpcomingBooking = () => {
 
-  const { data, isLoading, error } = useUpcomingBookings();
+  const { data, isLoading, error } = useBookings();
   const UPC_Bookings = data?.data.filter((item) => item.status === 'upcoming')
   console.log(UPC_Bookings);
 
   const [pageInput, setPageInput] = useState("");
-  const { page, setPage, prevPage, nextPage, firstPage, lastPage } = usePagination()
+  const { page, setPage, prevPage, nextPage, firstPage, lastPage } = usePagination();
+
+    const navigate = useNavigate()
 
   // model
   const [ModalOpen, setModalOpen] = useState(false);
@@ -97,6 +100,8 @@ const UpcomingBooking = () => {
   // }, [ModalOpen])
 
   if (isLoading) return <LoadingPage />
+
+
   return (
     <div className='flex flex-col gap-3'>
 

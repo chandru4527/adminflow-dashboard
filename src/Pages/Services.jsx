@@ -1,4 +1,6 @@
 import React, { useState, useMemo } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 import { useServices, useUpdateBasePrice } from '../hooks/apiHooks'
 import usePagination from '../hooks/pagination'
 import {
@@ -27,6 +29,8 @@ const Services = () => {
 
   const totalPages = service?.totalPages || 1;
   console.log(service);
+
+    const navigate = useNavigate()
 
   // update
   const { mutate, isPending } = useUpdateBasePrice();
