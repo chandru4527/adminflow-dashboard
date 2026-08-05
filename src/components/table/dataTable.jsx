@@ -30,12 +30,12 @@ const DataTable = ({
             <div className="border border-gray-300 rounded overflow-hidden">
                 <div className="overflow-x-auto">
                     <table className="min-w-full text-sm">
-                        <thead className="bg-blue-100">
+                        <thead className="bg-green-600">
                             <tr>
                                 {columns.map((column, index) => (
                                     <th
                                         key={index}
-                                        className="px-4 py-3 text-left font-semibold text-gray-800 border-l border-gray-300 first:border-l-0"
+                                        className="px-4 py-3 text-left font-bold text-white border-l border-gray-300 first:border-l-0"
                                     >
                                         {column.Header}
                                     </th>
@@ -53,14 +53,16 @@ const DataTable = ({
                                             return (
                                                 <td
                                                     key={colIndex}
-                                                    className="px-4 py-3 border border-gray-300"
+                                                    className="px-2 py-2 border border-gray-300"
                                                 >
                                                     {column.Cell
                                                         ? column.Cell({
                                                             value,
                                                             row: { original: row },
                                                         })
-                                                        : value ?? "N/A"}
+                                                        : value && typeof value === "object"
+                                                            ? JSON.stringify(value)
+                                                            : value ?? "N/A"}
                                                 </td>
                                             );
                                         })}

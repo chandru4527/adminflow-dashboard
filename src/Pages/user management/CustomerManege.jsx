@@ -11,6 +11,7 @@ import {
 
 import DataTable from '../../components/table/dataTable'
 import IOSSwitch from '../../components/buttons/isonBtn'
+import LoadingPage from '../../components/LoadingPage'
 
 const CustomerManege = () => {
   const [pageInput, setPageInput] = useState("");
@@ -44,7 +45,8 @@ const CustomerManege = () => {
       {
         Header: "Location",
         accessor: "location",
-        Cell: ({ value }) => value || "N/A",
+        Cell: ({ value }) =>
+          value ? `${value.area}, ${value.city}` : "N/A",
       },
       {
         Header: "Favorites",
@@ -64,10 +66,13 @@ const CustomerManege = () => {
           const isActive = Boolean(activeStatus);
 
           return (
-            <IOSSwitch
-              checked={isActive}
-              onChange={() => handleStatusToggle(id, isActive)}
-            />
+            <div className='flex gap-2 justify-center'>
+              <IOSSwitch
+                checked={isActive}
+                onChange={() => handleStatusToggle(id, isActive)}
+              />
+              <span>{isActive ? 'Active' : 'Inactive'}</span>
+            </div>
           );
         },
       },
@@ -81,6 +86,8 @@ const CustomerManege = () => {
   const { data: user, isLoading, isError } = useUserDetails(page);
   console.log(user);
   const totalPages = user?.totalPages || 1;
+
+  if (isLoading) return <LoadingPage />
 
   return (
     <div className='flex flex-col gap-3'>

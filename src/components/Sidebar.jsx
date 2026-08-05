@@ -109,7 +109,7 @@ const Sidebar = ({ collapsed, mobileOpen, setMobileOpen, setCollapsed}) => {
 
   return (
     <aside
-      className={`bg-[#14ae5c] h-screen z-50 overflow-hidden transition-all duration-300 ease-in-out
+      className={`bg-green-600 h-screen z-99 overflow-hidden transition-all duration-300 ease-in-out
       fixed top-0 left-0 w-64 ${
         mobileOpen ? "translate-x-0 " : "-translate-x-full z-99"
       } lg:translate-x-0
@@ -191,9 +191,9 @@ const Sidebar = ({ collapsed, mobileOpen, setMobileOpen, setCollapsed}) => {
                           setMobileOpen(false);
                         }}
                         className={({ isActive }) =>
-                          `flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-all duration-300 ${
+                          `flex items-center gap-3 px-4 py-2.5 rounded text-sm transition-all duration-300 ${
                             isActive
-                              ? "text-black font-semibold"
+                              ? "text-green-700 font-semibold bg-white"
                               : "text-white hover:text-black"
                           }`
                         }
@@ -213,9 +213,9 @@ const Sidebar = ({ collapsed, mobileOpen, setMobileOpen, setCollapsed}) => {
                   setMobileOpen(false);
                 }}
                 className={({ isActive }) =>
-                  `flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-all ${
+                  `flex items-center gap-3 px-4 py-2.5 rounded text-sm transition-all ${
                     isActive
-                      ? "text-black font-semibold"
+                      ? "text-green-700 font-semibold bg-white"
                       : "text-white hover:text-black"
                   }`
                 }

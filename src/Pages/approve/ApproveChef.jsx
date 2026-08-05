@@ -5,7 +5,7 @@ import {
   MdKeyboardBackspace, MdKeyboardDoubleArrowLeft,
   MdKeyboardArrowLeft,
   MdKeyboardArrowRight,
-  MdKeyboardDoubleArrowRight,
+  MdKeyboardDoubleArrowRight, MdVisibility
 } from 'react-icons/md'
 
 import DataTable from '../../components/table/dataTable'
@@ -16,14 +16,14 @@ import LoadingPage from '../../components/LoadingPage'
 
 const ApproveChef = () => {
 
-   const [rowLoading, setRowLoading] = useState(null);
+  const [rowLoading, setRowLoading] = useState(null);
   const [rowRejectLoading, setRowRejectLoading] = useState(null);
 
   const [pageInput, setPageInput] = useState("");
   const { page, setPage, prevPage, nextPage, firstPage, lastPage } = usePagination()
   const { data: approve, isLoading, isError } = useChefApprove(page);
   console.log(approve);
-const totalPages = approve?.totalPages || 1;
+  const totalPages = approve?.totalPages || 1;
 
   const columns = useMemo(
     () => [
@@ -83,7 +83,7 @@ const totalPages = approve?.totalPages || 1;
             onClick={() => handleViewDetails(row.original)}
             title="View Details"
           >
-            <FaEye size={18} />
+            <MdVisibility size={18} />
           </div>
         ),
       },
@@ -94,7 +94,7 @@ const totalPages = approve?.totalPages || 1;
           const isRejectLoadingRow = rowRejectLoading === row.original.id;
           return (
             <div className="d-flex justify-content-center gap-2">
-              <Button
+              <button
                 type="button"
                 disabled={isLoadingRow}
                 onClick={() => handleStatusChange(row.original.id, "Approved")}
@@ -104,7 +104,7 @@ const totalPages = approve?.totalPages || 1;
                 }}
               >
                 {isLoadingRow ? <Spinner size="sm" /> : "Approve"}
-              </Button>
+              </button>
               <Button
                 type="button"
                 disabled={isRejectLoadingRow}
@@ -127,20 +127,20 @@ const totalPages = approve?.totalPages || 1;
   if (isLoading) return <LoadingPage />
 
   return (
-  <div className='flex flex-col gap-3'>
-  
-        {/* navigat back */}
-        <div className='flex mb-5 gap-5 items-center p-2 bg-gray-100 font-semibold'>
-  
-          <span className='text-xl'
-            onClick={() => navigate(-1)}>
-            <MdKeyboardBackspace />
-          </span>
-  
-          <span>Pending Chef</span>
-        </div>
+    <div className='flex flex-col gap-3'>
 
-        <div>
+      {/* navigat back */}
+      <div className='flex mb-5 gap-5 items-center p-2 bg-gray-100 font-semibold'>
+
+        <span className='text-xl'
+          onClick={() => navigate(-1)}>
+          <MdKeyboardBackspace />
+        </span>
+
+        <span>Pending Chef</span>
+      </div>
+
+      <div>
 
         <DataTable
           columns={columns}

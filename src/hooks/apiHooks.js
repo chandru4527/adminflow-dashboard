@@ -1,7 +1,6 @@
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { get, post, put, patch, deletes, postFormData } from "../api/axios";
 import { API_ENDPOINTS } from '../api/api_url_helper'
-
 
 // dashboard
 export const useDashboardStats = () => {
@@ -34,9 +33,50 @@ export const useChefDetails = (page = 1, limit = 10) => {
 // aprovels
 export const useChefApprove = (page = 1, limit = 10) => {
   return useQuery({
-    queryKey: ["chefManage", page, limit],
+    queryKey: ["chefAprove", page, limit],
     queryFn: () =>
       get(`${APPROVECHEF}?page=${page}&role=chef&verificationStatus=pending&limit=${limit}`),
     placeholderData: (previousData) => previousData,
   });
 };
+
+// services 
+export const useServices = (page = 1, limit = 10) => {
+  return useQuery({
+    queryKey: ["service", page, limit],
+    queryFn: () =>
+      get(`${API_ENDPOINTS.services}?page=${page}&limit=${limit}`),
+    placeholderData: (previousData) => previousData,
+  });
+};
+
+// ubdate base price service
+export const useUpdateBasePrice = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({ id, basePrice }) =>
+      patch(`${API_ENDPOINTS.serviceUpdate}/${id}`, { basePrice }),
+
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["chefs"] });
+    },
+  });
+};
+
+// food donation
+export const useFoodDonation = (page = 1, limit = 10) => {
+  return useQuery({
+    queryKey: ["food-donation", page, limit],
+    queryFn: () =>
+      get(`${API_ENDPOINTS.donationList}`),
+    placeholderData: (previousData) => previousData,
+  });
+};
+
+export const useUpcomingBookings = () => {
+  return useQuery({
+    queryKey:['upcoming-bookings'],
+    queryFn: () => get(API_ENDPOINTS.allBookings)
+  })
+}

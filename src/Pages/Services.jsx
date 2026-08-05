@@ -1,8 +1,177 @@
-import React from 'react'
+import React, { useState, useMemo } from 'react'
+import { useServices, useUpdateBasePrice } from '../hooks/apiHooks'
+import usePagination from '../hooks/pagination'
+import {
+  MdKeyboardBackspace, MdKeyboardDoubleArrowLeft,
+  MdKeyboardArrowLeft,
+  MdKeyboardArrowRight,
+  MdKeyboardDoubleArrowRight,
+  MdEdit
+} from 'react-icons/md'
+import LoadingPage from '../components/LoadingPage'
+import DataTable from '../components/table/dataTable'
+
+// toast 
+import { showSuccess, showError } from '../utils/toast'
+
+
+
 
 const Services = () => {
+
+  const [pageInput, setPageInput] = useState("");
+
+  const { page, setPage, prevPage, nextPage, firstPage, lastPage } = usePagination()
+
+  const { data: service, isLoading, error } = useServices(page)
+
+  const totalPages = service?.totalPages || 1;
+  console.log(service);
+
+  // update
+  const { mutate, isPending } = useUpdateBasePrice();
+
+  const [editValues, setEditValues] = useState({});
+  const handleEditChange = (id, value) => {
+  setEditValues((prev) => ({
+    ...prev,
+    [id]: value,
+  }));
+};
+
+  const handleUpdate = (row, editValue) => {
+    console.log(row, editValue);
+
+    mutate(
+      {
+        id: row.original._id,
+        basePrice: Number(editValue),
+      },
+      {
+        onSuccess: () => {
+          showSuccess("Base price updated successfully");
+        },
+        onError: (error) => {
+          showError(
+            error?.response?.data?.message || "Failed to update base price"
+          );
+        },
+      }
+    );
+  };
+  const columns = useMemo(
+    () => [
+      {
+        Header: "Profile",
+        accessor: "profileImg",
+        Cell: ({ row }) => (
+          <img
+            src={row.original.profileImg || 'chandru'}
+            alt={row.original.chef?.name || "Chef"}
+            className='w-20 h-20 object-cover object-center'
+          />
+        ),
+      },
+      {
+        Header: "Name",
+        accessor: "chef.name",
+        Cell: ({ row }) => row.original.chef?.name || "N/A",
+      },
+      {
+        Header: "Email",
+        accessor: "chef.email",
+        Cell: ({ row }) => row.original.chef?.email || "N/A",
+      },
+      {
+        Header: "Bio",
+        accessor: "bio",
+        Cell: ({ value }) => value || "N/A",
+      },
+      {
+        Header: "Payment Status",
+        accessor: "paymentDetails.isPaid",
+        Cell: ({ row }) => (
+          <span
+            className={`px-2 py-1 rounded text-xs font-semibold ${row.original.paymentDetails?.isPaid
+              ? " text-green-700"
+              : " text-red-700"
+              }`}
+          >
+            {row.original.paymentDetails?.isPaid ? "Paid" : "Unpaid"}
+          </span>
+        ),
+      },
+      {
+        Header: "Base Price",
+        accessor: "basePrice",
+        Cell: ({ row }) => {
+          const id = row.original._id;
+          const value = editValues[id] ?? row.original.basePrice;
+
+          return (
+            <div className="grid grid-cols-1 gap-2">
+              <input
+                type="number"
+                className="w-16 px-1 border border-gray-400 focus:outline-none"
+                min={0}
+                value={value}
+                onChange={(e) => handleEditChange(id, e.target.value)}
+              />
+
+              <button
+                onClick={() => handleUpdate(row, value)}
+                disabled={isPending}
+                className="bg-green-600 text-white text-xs py-1 px-2 rounded flex justify-center items-center gap-1"
+              >
+                <MdEdit />
+                {isPending ? "Updating..." : "Update"}
+              </button>
+            </div>
+          );
+        },
+      }
+    ],
+    [editValues, handleUpdate]);
+
+  if (isLoading) return <LoadingPage />
+
   return (
-    <div>Services</div>
+    <div className='flex flex-col gap-3'>
+
+      {/* navigat back */}
+      <div className='flex mb-5 gap-5 items-center p-2 bg-gray-100 font-semibold'>
+
+        <span className='text-xl'
+          onClick={() => navigate(-1)}>
+          <MdKeyboardBackspace />
+        </span>
+
+        <span>Chef Services</span>
+      </div>
+
+
+      <div>
+
+        <DataTable
+          columns={columns}
+          data={service?.results || []}
+          page={page}
+          totalPages={totalPages}
+          firstPage={firstPage}
+          prevPage={prevPage}
+          nextPage={nextPage}
+          lastPage={lastPage}
+          pageInput={pageInput}
+          setPageInput={setPageInput}
+          goToPage={(pageNumber) => {
+            if (pageNumber >= 1 && pageNumber <= totalPages) {
+              setPage(pageNumber);
+            }
+          }}
+        />
+      </div>
+
+    </div>
   )
 }
 
