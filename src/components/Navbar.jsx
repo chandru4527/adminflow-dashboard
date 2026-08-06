@@ -68,7 +68,7 @@ const Navbar = ({ collapsed, setCollapsed, setMobileOpen }) => {
             if (window.innerWidth < 1024) {
               setMobileOpen(true);
             } else {
-              setCollapsed(!collapsed);
+              setCollapsed((prev) => !prev);
             }
           }}
           className="cursor-pointer p-2"

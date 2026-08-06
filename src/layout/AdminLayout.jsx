@@ -28,7 +28,7 @@ const AdminLayout = () => {
         />
 
         {/* ONLY MAIN SCROLLS */}
-        <main className="flex-1 overflow-y-auto px-">
+        <main className="flex-1 overflow-y-auto px-3">
           <Outlet />
         </main>
         <Footer />
