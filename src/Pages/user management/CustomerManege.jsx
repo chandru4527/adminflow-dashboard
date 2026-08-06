@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react'
-import { useUserDetails } from '../../hooks/apiHooks'
+import { useUpdateCustomerStatus, useUserDetails } from '../../hooks/apiHooks'
 import usePagination from '../../hooks/pagination'
 import { useNavigate } from 'react-router-dom'
 import {
@@ -8,16 +8,50 @@ import {
   MdKeyboardArrowRight,
   MdKeyboardDoubleArrowRight,
 } from 'react-icons/md'
+import { useQueryClient } from '@tanstack/react-query'
 
 import DataTable from '../../components/table/dataTable'
 import IOSSwitch from '../../components/buttons/isonBtn'
 import LoadingPage from '../../components/LoadingPage'
 
+import { showSuccess, showError } from '../../utils/toast'
+
 const CustomerManege = () => {
+  
   const [pageInput, setPageInput] = useState("");
-  const handleStatusToggle = (id, isActive) => {
-    console.log(id, !isActive);
-    // API call here
+
+  const queryClient = useQueryClient();
+
+  const { mutate, isPending } = useUpdateCustomerStatus()
+
+  const handleStatusToggle = (id, currentStatus) => {
+    if (!id) return;
+
+    const newStatus = (!currentStatus).toString();
+
+    mutate(
+      {
+        id,
+        activeStatus: newStatus,
+      },
+      {
+        onSuccess: () => {
+          queryClient.invalidateQueries({
+            queryKey: ["userManage"],
+          });
+          if (newStatus === "true") {
+            showSuccess("Customer activated successfully");
+          } else {
+            showError("Customer inactivated successfully");
+          }
+        },
+
+        onError: (error) => {
+          console.error(error);
+          showError("Failed to update status");
+        },
+      }
+    );
   };
 
   const columns = useMemo(
@@ -45,8 +79,15 @@ const CustomerManege = () => {
       {
         Header: "Location",
         accessor: "location",
-        Cell: ({ value }) =>
-          value ? `${value.area}, ${value.city}` : "N/A",
+        Cell: ({ value }) => {
+          if (!value || typeof value !== "object") return "N/A";
+
+          const { area, city } = value;
+
+          return area && city
+            ? `${area}, ${city}`
+            : city || area || "N/A";
+        }
       },
       {
         Header: "Favorites",

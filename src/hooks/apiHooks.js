@@ -20,6 +20,18 @@ export const useUserDetails = (page = 1, limit = 10) => {
   });
 };
 
+// update user status
+export const useUpdateCustomerStatus = () => {
+  return useMutation({
+    mutationFn: async ({ id, activeStatus }) => {
+      return await patch(`${API_ENDPOINTS.userStatusUpdate}/${id}?role=customer`, {
+        userId: id,
+        activeStatus,
+      });
+    },
+  });
+}
+
 // chef manage
 export const useChefDetails = (page = 1, limit = 10) => {
   return useQuery({
@@ -29,6 +41,18 @@ export const useChefDetails = (page = 1, limit = 10) => {
     placeholderData: (previousData) => previousData,
   });
 };
+
+// ubdatae chef status
+export const useUpdateChefStatus = () => {
+  return useMutation({
+    mutationFn: async ({ id, activeStatus }) => {
+      return await patch(`${API_ENDPOINTS.userStatusUpdate}/${id}?role=chef`, {
+        userId: id,
+        activeStatus,
+      });
+    },
+  });
+}
 
 // aprovels
 export const useChefApprove = (page = 1, limit = 10) => {
@@ -77,7 +101,7 @@ export const useFoodDonation = (page = 1, limit = 10) => {
 // bookings
 export const useBookings = () => {
   return useQuery({
-    queryKey:['upcoming-bookings'],
+    queryKey: ['upcoming-bookings'],
     queryFn: () => get(API_ENDPOINTS.allBookings)
   })
 }
@@ -85,7 +109,7 @@ export const useBookings = () => {
 // withdrawals
 export const useWithdrawals = () => {
   return useQuery({
-    queryKey:['withdrawals'],
+    queryKey: ['withdrawals'],
     queryFn: () => get(API_ENDPOINTS.withdrawals)
   })
 }
@@ -93,7 +117,41 @@ export const useWithdrawals = () => {
 // refunds
 export const useRefunds = () => {
   return useQuery({
-    queryKey:['refunds'],
+    queryKey: ['refunds'],
     queryFn: () => get(`${API_ENDPOINTS.allBookings}?status=cancelled`)
   })
+}
+
+// one time registeration
+export const useOneTimeReg = () => {
+  return useQuery({
+    queryKey: ['one-time-reg'],
+    queryFn: () => get(`${API_ENDPOINTS.oneTimeRegistration}?type=registration`)
+  })
+}
+
+// create admin settings
+export const useCreateAdminSetting = () => {
+  return useMutation({
+    mutationFn: async (payload) => {
+      return await post(API_ENDPOINTS.adminSettingsAdd, payload);
+    },
+  });
+}
+
+// admin settings
+export const useAdminSettings = () => {
+  return useQuery({
+    queryKey: ['admin-settings'],
+    queryFn: () => get(`${API_ENDPOINTS.adminSettings}?type=registration`)
+  })
+}
+
+// adminsettings delete
+export const useDeleteAdminSetting = () => {
+  return useMutation({
+    mutationFn: async (id) => {
+      return await deletes(`${API_ENDPOINTS.adminSettingsDelete}/deleteSettings/${id}`);
+    },
+  });
 }

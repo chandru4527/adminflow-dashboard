@@ -115,7 +115,7 @@ const Sidebar = ({ collapsed, mobileOpen, setMobileOpen, setCollapsed,
       {/* Mobile Overlay */}
       {mobileOpen && (
         <div
-          className="fixed inset-0 bg-black/40 z-40 lg:hidden"
+          className="fixed inset-0 bg-black/40 z-99 lg:hidden"
           onClick={() => setMobileOpen(false)}
         />
       )}
@@ -127,9 +127,10 @@ const Sidebar = ({ collapsed, mobileOpen, setMobileOpen, setCollapsed,
           }`}
       >
         {/* Logo */}
-        <div className="h-16 flex items-center justify-between px-4 w-full">
+        <div className="h-17 flex items-center justify-between px-4 w-full">
           <NavLink
             to="/admin/dashboard"
+            className='flex justify-center items-center'
             onClick={() => {
               closeAllAccordions();
               setMobileOpen(false);

@@ -40,6 +40,7 @@ export const API_ENDPOINTS = {
   // Admin Settings
   adminSettings: "v1/adminSettings/getAll",
   adminSettingsDelete: "v1/adminSettings",
+  adminSettingsAdd:'v1/adminSettings/addSettings',
 
   // Withdrawals
   withdrawals: "v1/withdraws/all-withdraws",

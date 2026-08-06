@@ -30,18 +30,18 @@ const Services = () => {
   const totalPages = service?.totalPages || 1;
   console.log(service);
 
-    const navigate = useNavigate()
+  const navigate = useNavigate()
 
   // update
   const { mutate, isPending } = useUpdateBasePrice();
 
   const [editValues, setEditValues] = useState({});
   const handleEditChange = (id, value) => {
-  setEditValues((prev) => ({
-    ...prev,
-    [id]: value,
-  }));
-};
+    setEditValues((prev) => ({
+      ...prev,
+      [id]: value,
+    }));
+  };
 
   const handleUpdate = (row, editValue) => {
     console.log(row, editValue);
@@ -89,7 +89,14 @@ const Services = () => {
       {
         Header: "Bio",
         accessor: "bio",
-        Cell: ({ value }) => value || "N/A",
+        Cell: ({ value }) => (
+          <div
+            className="max-w-50 truncate"
+            title={value}
+          >
+            {value || "N/A"}
+          </div>
+        ),
       },
       {
         Header: "Payment Status",

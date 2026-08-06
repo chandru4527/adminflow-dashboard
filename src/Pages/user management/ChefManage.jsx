@@ -7,11 +7,14 @@ import {
   MdKeyboardArrowRight,
   MdKeyboardDoubleArrowRight,
 } from 'react-icons/md'
+import { useQueryClient } from '@tanstack/react-query'
 
 import DataTable from '../../components/table/dataTable'
 import IOSSwitch from '../../components/buttons/isonBtn'
-import { useChefDetails } from '../../hooks/apiHooks'
 import LoadingPage from '../../components/LoadingPage'
+import { showSuccess, showError } from '../../utils/toast'
+
+import { useChefDetails, useUpdateChefStatus } from '../../hooks/apiHooks'
 
 const ChefManage = () => {
 
@@ -23,9 +26,38 @@ const ChefManage = () => {
   console.log(chef);
   const totalPages = chef?.totalPages || 1;
 
-  const handleStatusToggle = (id, isActive) => {
-    console.log(id, !isActive);
-    // API call here
+  const queryClient = useQueryClient();
+
+  const { mutate, isPending } = useUpdateChefStatus()
+
+  const handleStatusToggle = (id, currentStatus) => {
+    if (!id) return;
+
+    const newStatus = (!currentStatus).toString();
+
+    mutate(
+      {
+        id,
+        activeStatus: newStatus,
+      },
+      {
+        onSuccess: () => {
+          queryClient.invalidateQueries({
+            queryKey: ["chefManage"],
+          });
+          if (newStatus === "true") {
+            showSuccess("Customer activated successfully");
+          } else {
+            showError("Customer inactivated successfully");
+          }
+        },
+
+        onError: (error) => {
+          console.error(error);
+          showError("Failed to update status");
+        },
+      }
+    );
   };
 
 
@@ -39,68 +71,57 @@ const ChefManage = () => {
             <img
               src={value}
               alt="profile"
-              className="w-15 h-12 rounded object-cover"
+              className="w-15 h-11 rounded object-cover"
             />
           ) : (
             "N/A"
           ),
       },
-
       {
         Header: "Name",
         accessor: "name",
         Cell: ({ value }) => value || "N/A",
       },
-
       {
         Header: "Gender",
         accessor: "gender",
         Cell: ({ value }) => value || "N/A",
       },
-
       {
         Header: "Phone",
         accessor: "phone",
         Cell: ({ value }) => value || "N/A",
       },
-
       {
         Header: "Email",
         accessor: "email",
         Cell: ({ value }) => value || "N/A",
       },
-
       {
         Header: "City",
         accessor: "location.city",
         Cell: ({ value }) => value || "N/A",
       },
-
       {
         Header: "Area",
         accessor: "location.area",
         Cell: ({ value }) => value || "N/A",
       },
-
       {
         Header: "Experience",
         accessor: "chefRegistration.yearOfExperience",
         Cell: ({ value }) => (value !== undefined ? `${value} Years` : "N/A"),
       },
-
-
       {
         Header: "Favorites",
         accessor: "favorites",
         Cell: ({ value }) => (value?.length ? value.length : "N/A"),
       },
-
       {
         Header: "Verification",
         accessor: "verificationStatus",
         Cell: ({ value }) => value || "N/A",
       },
-
       {
         Header: "Active Status",
         accessor: "activeStatus",
@@ -109,10 +130,13 @@ const ChefManage = () => {
           const isActive = Boolean(activeStatus);
 
           return (
-            <IOSSwitch
-              checked={isActive}
-              onChange={() => handleStatusToggle(id, isActive)}
-            />
+            <div className='flex gap-2 justify-center'>
+              <IOSSwitch
+                checked={isActive}
+                onChange={() => handleStatusToggle(id, isActive)}
+              />
+              <span>{isActive ? 'Active' : 'Inactive'}</span>
+            </div>
           );
         },
       },

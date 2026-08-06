@@ -2,9 +2,8 @@ import React from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
 
 const AdminRoute = () => {
-
-  const user = { name: 'ck', role: 'admin' }
-  // const user = null
+  
+  const user = null
 
   if (!user) {
     return <Navigate to='/admin/login' />

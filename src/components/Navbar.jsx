@@ -59,7 +59,7 @@ const Navbar = ({ collapsed, setCollapsed, setMobileOpen }) => {
   };
 
   return (
-    <header className="sticky top-0 z-50 flex h-16 items-center justify-between border-b border-gray-200 bg-white px-6">
+    <header className="sticky top-0 z-50 flex h-17 items-center justify-between border-b border-gray-200 bg-white px-2">
 
       {/* Left */}
       <div className="flex items-center gap-4">
