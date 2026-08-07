@@ -1,5 +1,6 @@
 export const API_ENDPOINTS = {
-    
+  adminLogin: "v1/auth/admin-login",
+
   users: "v1/admin/allUsers",
   usersRole: "v1/users/all-users",
 
@@ -40,7 +41,7 @@ export const API_ENDPOINTS = {
   // Admin Settings
   adminSettings: "v1/adminSettings/getAll",
   adminSettingsDelete: "v1/adminSettings",
-  adminSettingsAdd:'v1/adminSettings/addSettings',
+  adminSettingsAdd: 'v1/adminSettings/addSettings',
 
   // Withdrawals
   withdrawals: "v1/withdraws/all-withdraws",

@@ -7,8 +7,11 @@ import {
   MdPerson,
 } from "react-icons/md";
 import { useMatches } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { showSuccess } from '../utils/toast'
 
 const Navbar = ({ collapsed, setCollapsed, setMobileOpen }) => {
+  const navigate = useNavigate()
   const matches = useMatches();
   const title = matches[matches.length - 1]?.handle?.title || "Dashboard";
 
@@ -53,9 +56,10 @@ const Navbar = ({ collapsed, setCollapsed, setMobileOpen }) => {
   };
 
   const handleLogout = () => {
-    setUserMenuOpen(false);
-    console.log("Logout");
-
+    sessionStorage.clear();
+    localStorage.clear();
+    showSuccess('logout Successfully')
+    navigate("/");
   };
 
   return (
@@ -105,7 +109,7 @@ const Navbar = ({ collapsed, setCollapsed, setMobileOpen }) => {
           </button>
 
           {userMenuOpen && (
-            <div className="absolute right-0 mt-2 w-44 rounded-lg border border-gray-200 bg-white shadow-lg">
+            <div className="absolute right-0 mt-2 w-44 rounded border border-gray-200 bg-white shadow-lg">
               <button
                 onClick={handleLogout}
                 className="flex w-full items-center gap-2 px-4 py-3 text-sm text-red-600 hover:bg-gray-100"

@@ -121,7 +121,7 @@ const Sidebar = ({ collapsed, mobileOpen, setMobileOpen, setCollapsed,
       )}
 
       <aside
-        className={`bg-green-600 h-screen z-99 overflow-hidden transition-all duration-300 ease-in-out
+        className={`bg-green-700 h-screen z-99 overflow-hidden transition-all duration-300 ease-in-out
         fixed top-0 left-0 w-64 ${mobileOpen ? "translate-x-0" : "-translate-x-full"
           } lg:translate-x-0 lg:sticky lg:top-0 ${collapsed ? "lg:w-20" : "lg:w-64"
           }`}

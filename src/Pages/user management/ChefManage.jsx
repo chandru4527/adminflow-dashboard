@@ -21,7 +21,8 @@ const ChefManage = () => {
   const navigate = useNavigate()
 
   const [pageInput, setPageInput] = useState("");
-  const { page, setPage, prevPage, nextPage, firstPage, lastPage } = usePagination()
+  const { page, setPage, prevPage, nextPage, firstPage, lastPage } = usePagination();
+  
   const { data: chef, isLoading, isError } = useChefDetails(page)
   console.log(chef);
   const totalPages = chef?.totalPages || 1;

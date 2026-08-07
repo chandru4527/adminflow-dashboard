@@ -3,7 +3,7 @@ import { Navigate, Outlet } from 'react-router-dom'
 
 const AdminRoute = () => {
   
-  const user = null
+    const user = JSON.parse(sessionStorage.getItem("user"));
 
   if (!user) {
     return <Navigate to='/admin/login' />

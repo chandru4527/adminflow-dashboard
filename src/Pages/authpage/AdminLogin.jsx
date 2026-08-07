@@ -1,19 +1,68 @@
 import React from "react";
-import { useForm } from "react-hook-form";
 import { MdEmail, MdLock } from "react-icons/md";
 
+import { useNavigate } from 'react-router-dom'
+
+// form 
+import { useForm, Controller } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+
 import cookdinLogo from '../../assets/images/cookdin.svg'
+import { useAdminLogin } from "../../hooks/apiHooks";
+
+import { showSuccess, showError } from '../../utils/toast';
 
 const AdminLogin = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    clearErrors,
-  } = useForm();
 
-  const onSubmit = (data) => {
-    console.log("Login Data:", data);
+  const navigate = useNavigate();
+
+  const { mutate, isPending } = useAdminLogin();
+
+  const initialValues = {
+    email: "cookdin@example.com",
+    password: "cookdin@1234",
+  };
+  const validationSchema = yup.object({
+    email: yup.string().required("Please Enter Your Email"),
+    password: yup.string().required("Please Enter Your Password"),
+  });
+
+  const { register, control, handleSubmit, reset, setValue, clearErrors,
+    formState: { errors, isSubmitting }, } = useForm({
+      defaultValues: initialValues,
+      resolver: yupResolver(validationSchema),
+    });
+
+  const onSubmit = (value) => {
+    mutate(value, {
+      onSuccess: (response) => {
+        if (response?.tokens?.access) {
+          const userRole = response.user?.role;
+          const user = response.user;
+
+          console.log(userRole);
+          console.log(user);
+
+          sessionStorage.setItem("user", JSON.stringify(user));
+          // sessionStorage.setItem("user", user);
+          sessionStorage.setItem("accessToken", response.tokens.access.token);
+
+          showSuccess("Login Successful!");
+
+          // setTimeout(() => {
+            navigate("/admin");
+          // }, 1000);
+        } else {
+          showError("Invalid email or password!");
+        }
+      },
+
+      onError: (error) => {
+        showError("Something went wrong. Please try again!");
+        console.error("Login Error:", error);
+      },
+    });
   };
 
   return (
@@ -25,13 +74,13 @@ const AdminLogin = () => {
         <div className="bg-linear-to-br from-emerald-900 via-green-800 to-emerald-600 text-white flex flex-col justify-center items-center p-8 md:p-10">
 
           {/* Logo */}
-         <div className="">
-           <img
-            src={cookdinLogo}
-            alt="CookDin Logo"
-            className="w-20 h-20 md:w-50 md:h-30 object-contain"
-          />
-         </div>
+          <div className="">
+            <img
+              src={cookdinLogo}
+              alt="CookDin Logo"
+              className="w-20 h-20 md:w-50 md:h-30 object-contain"
+            />
+          </div>
 
           {/* Title */}
           {/* <h1 className="text-2xl md:text-4xl font-bold mt-3 md:mt-6">
@@ -120,9 +169,14 @@ const AdminLogin = () => {
               {/* Login Button */}
               <button
                 type="submit"
-                className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded transition duration-300 shadow-lg cursor-pointer"
+                disabled={isPending}
+                className={`w-full font-semibold py-3 rounded transition duration-300 shadow-lg
+                ${isPending
+                    ? "bg-emerald-400 cursor-not-allowed"
+                    : "bg-emerald-600 hover:bg-emerald-700 cursor-pointer"
+                  } text-white`}
               >
-                Sign In
+                {isPending ? "Signing In..." : "Sign In"}
               </button>
 
             </form>

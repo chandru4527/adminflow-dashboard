@@ -2,6 +2,15 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { get, post, put, patch, deletes, postFormData } from "../api/axios";
 import { API_ENDPOINTS } from '../api/api_url_helper'
 
+// admin login
+export const useAdminLogin = () => {
+  return useMutation({
+    mutationFn: async (payload) => {
+      return await post(API_ENDPOINTS.adminLogin, payload)
+    }
+  })
+}
+
 // dashboard
 export const useDashboardStats = () => {
   return useQuery({
@@ -154,4 +163,46 @@ export const useDeleteAdminSetting = () => {
       return await deletes(`${API_ENDPOINTS.adminSettingsDelete}/deleteSettings/${id}`);
     },
   });
+}
+
+// get subcription list 
+export const useSubscriptionList = () => {
+  return useQuery({
+    queryKey: ['subcription-list'],
+    queryFn: () => get(`${API_ENDPOINTS.subscriptionList}/all-plans`),
+    placeholderData: (previousData) => previousData,
+  })
+}
+
+// update subcription status
+export const useUpdateSubcriptionStatus = () => {
+  return useMutation({
+    mutationFn: async ({ id, status }) => {
+      return await patch(
+        `${API_ENDPOINTS.subscriptionListStatus}/${id}`,
+        {
+          status,
+        }
+      );
+    },
+  })
+}
+
+// post subscription
+export const usePostSubcription = () => {
+  return useMutation({
+    mutationFn: async (payload) => {
+      return await post(API_ENDPOINTS.subscriptionAdd, payload);
+    },
+  })
+}
+
+// assign chef
+export const useChefAssign = () => {
+  return useMutation({
+    mutationFn: async ({ id, payload }) => {
+      return await patch(
+        `${API_ENDPOINTS.subscriptionUpdate}/${id}`, payload);
+    },
+  })
 }

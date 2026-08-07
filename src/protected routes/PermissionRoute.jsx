@@ -2,7 +2,7 @@ import React from 'react'
 
 const PermissionRoute = ({permission, children}) => {
 
-  const user = null
+    const user = JSON.parse(sessionStorage.getItem("user"));
 
     if(!user) return <Navigate to="/admin/login" replace />
 

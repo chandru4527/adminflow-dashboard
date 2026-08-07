@@ -23,6 +23,8 @@ import { useAdminSettings, useDeleteAdminSetting, useCreateAdminSetting } from '
 
 const AdminSettings = () => {
 
+  const navigate = useNavigate()
+
   // form   related
   const initialValues = {
     gstPercentage: "",
