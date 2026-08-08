@@ -21,11 +21,12 @@ import { showSuccess, showError } from '../utils/toast'
 
 const Services = () => {
 
+  const [successRow, setSuccessRow] = useState(null);
   const [pageInput, setPageInput] = useState("");
 
   const { page, setPage, prevPage, nextPage, firstPage, lastPage } = usePagination()
 
-  const { data: service, isLoading, error } = useServices(page)
+  const { data: service, isLoading, } = useServices(page)
 
   const totalPages = service?.totalPages || 1;
   console.log(service);
@@ -33,7 +34,7 @@ const Services = () => {
   const navigate = useNavigate()
 
   // update
-  const { mutate, isPending } = useUpdateBasePrice();
+  const { mutate, isPending, error } = useUpdateBasePrice();
 
   const [editValues, setEditValues] = useState({});
   const handleEditChange = (id, value) => {
@@ -53,7 +54,12 @@ const Services = () => {
       },
       {
         onSuccess: () => {
+          setSuccessRow(row.original._id);
           showSuccess("Base price updated successfully");
+
+          setTimeout(() => {
+            setSuccessRow(null);
+          }, 2000);
         },
         onError: (error) => {
           showError(
@@ -70,7 +76,7 @@ const Services = () => {
         accessor: "profileImg",
         Cell: ({ row }) => (
           <img
-            src={row.original.profileImg || 'chandru'}
+            src={row.original.profileImg || 'https://tse4.mm.bing.net/th/id/OIP.dDKYQqVBsG1tIt2uJzEJHwHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3'}
             alt={row.original.chef?.name || "Chef"}
             className='w-20 h-20 object-cover object-center'
           />
@@ -123,7 +129,7 @@ const Services = () => {
             <div className="grid grid-cols-1 gap-2">
               <input
                 type="number"
-                className="w-16 px-1 border border-gray-400 focus:outline-none"
+                className="w-20 px-1 border border-gray-400 focus:outline-none"
                 min={0}
                 value={value}
                 onChange={(e) => handleEditChange(id, e.target.value)}
@@ -132,11 +138,16 @@ const Services = () => {
               <button
                 onClick={() => handleUpdate(row, value)}
                 disabled={isPending}
-                className="bg-green-600 text-white text-xs py-1 px-2 rounded flex justify-center items-center gap-1"
+                className="bg-green-600 text-white text-xs py-2 rounded flex justify-center items-center"
               >
                 <MdEdit />
-                {isPending ? "Updating..." : "Update"}
+                Update
               </button>
+              {successRow === id && (
+                <span className="text-green-600 text-xs font-medium">
+                  Price updated!
+                </span>
+              )}
             </div>
           );
         },
@@ -165,7 +176,7 @@ const Services = () => {
 
         <DataTable
           columns={columns}
-          data={service?.results || []}
+          data={service?.results.slice().reverse() || []}
           page={page}
           totalPages={totalPages}
           firstPage={firstPage}

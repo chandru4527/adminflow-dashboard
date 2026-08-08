@@ -58,11 +58,13 @@ const FoodDonation = () => {
         Cell: ({ value }) => {
           if (!value) return "N/A";
 
+          // if the backend sends an object like { city: "Chennai", address: "Main Road" }
           if (typeof value === "object") {
-            const { address, city } = value;
+            const { city, address } = value;
             return [address, city].filter(Boolean).join(", ") || "N/A";
           }
 
+          // if it’s already a string
           return value;
         },
       },
@@ -111,12 +113,12 @@ const FoodDonation = () => {
         accessor: "collectedBy",
         Cell: ({ value }) => value || "N/A",
       },
-      {
-        Header: "Created At",
-        accessor: "createdAt",
-        Cell: ({ value }) =>
-          value ? new Date(value).toLocaleString("en-IN") : "N/A",
-      },
+      // {
+      //   Header: "Created At",
+      //   accessor: "createdAt",
+      //   Cell: ({ value }) =>
+      //     value ? new Date(value).toLocaleString("en-IN") : "N/A",
+      // },
     ],
     []
   );

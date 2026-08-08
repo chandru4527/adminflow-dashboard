@@ -35,7 +35,7 @@ const DataTable = ({
                             {columns.map((column, index) => (
                                 <th
                                     key={index}
-                                    className="px-5 py-3 text-left text-sm font-semibold text-white tracking-wide whitespace-nowrap"
+                                    className="px-4 py-3 text-left text-sm font-semibold text-white tracking-wide whitespace-nowrap"
                                 >
                                     {column.Header}
                                 </th>
@@ -58,7 +58,7 @@ const DataTable = ({
                                         return (
                                             <td
                                                 key={colIndex}
-                                                className="px-5 py-4 text-sm text-gray-700 align-middle whitespace-nowrap border border-gray-200"
+                                                className="px-4 py-3 max-w-80 text-sm text-gray-700 text-start whitespace-now border border-gray-200 "
                                             >
                                                 {column.Cell
                                                     ? column.Cell({
