@@ -51,7 +51,7 @@ const AdminLogin = () => {
           showSuccess("Login Successful!");
 
           // setTimeout(() => {
-            navigate("/admin");
+          navigate("/admin");
           // }, 1000);
         } else {
           showError("Invalid email or password!");
@@ -71,33 +71,59 @@ const AdminLogin = () => {
       <div className="w-full max-w-4xl bg-white rounded-xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
 
         {/* Left Side */}
-        <div className="bg-linear-to-br from-emerald-900 via-green-800 to-emerald-600 text-white flex flex-col justify-center items-center p-8 md:p-10">
+        <div className="relative bg-linear-to-br from-slate-900 via-emerald-900 to-green-700 text-white flex flex-col justify-center px-8 py-12 md:px-12 overflow-hidden">
 
-          {/* Logo */}
-          <div className="">
+          {/* Background pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-10 left-10 w-32 h-32 border border-white rounded-full"></div>
+            <div className="absolute bottom-16 right-12 w-48 h-48 border border-white rounded-full"></div>
+            <div className="absolute top-1/2 left-1/3 w-24 h-24 border border-white rounded-full"></div>
+          </div>
+
+          {/* Content */}
+          <div className="relative z-10">
+
+            {/* Logo */}
             <img
               src={cookdinLogo}
               alt="CookDin Logo"
-              className="w-20 h-20 md:w-50 md:h-30 object-contain"
+              className="w-20 h-25 md:w-24 md:h-34 object-contain mb-6"
             />
+
+            {/* Title */}
+            <h1 className="text-3xl md:text-4xl font-bold leading-tight">
+              CookDin
+              <span className="block text-green-900">Admin Portal</span>
+            </h1>
+
+            {/* Description */}
+            <p className="hidden lg:block mt-6 text-white/80 text-sm md:text-base leading-7 max-w-md">
+              Access the secure administration dashboard to manage users, chefs,
+              bookings, subscriptions, food donations, and platform operations in one place.
+            </p>
+
+            {/* Stats */}
+            {/* <div className="mt-10 grid grid-cols-3 gap-4 max-w-md">
+              <div>
+                <p className="text-2xl md:text-3xl font-bold">24/7</p>
+                <p className="text-xs text-white/70 mt-1">Monitoring</p>
+              </div>
+              <div>
+                <p className="text-2xl md:text-3xl font-bold">100%</p>
+                <p className="text-xs text-white/70 mt-1">Secure Access</p>
+              </div>
+              <div>
+                <p className="text-2xl md:text-3xl font-bold">1</p>
+                <p className="text-xs text-white/70 mt-1">Central Dashboard</p>
+              </div>
+            </div> */}
+
+            {/* Footer */}
+            <div className="hidden lg:block mt-5 text-xs text-white/50">
+              © 2026 CookDin. All rights reserved.
+            </div>
+
           </div>
-
-          {/* Title */}
-          {/* <h1 className="text-2xl md:text-4xl font-bold mt-3 md:mt-6">
-            CookDin
-          </h1>
-          <p className="text-base md:text-xl font-semibold text-emerald-100">
-            Admin Panel
-          </p> */}
-
-          {/* Desktop only */}
-          <div className="hidden md:block w-16 h-1 bg-emerald-300 rounded-full my-5"></div>
-
-          <p className="hidden md:block text-white/80 text-center max-w-sm leading-7">
-            Secure access to the CookDin administration dashboard. Manage chefs,
-            customers, bookings, food donations, subscriptions, and platform
-            operations from one place.
-          </p>
         </div>
 
         {/* Right Side */}
@@ -120,7 +146,7 @@ const AdminLogin = () => {
                   <input
                     type="email"
                     placeholder="admin@cookdin.com"
-                    className="w-full outline-none bg-transparent focus:border-green-600"
+                    className="w-full outline-none bg-transparent border-none focus:border-green-600"
                     {...register("email", {
                       required: "Email is required",
                       pattern: {
@@ -148,7 +174,7 @@ const AdminLogin = () => {
                   <input
                     type="password"
                     placeholder="••••••••"
-                    className="w-full outline-none bg-transparent focus:border-green-600"
+                    className="w-full outline-none bg-transparent"
                     {...register("password", {
                       required: "Password is required",
                       minLength: {
@@ -184,6 +210,7 @@ const AdminLogin = () => {
         </div>
 
       </div>
+
     </div>
   );
 };

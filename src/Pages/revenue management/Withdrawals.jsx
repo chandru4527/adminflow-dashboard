@@ -27,7 +27,7 @@ const Withdrawals = () => {
   const { page, setPage, prevPage, nextPage, firstPage, lastPage } = usePagination()
   const { data, isLoading, error } = useWithdrawals()
 
-  const mappedData = data?.data?.map((item) => ({
+  const mappedData = data?.data?.slice().reverse().map((item) => ({
     id: item?._id || "N/A",
     name: item?.user?.name || "N/A",
     phone: item?.user?.phone || "N/A",

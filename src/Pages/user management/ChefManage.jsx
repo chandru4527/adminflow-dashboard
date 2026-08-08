@@ -47,9 +47,9 @@ const ChefManage = () => {
             queryKey: ["chefManage"],
           });
           if (newStatus === "true") {
-            showSuccess("Customer activated successfully");
+            showSuccess("Chef activated successfully");
           } else {
-            showError("Customer inactivated successfully");
+            showError("Chef inactivated successfully");
           }
         },
 
