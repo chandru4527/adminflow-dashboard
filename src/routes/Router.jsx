@@ -36,26 +36,6 @@ const router = createBrowserRouter([
 
     adminRoutes_pages,
 
-
-
-    // admin protect and element
-    // {
-    //     path: '/admin',
-    //     element: <AdminRoute />,
-    //     errorElement: <Error />,
-    //     children: [
-    //         {
-    //             element: <AdminLayout />,
-    //             children: [
-    //                 { index: true, element: <Navigate to='dashboard' replace /> },
-    //                 { path: 'dashboard', element: <Dashboard />, handle: { title: 'dashboard' } },
-    //                 { path: 'settings', element: <AdminSettings />, handle: { title: 'settings' } }
-    //             ]
-    //         }
-    //     ]
-    // },
-
-    // error page
     {
         path: '*', element: <ErrorPage />
     }

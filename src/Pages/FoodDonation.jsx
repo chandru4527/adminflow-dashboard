@@ -143,7 +143,9 @@ const FoodDonation = () => {
       <div>
         <DataTable
           columns={columns}
-          data={data?.data || []}
+          data={[...(data?.data || [])].sort((a, b) =>
+          (a.donorName || "").localeCompare(b.donorName || "")
+        )}
           page={page}
           // totalPages={totalPages}
           firstPage={firstPage}

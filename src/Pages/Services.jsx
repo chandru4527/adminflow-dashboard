@@ -78,7 +78,7 @@ const Services = () => {
           <img
             src={row.original.profileImg || 'https://tse4.mm.bing.net/th/id/OIP.dDKYQqVBsG1tIt2uJzEJHwHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3'}
             alt={row.original.chef?.name || "Chef"}
-            className='w-20 h-20 object-cover object-center'
+            className='w-20 h-20 object-contain'
           />
         ),
       },
@@ -176,7 +176,9 @@ const Services = () => {
 
         <DataTable
           columns={columns}
-          data={service?.results.slice().reverse() || []}
+          data={[...(service?.results || [])].sort((a, b) =>
+            a.chef.name.localeCompare(b.chef.name)
+          )}
           page={page}
           totalPages={totalPages}
           firstPage={firstPage}

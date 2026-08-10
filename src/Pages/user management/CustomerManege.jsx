@@ -17,7 +17,7 @@ import LoadingPage from '../../components/LoadingPage'
 import { showSuccess, showError } from '../../utils/toast'
 
 const CustomerManege = () => {
-  
+
   const [pageInput, setPageInput] = useState("");
 
   const queryClient = useQueryClient();
@@ -146,7 +146,9 @@ const CustomerManege = () => {
 
       <DataTable
         columns={columns}
-        data={user?.results || []}
+        data={[...(user?.results || [])].sort((a, b) =>
+          (a.name || "").localeCompare(b.name || "")
+        )}
         page={page}
         totalPages={totalPages}
         firstPage={firstPage}

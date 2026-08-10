@@ -68,15 +68,14 @@ const ChefManage = () => {
         Header: "Profile",
         accessor: "profileImage",
         Cell: ({ value }) =>
-          value ? (
+
             <img
-              src={value}
-              alt="profile"
-              className="w-15 h-11 rounded object-cover"
+            src={value || 'https://tse4.mm.bing.net/th/id/OIP.dDKYQqVBsG1tIt2uJzEJHwHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3'}
+            alt="profile"
+            className="w-15 h-11 rounded object-cover"
             />
-          ) : (
-            "N/A"
-          ),
+        
+          ,
       },
       {
         Header: "Name",
@@ -166,7 +165,9 @@ const ChefManage = () => {
 
         <DataTable
           columns={columns}
-          data={chef?.results || []}
+          data={[...(chef?.results || [])].sort((a, b) =>
+          (a.name || "").localeCompare(b.name || "")
+        )}
           page={page}
           totalPages={totalPages}
           firstPage={firstPage}
