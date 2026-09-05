@@ -1,12 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import useSidebarStore from "../store/useSidebarStore";
 
 import logo from "../assets/images/logo2.svg";
 import cooklogo from "../assets/images/cookdin.svg";
 
 import {
-  MdDashboard, MdPeople, MdCheckCircle, MdBarChart, MdSubscriptions, MdVolunteerActivism, MdSettings,
-  MdExpandMore, MdBuild, MdEventNote, MdClose,
+  MdDashboard,
+  MdPeople,
+  MdCheckCircle,
+  MdBarChart,
+  MdSubscriptions,
+  MdVolunteerActivism,
+  MdSettings,
+  MdExpandMore,
+  MdBuild,
+  MdEventNote,
+  MdClose,
 } from "react-icons/md";
 
 const menuItems = [
@@ -71,14 +81,20 @@ const menuItems = [
   },
 ];
 
-const Sidebar = ({ collapsed, mobileOpen, setMobileOpen, setCollapsed,
-}) => {
+const Sidebar = () => {
   const location = useLocation();
+
+  const {
+    isCollapsed,
+    isMobileOpen,
+    toggleCollapse,
+    closeMobileSidebar,
+  } = useSidebarStore();
+
   const [openMenu, setOpenMenu] = useState(null);
 
-  // Keep active accordion open
   useEffect(() => {
-    if (collapsed) {
+    if (isCollapsed) {
       setOpenMenu(null);
       return;
     }
@@ -92,13 +108,13 @@ const Sidebar = ({ collapsed, mobileOpen, setMobileOpen, setCollapsed,
     if (activeParent) {
       setOpenMenu(activeParent.name);
     }
-  }, [location.pathname, collapsed]);
+  }, [location.pathname, isCollapsed]);
 
-  const showText = !collapsed || mobileOpen;
+  const showText = !isCollapsed || isMobileOpen;
 
   const handleAccordion = (name) => {
-    if (collapsed && !mobileOpen) {
-      setCollapsed(false);
+    if (isCollapsed && !isMobileOpen) {
+      toggleCollapse();
       setOpenMenu(name);
       return;
     }
@@ -112,28 +128,28 @@ const Sidebar = ({ collapsed, mobileOpen, setMobileOpen, setCollapsed,
 
   return (
     <>
-      {/* Mobile Overlay */}
-      {mobileOpen && (
+      {isMobileOpen && (
         <div
           className="fixed inset-0 bg-black/40 z-99 lg:hidden"
-          onClick={() => setMobileOpen(false)}
+          onClick={closeMobileSidebar}
         />
       )}
 
       <aside
         className={`bg-green-700 h-screen z-99 overflow-hidden transition-all duration-300 ease-in-out
-        fixed top-0 left-0 w-64 ${mobileOpen ? "translate-x-0" : "-translate-x-full"
-          } lg:translate-x-0 lg:sticky lg:top-0 ${collapsed ? "lg:w-20" : "lg:w-64"
-          }`}
+        fixed top-0 left-0 w-64
+        ${isMobileOpen ? "translate-x-0" : "-translate-x-full"}
+        lg:translate-x-0 lg:sticky lg:top-0
+        ${isCollapsed ? "lg:w-20" : "lg:w-64"}`}
       >
         {/* Logo */}
         <div className="h-17 flex items-center justify-between px-4 w-full">
           <NavLink
             to="/admin/dashboard"
-            className='flex justify-center items-center'
+            className="flex justify-center items-center"
             onClick={() => {
               closeAllAccordions();
-              setMobileOpen(false);
+              closeMobileSidebar();
             }}
           >
             <img
@@ -143,9 +159,9 @@ const Sidebar = ({ collapsed, mobileOpen, setMobileOpen, setCollapsed,
             />
           </NavLink>
 
-          {/* Mobile Close Button */}
+          {/* Mobile Close */}
           <button
-            onClick={() => setMobileOpen(false)}
+            onClick={closeMobileSidebar}
             className="lg:hidden text-white text-3xl"
           >
             <MdClose />
@@ -154,8 +170,9 @@ const Sidebar = ({ collapsed, mobileOpen, setMobileOpen, setCollapsed,
 
         {/* Menu Title */}
         <div
-          className={`px-5 py-3 text-xs uppercase text-white font-semibold whitespace-nowrap overflow-hidden transition-all duration-300 ${showText ? "opacity-100 w-full" : ""
-            }`}
+          className={`px-5 py-3 text-xs uppercase text-white font-semibold whitespace-nowrap overflow-hidden transition-all duration-300 ${
+            showText ? "opacity-100 w-full" : ""
+          }`}
         >
           Menu
         </div>
@@ -174,10 +191,11 @@ const Sidebar = ({ collapsed, mobileOpen, setMobileOpen, setCollapsed,
                     {/* Accordion Header */}
                     <button
                       onClick={() => handleAccordion(item.name)}
-                      className={`w-full flex items-center justify-between px-4 py-2.5 rounded text-sm transition-all duration-300 ${isParentActive
-                        ? "bg-white text-green-700 font-semibold"
-                        : "text-white hover:bg-white hover:text-green-700"
-                        }`}
+                      className={`w-full flex items-center justify-between px-4 py-2.5 rounded text-sm transition-all duration-300 ${
+                        isParentActive
+                          ? "bg-white text-green-700 font-semibold"
+                          : "text-white hover:bg-white hover:text-green-700"
+                      }`}
                     >
                       <div className="flex items-center gap-3">
                         <span className="text-xl flex items-center justify-center">
@@ -193,20 +211,22 @@ const Sidebar = ({ collapsed, mobileOpen, setMobileOpen, setCollapsed,
 
                       {showText && (
                         <MdExpandMore
-                          className={`text-xl transition-transform duration-300 ${!collapsed && openMenu === item.name
-                            ? "rotate-180"
-                            : ""
-                            }`}
+                          className={`text-xl transition-transform duration-300 ${
+                            !isCollapsed && openMenu === item.name
+                              ? "rotate-180"
+                              : ""
+                          }`}
                         />
                       )}
                     </button>
 
                     {/* Accordion Content */}
                     <div
-                      className={`overflow-hidden transition-all duration-300 ${!collapsed && openMenu === item.name
-                        ? "max-h-60 mt-1"
-                        : "max-h-0"
-                        }`}
+                      className={`overflow-hidden transition-all duration-300 ${
+                        !isCollapsed && openMenu === item.name
+                          ? "max-h-60 mt-1"
+                          : "max-h-0"
+                      }`}
                     >
                       <div className="ml-10 space-y-1">
                         {item.children.map((child) => (
@@ -215,12 +235,13 @@ const Sidebar = ({ collapsed, mobileOpen, setMobileOpen, setCollapsed,
                             to={child.path}
                             onClick={() => {
                               setOpenMenu(item.name);
-                              setMobileOpen(false);
+                              closeMobileSidebar();
                             }}
                             className={({ isActive }) =>
-                              `flex items-center gap-3 px-4 py-2.5 rounded text-sm transition-all duration-300 ${isActive
-                                ? "bg-white text-green-700 font-semibold"
-                                : "text-white hover:bg-white hover:text-green-700"
+                              `flex items-center gap-3 px-4 py-2.5 rounded text-sm transition-all duration-300 ${
+                                isActive
+                                  ? "bg-white text-green-700 font-semibold"
+                                  : "text-white hover:bg-white hover:text-green-700"
                               }`
                             }
                           >
@@ -231,17 +252,17 @@ const Sidebar = ({ collapsed, mobileOpen, setMobileOpen, setCollapsed,
                     </div>
                   </>
                 ) : (
-                  /* Normal NavLink */
                   <NavLink
                     to={item.path}
                     onClick={() => {
                       closeAllAccordions();
-                      setMobileOpen(false);
+                      closeMobileSidebar();
                     }}
                     className={({ isActive }) =>
-                      `flex items-center gap-3 px-4 py-2.5 rounded text-sm transition-all duration-300 ${isActive
-                        ? "bg-white text-green-700 font-semibold"
-                        : "text-white hover:bg-white hover:text-green-700"
+                      `flex items-center gap-3 px-4 py-2.5 rounded text-sm transition-all duration-300 ${
+                        isActive
+                          ? "bg-white text-green-700 font-semibold"
+                          : "text-white hover:bg-white hover:text-green-700"
                       }`
                     }
                   >
@@ -250,7 +271,9 @@ const Sidebar = ({ collapsed, mobileOpen, setMobileOpen, setCollapsed,
                     </span>
 
                     {showText && (
-                      <span className="flex items-center">{item.name}</span>
+                      <span className="flex items-center">
+                        {item.name}
+                      </span>
                     )}
                   </NavLink>
                 )}

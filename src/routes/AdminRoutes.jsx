@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 
-import Dashboard from "../Pages/Dashboard/Dashboard";
+import Dashboard from "../Pages/dashboard/Dashboard";
 import CustomerManege from "../Pages/user management/CustomerManege";
 import ChefManagement from "../Pages/user management/ChefManage";
 import ApproveChef from "../Pages/approve/ApproveChef";
@@ -14,12 +14,12 @@ import Refunds from '../Pages/revenue management/Refunds'
 import FoodDonation from '../Pages/FoodDonation'
 import Services from '../Pages/Services'
 import AdminSettings from '../Pages/AdminSettings'
- 
+
 // permission route
 import PermissionRoute from '../protected routes/PermissionRoute'
 import Error from "../components/Error";
 import AdminRoute from "../protected routes/AdminRoute";
-import AdminLayout from '../layout/adminLayout'
+import AdminLayout from '../layout/AdminLayout'
 
 
 const adminPages = [
@@ -85,25 +85,25 @@ const adminPages = [
   },
   {
     path: "refunds",
-    element: <Refunds/>,
+    element: <Refunds />,
     permission: "refunds",
     title: "refunds",
   },
-   {
+  {
     path: "food-donation",
-    element: <FoodDonation/>,
+    element: <FoodDonation />,
     permission: "food-donation",
     title: "food donation management",
   },
-   {
+  {
     path: "services",
-    element: <Services/>,
+    element: <Services />,
     permission: "services",
     title: "services",
   },
-   {
+  {
     path: "settings",
-    element: <AdminSettings/>,
+    element: <AdminSettings />,
     permission: "admin-settings",
     title: "admin settings",
   },

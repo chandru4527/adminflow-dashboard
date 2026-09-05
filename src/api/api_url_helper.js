@@ -1,4 +1,5 @@
 export const API_ENDPOINTS = {
+  
   adminLogin: "v1/auth/admin-login",
 
   users: "v1/admin/allUsers",

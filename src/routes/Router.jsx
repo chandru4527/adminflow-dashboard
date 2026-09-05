@@ -4,9 +4,6 @@ import { createBrowserRouter, Navigate } from 'react-router-dom'
 import PublicRoute from '../protected routes/PublicRoute'
 import AdminRoute from '../protected routes/AdminRoute'
 
-// layout
-import AdminLayout from '../layout/adminLayout'
-
 // import pages
 import AdminLogin from '../pages/authpage/AdminLogin'
 import Dashboard from '../Pages/dashboard/Dashboard'

@@ -46,7 +46,7 @@ export const get = async (url, config = {}) => {
 // post function
 export const post = async (url, payload, config = {}) => {
     const { data } = await axiosApi.post(url, payload, { ...config });
-    return data
+    return data;
 }
 
 // put function

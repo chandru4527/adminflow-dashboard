@@ -28,7 +28,8 @@
     "reactstrap": "^9.2.3",
     "recharts": "^3.10.1",
     "tailwindcss": "^4.3.3",
-    "yup": "^1.7.1"
+    "yup": "^1.7.1",
+    "zustand": "^5.0.15"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
