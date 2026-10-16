@@ -4,35 +4,7 @@ const apiUrl = import.meta.env.VITE_API_URL
 
 const axiosApi = axios.create({
     baseURL: apiUrl,
-    // withCredentials: true
-
 });
-
-
-// Add token automatically
-axiosApi.interceptors.request.use((config) => {
-  const token = sessionStorage.getItem("accessToken");
-//   console.log(token);
-if (token) {
-  config.headers.Authorization = `Bearer ${token}`;
-}
-
-  return config;
-});
-
-// axiosApi.interceptors.response.use(
-    // successfull response
-    // (response) => {
-    //     return response
-    // },
-
-    // error response
-    // async (error) => {
-    //     const originalRequest = error.config;
-
-    // }
-// )
-
 
 
 // ----- api reusable functions ------
@@ -62,7 +34,7 @@ export const patch = async (url, payload, config = {}) => {
 }
 
 // delete function
-export const deletes = async (url, config = {}) => {
+export const del = async (url, config = {}) => {
     const { data } = await axiosApi.delete(url, { ...config });
 }
 
