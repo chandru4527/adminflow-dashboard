@@ -1,5 +1,6 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
+import theme from "../theme/theme";
 
 /**
  * Reusable Button component.
@@ -58,7 +59,7 @@ const Button = ({
     ghost: "text-blue-600 hover:bg-blue-50",
 
     // Green theme variants
-    theme: "bg-green-600 text-white hover:bg-green-700",
+    theme: `${theme.bg_primary} text-white ${theme.bg_primary_hover}`,
     themeOutline: "border border-green-600 text-green-600 hover:bg-green-600 hover:text-white",
     themeGhost: "text-green-600 hover:bg-green-50",
     themeLight: "bg-green-100 text-green-800 hover:bg-green-200",

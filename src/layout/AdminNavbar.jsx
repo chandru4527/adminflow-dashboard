@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useMatches, useNavigate } from "react-router-dom";
+import { useMatches } from "react-router-dom";
 
 // icons
 import { MdFullscreen, MdFullscreenExit, MdMenu, MdNotifications, } from "react-icons/md";
@@ -7,6 +7,9 @@ import { MdFullscreen, MdFullscreenExit, MdMenu, MdNotifications, } from "react-
 // components
 import Avatar from '../components/Avatar';
 import Button from '../components/Button';
+
+// theme
+import theme from '../theme/theme';
 
 // utils
 import { getAuth } from '../utils/auth';
@@ -20,7 +23,7 @@ const AdminNavbar = () => {
 
   const user = getAuth()
 
-  const { isCollapsed, toggleCollapse, toggleMobileSidebar } = useSidebarStore();
+  const { toggleCollapse, toggleMobileSidebar } = useSidebarStore();
 
   const title = matches[matches.length - 1]?.handle?.title || "Dashboard";
 
@@ -64,6 +67,7 @@ const AdminNavbar = () => {
     <header className="sticky top-0 z-50 flex h-17 items-center justify-between border-b border-gray-200 bg-white px-2">
       {/* Left */}
       <div className="flex items-center gap-4">
+
         <Button
           onClick={handleMenuClick}
           variant="normal"
@@ -80,8 +84,9 @@ const AdminNavbar = () => {
       <div className="flex items-center gap-3">
         <Button
           variant="normal"
-          className="rounded p-2! text-green-700 hover:bg-gray-100 cursor-pointer"
+          className={`rounded p-2! ${theme.text_primary} cursor-pointer`}
           icon={MdNotifications}
+          iconSize={22}
         />
 
         <Avatar size="xs" src={user?.profilePicture} ring alt={user?.name} to="profile" />

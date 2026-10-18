@@ -1,13 +1,12 @@
 const theme = {
+    bg_primary: "bg-[#AC1E44]",
+    bg_primary_light: "bg-[#F9E8EE]",
+    bg_primary_hover: "hover:bg-[#8F1838]",
 
-    bg_primary: "bg-sky-600",
-    bg_primary_light:"bg-sky-300",
-    bg_primary_hover:"hover:bg-sky-700",
-
-    text_primary: "text-sky-700",
+    text_primary: "text-[#AC1E44]",
+    text_primary_hover: "hover:text-[#8F1838]",
 
     surface: "bg-white",
-
 
     text: "text-slate-900",
     textSecondary: "text-slate-500",

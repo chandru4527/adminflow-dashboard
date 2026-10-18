@@ -7,6 +7,7 @@ import Input from "../forms/Input";
 import Button from "../Button";
 import Select from "../forms/Select";
 import EmptyState from '../EmptyState';
+import theme from "../../theme/theme";
 
 const getNestedValue = (obj, path) => {
     if (!path) return obj;
@@ -126,14 +127,14 @@ const Table = ({
         <div className={`w-full ${className}`}>
             <div className={`w-full overflow-x-auto bg-white ${bordered ? "rounded-md border border-gray-200" : ""} ${wrapperClassName}`}>
                 <table className={`w-full table-auto border-collapse ${tableClassName}`}>
-                    <thead className="bg-green-600">
+                    <thead className={`${theme.bg_primary}`}>
                         <tr>
-                            <th className="border-b border-green-600 px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-white">{serialNumberHeader}</th>
+                            <th className="border-b px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-white">{serialNumberHeader}</th>
 
                             {columns.map((column, index) => (
                                 <th
                                     key={column.key || index}
-                                    className={`border-b border-green-600 px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-white ${column.headerClassName || ""}`}
+                                    className={`border-b px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-white ${column.headerClassName || ""}`}
                                     style={{ width: column.width, minWidth: column.minWidth, maxWidth: column.maxWidth }}
                                 >
                                     {column.header || column.label || column.key}
@@ -204,7 +205,7 @@ const Table = ({
                     <div className="flex items-center gap-2">
                         <Button
                             type="button"
-                            variant="success"
+                            variant="theme"
                             icon={MdKeyboardDoubleArrowLeft}
                             iconSize={19}
                             onClick={() => handlePageChange(1)}
@@ -214,7 +215,7 @@ const Table = ({
 
                         <Button
                             type="button"
-                            variant="success"
+                            variant="theme"
                             icon={MdKeyboardArrowLeft}
                             iconSize={19}
                             onClick={() => handlePageChange(currentPage - 1)}
@@ -241,7 +242,7 @@ const Table = ({
 
                         <Button
                             type="button"
-                            variant="success"
+                            variant="theme"
                             icon={MdKeyboardArrowRight}
                             iconSize={19}
                             onClick={() => handlePageChange(currentPage + 1)}
@@ -251,7 +252,7 @@ const Table = ({
 
                         <Button
                             type="button"
-                            variant="success"
+                            variant="theme"
                             icon={MdKeyboardDoubleArrowRight}
                             iconSize={19}
                             onClick={() => handlePageChange(totalPages)}

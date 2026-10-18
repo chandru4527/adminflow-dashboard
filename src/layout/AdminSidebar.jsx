@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
 // icons
-import { MdDashboard, MdClose, MdExpandMore, MdGroup, MdPerson } from "react-icons/md";
+import { MdDashboard, MdClose, MdExpandMore, MdGroup, MdPerson, MdSell, MdShoppingCart, } from "react-icons/md";
 
 // components
 import Image from '../components/media/Image';
@@ -14,32 +14,7 @@ import theme from '../theme/theme';
 // store
 import useSidebarStore from "../store/useSidebarStore";
 
-const menuItems = [
-  {
-    label: "Dashboard",
-    icon: MdDashboard,
-    path: "/admin/dashboard",
-  },
-  {
-    label: "User Management",
-    icon: MdGroup,
-    children: [
-      {
-        path: "/admin/users",
-        label: "Users",
-      },
-      {
-        path: "/admin/subadmin",
-        label: "Sub Admins",
-      },
-    ],
-  },
-  {
-    label: "Profile",
-    icon: MdPerson,
-    path: "/admin/profile"
-  }
-];
+import menuItems from './sidebarItems';
 
 const AdminSidebar = () => {
 
@@ -129,8 +104,8 @@ const AdminSidebar = () => {
             onClick={closeMobileSidebar}
             icon={MdClose}
             iconSize={25}
-            className="cursor-pointer p-2! text-white lg:hidden bg-green-700 hover:bg-green-700 
-            hover:rotate-180 transition-all"
+            className={`cursor-pointer p-2! text-white lg:hidden  ${theme.bg_primary} ${theme.bg_primary_hover}
+            hover:rotate-180 transition-all`}
           />
         </div>
 
@@ -158,8 +133,8 @@ const AdminSidebar = () => {
                         type="button"
                         onClick={() => handleAccordion(item.label)}
                         className={`flex w-full cursor-pointer items-center justify-between rounded px-4 py-2.5 text-sm transition-all duration-300 ${isParentActive
-                          ? "bg-white font-semibold text-green-700"
-                          : "text-white hover:bg-white hover:text-green-700"
+                          ? `bg-white font-semibold ${theme.text_primary}`
+                          : `text-white hover:bg-white ${theme.text_primary_hover}`
                           }`}
                       >
                         <div className="flex items-center gap-3">
@@ -200,8 +175,8 @@ const AdminSidebar = () => {
                               }}
                               className={({ isActive }) =>
                                 `flex items-center rounded px-4 py-2.5 text-sm transition-all duration-300 ${isActive
-                                  ? "bg-white font-semibold text-green-700"
-                                  : "text-white hover:bg-white hover:text-green-700"
+                                  ? `bg-white font-semibold ${theme.text_primary}`
+                                  : `text-white hover:bg-white  ${theme.text_primary_hover}`
                                 }`
                               }
                             >
@@ -222,8 +197,8 @@ const AdminSidebar = () => {
                       }}
                       className={({ isActive }) =>
                         `flex items-center gap-3 rounded px-4 py-2.5 text-sm transition-all duration-300 ${isActive
-                          ? "bg-white font-semibold text-green-700"
-                          : "text-white hover:bg-white hover:text-green-700"
+                          ? `bg-white font-semibold ${theme.text_primary}`
+                          : `text-white hover:bg-white  ${theme.text_primary_hover}`
                         }`
                       }
                     >

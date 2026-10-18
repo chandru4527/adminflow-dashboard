@@ -45,7 +45,7 @@ const TableToolbar = ({
             {onReset && (
                 <Button
                     type="button"
-                    variant="themeOutline"
+                    variant="theme"
                     icon={MdRefresh}
                     iconSize={20}
                     onClick={onReset}
