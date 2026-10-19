@@ -1,4 +1,4 @@
-import { MdDashboard, MdGroup, MdSell, MdShoppingCart, MdPerson, MdAnalytics, MdSettings, MdInfoOutline, } from "react-icons/md";
+import { MdDashboard, MdGroup, MdSell, MdShoppingCart, MdPerson, MdAnalytics, MdSettings, MdInfoOutline, MdNotifications, } from "react-icons/md";
 
 const menuItems = [
     {
@@ -48,6 +48,11 @@ const menuItems = [
         label: "Profile",
         icon: MdPerson,
         path: "/admin/profile",
+    },
+    {
+        label: "Notifications",
+        icon: MdNotifications,
+        path: "/admin/notifications",
     },
     {
         label: "Settings",

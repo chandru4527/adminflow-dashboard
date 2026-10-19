@@ -2,6 +2,7 @@ import { useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { MdVisibility, MdVisibilityOff, MdSearch } from "react-icons/md";
 import Button from "../Button";
+import theme from "../../theme/theme";
 
 const Input = ({
     type = "text",
@@ -62,12 +63,12 @@ const Input = ({
                     disabled={disabled}
                     placeholder={placeholder}
                     className={twMerge(
-                        "w-full rounded-lg border px-3 py-2.5 text-sm outline-none transition",
+                        "w-full rounded-lg border px-3 py-2.5 text-sm outline-none transition disabled:border-none",
                         hasLeftIcon && "pl-10",
                         (hasRightIcon || isPassword) && "pr-10",
                         error
                             ? "border-red-500 focus:border-red-500"
-                            : "border-gray-300 focus:border-green-500",
+                            : "border-gray-300 focus:border-[#ac1e44]",
                         disabled
                             ? "cursor-not-allowed bg-gray-100 text-gray-500"
                             : "bg-white",
@@ -93,7 +94,7 @@ const Input = ({
                         aria-label={showPassword ? "Hide password" : "Show password"}
                         disabled={disabled}
                         onClick={() => setShowPassword((prev) => !prev)}
-                        className="absolute right-1 top-1/2 h-9! w-9! -translate-y-1/2 p-0! text-green-700"
+                        className={`absolute right-1 top-1/2 h-9! w-9! -translate-y-1/2 p-0!  ${theme.text_primary}`}
                     >
                         {showPassword ? (
                             <MdVisibilityOff size={20} />

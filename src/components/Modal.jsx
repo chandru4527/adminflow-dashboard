@@ -9,6 +9,9 @@ import Button from "./Button";
 // store
 import useModalStore from "../store/modalStore.js";
 
+// theme
+import theme from "../theme/theme.js";
+
 const sizes = {
     xs: "max-w-xs",
     sm: "max-w-sm",
@@ -91,7 +94,7 @@ const Modal = () => {
                 <div className="flex shrink-0 items-center justify-between px-5 py-3">
                     <div className="flex min-w-0 items-center gap-1">
                         {Icon && (
-                            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-green-600">
+                            <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${theme.text_primary}`}>
                                 <Icon size={20} />
                             </div>
                         )}
