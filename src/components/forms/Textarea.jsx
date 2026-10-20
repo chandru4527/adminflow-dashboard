@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
+import theme from "../../theme/theme";
 
 const Textarea = ({
     label,
@@ -7,7 +8,7 @@ const Textarea = ({
 
     icon: Icon,
     iconPosition = "left",
-    iconClassName = "text-gray-400",
+    iconClassName = theme.text_primary,
 
     error,
     errorClassName = "",
@@ -86,11 +87,11 @@ const Textarea = ({
                     required={required}
                     onChange={handleChange}
                     className={twMerge(
-                        "w-full resize-y rounded-lg border-2 bg-white px-4 py-3 text-sm outline-none transition-all duration-200 placeholder:text-gray-400",
+                        "w-full resize-y rounded-lg border bg-white px-4 py-3 text-sm outline-none transition-all duration-200 placeholder:text-gray-400",
                         "disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-500",
                         error
                             ? "border-red-500 focus:border-red-500"
-                            : "border-gray-300 focus:border-blue-500",
+                            : "border-gray-300 focus:border-[#ac1e44]",
                         hasLeftIcon && "pl-11",
                         hasRightIcon && "pr-11",
                         textareaClassName

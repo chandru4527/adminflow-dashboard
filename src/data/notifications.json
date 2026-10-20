@@ -1,0 +1,65 @@
+[
+    {
+        "id": 1,
+        "title": "Welcome to AdminFlow",
+        "message": "Welcome to our platform! We are happy to have you.",
+        "recipients": "All Users",
+        "channel": "In-App",
+        "sentAt": "19 Oct 2026",
+        "isSent": true
+    },
+    {
+        "id": 2,
+        "title": "New Vendor Registration",
+        "message": "A new vendor has successfully registered on the platform.",
+        "recipients": "All Vendors",
+        "channel": "Email",
+        "sentAt": "18 Oct 2026",
+        "isSent": true
+    },
+    {
+        "id": 3,
+        "title": "Scheduled Maintenance",
+        "message": "The platform will undergo scheduled maintenance. Please save your work.",
+        "recipients": "All Users",
+        "channel": "Both",
+        "sentAt": "20 Oct 2026",
+        "isSent": true
+    },
+    {
+        "id": 4,
+        "title": "Security Update",
+        "message": "We have updated our security policies to improve account protection.",
+        "recipients": "All Users",
+        "channel": "In-App",
+        "sentAt": "17 Oct 2026",
+        "isSent": true
+    },
+    {
+        "id": 5,
+        "title": "Vendor Policy Reminder",
+        "message": "Please review and follow the latest vendor policies.",
+        "recipients": "All Vendors",
+        "channel": "Email",
+        "sentAt": "16 Oct 2026",
+        "isSent": false
+    },
+    {
+        "id": 6,
+        "title": "New Feature Announcement",
+        "message": "Discover the latest features and improvements available on our platform.",
+        "recipients": "All Users",
+        "channel": "Both",
+        "sentAt": "15 Oct 2026",
+        "isSent": true
+    },
+    {
+        "id": 7,
+        "title": "Account Verification Reminder",
+        "message": "Please complete your account verification to access all platform features.",
+        "recipients": "All Vendors",
+        "channel": "In-App",
+        "sentAt": "14 Oct 2026",
+        "isSent": false
+    }
+]

@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 const defaultAction = {
     label: "Close",
-    variant: "primary",
+    variant: "theme",
     onClick: null,
     loading: false,
     loadingText: "Loading...",

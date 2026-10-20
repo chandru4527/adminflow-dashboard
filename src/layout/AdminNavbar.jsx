@@ -89,7 +89,7 @@ const AdminNavbar = () => {
           iconSize={22}
         />
 
-        <Avatar size="xs" src={user?.profilePicture} ring alt={user?.name} to="profile" />
+        <Avatar size="xs" src={user?.profileImage} ring alt={user?.name} to="profile" />
 
         <Button
           onClick={toggleFullScreen}

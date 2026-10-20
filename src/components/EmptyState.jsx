@@ -1,6 +1,7 @@
 import React from "react";
 import { MdInbox } from "react-icons/md";
 import { twMerge } from "tailwind-merge";
+import theme from "../theme/theme";
 
 /**
  * Reusable Empty State Component
@@ -40,7 +41,7 @@ const EmptyState = ({
 }) => {
     const sizes = {
         sm: {
-            container: "px-4 py-6",
+            container: "px-4 py-3",
             icon: 40,
             iconWrapper: "mb-3",
             title: "text-base",
@@ -48,7 +49,7 @@ const EmptyState = ({
             action: "mt-4",
         },
         md: {
-            container: "px-6 py-10",
+            container: "px-6 py-6",
             icon: 56,
             iconWrapper: "mb-4",
             title: "text-lg",
@@ -56,7 +57,7 @@ const EmptyState = ({
             action: "mt-5",
         },
         lg: {
-            container: "px-8 py-14",
+            container: "px-8 py-10",
             icon: 72,
             iconWrapper: "mb-5",
             title: "text-xl",
@@ -80,7 +81,7 @@ const EmptyState = ({
         },
         minimal: {
             container: "border-0 bg-transparent",
-            icon: "text-gray-300",
+            icon: theme.text_primary,
             title: "text-gray-800",
             description: "text-gray-500",
         },
@@ -149,7 +150,7 @@ const EmptyState = ({
             )}
             {...props}
         >
-            <div className={twMerge("flex items-center justify-center", currentSize.iconWrapper)}>
+            <div className={twMerge("flex items-center justify-center ", currentSize.iconWrapper)}>
                 {renderIcon()}
             </div>
 

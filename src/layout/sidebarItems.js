@@ -1,4 +1,7 @@
-import { MdDashboard, MdGroup, MdSell, MdShoppingCart, MdPerson, MdAnalytics, MdSettings, MdInfoOutline, MdNotifications, } from "react-icons/md";
+import {
+    MdDashboard, MdGroup, MdSell, MdShoppingCart, MdPerson, MdAnalytics, MdSettings,
+    MdInfoOutline, MdNotifications, MdViewCarousel, MdCurrencyRupee,
+} from "react-icons/md";
 
 const menuItems = [
     {
@@ -40,14 +43,40 @@ const menuItems = [
         path: "/admin/orders",
     },
     {
+        label: "Revenue Management",
+        icon: MdCurrencyRupee,
+        children: [
+            {
+                path: "/admin/revenue",
+                label: "Overview",
+            },
+            {
+                path: "/admin/transactions",
+                label: "Transactions",
+            },
+            {
+                path: "/admin/refunds",
+                label: "Refunds",
+            },
+            // {
+            //     path: "/admin/payouts",
+            //     label: "Payouts",
+            // },
+            // {
+            //     path: "/admin/pricing-fees",
+            //     label: "Pricing & Fees",
+            // },
+        ],
+    },
+    {
         label: "Analytics",
         icon: MdAnalytics,
         path: "/admin/analytics",
     },
     {
-        label: "Profile",
-        icon: MdPerson,
-        path: "/admin/profile",
+        label: "Banners",
+        icon: MdViewCarousel,
+        path: "/admin/banners",
     },
     {
         label: "Notifications",
@@ -58,6 +87,11 @@ const menuItems = [
         label: "Settings",
         icon: MdSettings,
         path: "/admin/settings",
+    },
+    {
+        label: "Profile",
+        icon: MdPerson,
+        path: "/admin/profile",
     },
     {
         label: "About",

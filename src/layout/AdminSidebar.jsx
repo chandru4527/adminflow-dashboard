@@ -70,7 +70,7 @@ const AdminSidebar = () => {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 z-99 flex h-screen w-64 flex-col overflow-hidden ${theme.bg_primary}
+        className={`fixed top-0 left-0 z-99 flex h-screen w-64 flex-col overflow-hidden ${theme.gradient}
           transition-all duration-300 ease-in-out
           ${isMobileOpen ? "translate-x-0" : "-translate-x-full"}
           lg:sticky lg:top-0 lg:translate-x-0

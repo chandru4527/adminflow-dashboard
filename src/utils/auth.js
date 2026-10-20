@@ -4,7 +4,7 @@ export const setAuth = (user) => {
     const authData = {
         name: user.name ?? "",
         email: user.email ?? "",
-        profilePicture: user.profilePicture ?? "",
+        profileImage: user.profileImage ?? "",
         role: user.role ?? "user",
         isAuthenticated: user.isAuthenticated ?? true,
         isActive: user.isActive ?? true,

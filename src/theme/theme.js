@@ -18,6 +18,8 @@ const theme = {
     warning: "text-amber-600",
     danger: "text-red-600",
     info: "text-sky-600",
+
+    gradient: "bg-linear-to-b from-[#AC1E44] via-[#7F1735] via-60% to-[#3B0A1A]",
 };
 
 export default theme;
