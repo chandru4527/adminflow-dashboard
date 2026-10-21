@@ -2,7 +2,7 @@ import React from "react";
 import { MdVisibility, MdEdit, MdDelete, MdCheckCircle, MdCancel, } from "react-icons/md";
 import Button from "../Button";
 
-const ReusableTableActions = ({
+const TableActionsButtons = ({
     row,
     onView,
     onEdit,
@@ -92,4 +92,4 @@ const ReusableTableActions = ({
     );
 };
 
-export default ReusableTableActions;
+export default TableActionsButtons;

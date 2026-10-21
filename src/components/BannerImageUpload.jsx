@@ -8,10 +8,9 @@ import Image from "../components/media/Image";
 import Button from "../components/Button";
 import Loader from "../components/Loader";
 
-const CoverImageUpload = ({
+const BannerImageUpload = ({
     value,
     onChange,
-    height = 180,
     maxSizeMB = 5,
     helperText = `JPG, PNG or WEBP. Max size: ${maxSizeMB}MB.`,
     disabled = false,
@@ -40,6 +39,7 @@ const CoverImageUpload = ({
         }
 
         const imageUrl = URL.createObjectURL(file);
+
         setPreview((previous) => {
             if (previous?.startsWith("blob:")) {
                 URL.revokeObjectURL(previous);
@@ -53,17 +53,17 @@ const CoverImageUpload = ({
 
     return (
         <div className="w-full">
-            <div className="relative h-32 w-full overflow-hidden rounded-xl border border-gray-200 bg-gray-100 shadow-sm sm:h-40 md:h-48 lg:h-56">
+            <div className="relative h-40 w-full overflow-hidden rounded-md border border-gray-200 bg-gray-100 shadow-sm sm:h-48 md:h-56">
                 {preview ? (
                     <Image
                         src={preview}
-                        alt="Cover image"
+                        alt="Banner preview"
                         className="h-full w-full object-cover"
                     />
                 ) : (
                     <div className="flex h-full flex-col items-center justify-center gap-2 text-gray-400">
-                        <MdImage size={32} className="sm:h-9 sm:w-9 md:h-10 md:w-10" />
-                        <span className="text-xs sm:text-sm">No cover image selected</span>
+                        <MdImage size={36} />
+                        <span className="text-xs sm:text-sm">No banner image selected</span>
                     </div>
                 )}
 
@@ -79,8 +79,8 @@ const CoverImageUpload = ({
                     iconSize={16}
                     onClick={() => inputRef.current?.click()}
                     disabled={disabled || loading}
-                    className="absolute bottom-2 right-2 rounded-lg bg-white p-2 text-green-700 shadow-md hover:bg-gray-100 disabled:opacity-50 sm:bottom-3 sm:right-3"
-                    aria-label="Change cover image"
+                    className="absolute right-3 bottom-3 rounded-lg bg-white p-2 text-green-700 shadow-md hover:bg-gray-100 disabled:opacity-50"
+                    aria-label="Change banner image"
                 />
             </div>
 
@@ -106,4 +106,4 @@ const CoverImageUpload = ({
     );
 };
 
-export default CoverImageUpload;
+export default BannerImageUpload;

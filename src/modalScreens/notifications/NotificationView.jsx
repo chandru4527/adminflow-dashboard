@@ -58,7 +58,7 @@ const NotificationView = ({ data }) => {
                 </p>
             </div>
 
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
                 {details.map(({ label, value, icon: Icon, iconStyle }) => (
                     <div
                         key={label}

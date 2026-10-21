@@ -18,12 +18,17 @@ import Image from "../components/media/Image";
 // assets
 const MainLogo = "https://res.cloudinary.com/dyiuqcqg2/image/upload/v1792398894/adminflow1_ntfic8.png";
 
+// store
+import useAuthStore from '../store/authStore';
+
 // utils
-import { setAuth } from '../utils/auth';
+// import { setAuth } from '../utils/auth';
 import { toastify } from '../utils/toastify';
 
 const LoginPage = () => {
   const navigate = useNavigate();
+
+  const { setAuth } = useAuthStore();
   const [isLoading, setIsLoading] = useState(false);
 
   const { register, handleSubmit, formState: { errors }, } = useForm({
@@ -107,7 +112,7 @@ const LoginPage = () => {
           <div className="w-full max-w-md">
             {/* Mobile Header */}
             <div className="relative mb-6 overflow-hidden rounded-md bg-linear-to-br from-[#AC1E44] via-[#7F1735] to-[#3B0A1A] p-5 text-white shadow-lg md:hidden">
-              
+
               <div className="pointer-events-none absolute inset-0 overflow-hidden">
                 <div className="absolute -right-8 -top-10 h-32 w-32 rounded-full bg-white/10 blur-sm" />
                 <div className="absolute -bottom-12 -left-8 h-36 w-36 rounded-full bg-white/10" />

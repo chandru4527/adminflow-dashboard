@@ -13,12 +13,16 @@ import Login from "../pages/Login";
 // pages
 import Dashboard from "../pages/Dashboard";
 import Users from "../pages/Users";
+import Revenue from "../pages/Revenue";
+import Banners from "../pages/Banners";
+import Notifications from "../pages/Notifications";
+import Settings from "../pages/Settings";
 import Profile from "../pages/Profile";
+import About from "../pages/About";
 
 // not found
 import NotFound from "../pages/notFound/NotFound";
-import Settings from "../pages/Settings";
-import About from "../pages/About";
+import Analytics from "../pages/Analytics";
 
 const Routers = createBrowserRouter([
     {
@@ -60,6 +64,34 @@ const Routers = createBrowserRouter([
                         element: <Users />,
                         handle: {
                             title: "Users Management",
+                        },
+                    },
+                    {
+                        path: "revenue",
+                        element: <Revenue />,
+                        handle: {
+                            title: "Users Management",
+                        },
+                    },
+                    {
+                        path: "analytics",
+                        element: <Analytics />,
+                        handle: {
+                            title: "Analytics"
+                        },
+                    },
+                    {
+                        path: "banners",
+                        element: <Banners />,
+                        handle: {
+                            title: "Banner Management",
+                        },
+                    },
+                    {
+                        path: "notifications",
+                        element: <Notifications />,
+                        handle: {
+                            title: "Notifications Management",
                         },
                     },
                     {

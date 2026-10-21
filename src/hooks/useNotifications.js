@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import notifications from "../data/notifications.json";
 
-export const getNotifications = async () => {
+const getNotifications = async () => {
     await new Promise((resolve) => setTimeout(resolve, 800));
     return notifications;
 };

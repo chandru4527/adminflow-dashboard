@@ -1,11 +1,11 @@
 import { Navigate, Outlet } from "react-router-dom";
 
-// utils
-import { getAuth } from '../utils/auth';
+// store
+import useAuthStore from '../store/authStore';
 
 const PublicRoute = () => {
 
-    const user = getAuth();
+    const { user } = useAuthStore();
 
     // Not logged in
     if (!user) {

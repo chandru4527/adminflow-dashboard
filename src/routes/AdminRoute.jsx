@@ -1,12 +1,12 @@
 import { Navigate, Outlet } from "react-router-dom";
 
-// utils
-import { getAuth } from '../utils/auth';
+// store
+import useAuthStore from '../store/authStore';
 
 const AdminRoute = () => {
-    
 
-    const user = getAuth();
+
+    const { user } = useAuthStore();
 
     if (!user) {
         return <Navigate to="/login" replace />;

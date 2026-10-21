@@ -20,7 +20,7 @@ const AdminSidebar = () => {
 
   const location = useLocation();
 
-  const mainLogo = 'https://res.cloudinary.com/dyiuqcqg2/image/upload/v1792159234/adminflow1_gkjr61.png'
+  const mainLogo = 'https://res.cloudinary.com/dyiuqcqg2/image/upload/v1792398894/adminflow1_ntfic8.png'
   const miniLogo = 'https://res.cloudinary.com/dyiuqcqg2/image/upload/v1792157864/adminflow_mini_kngjua.png'
 
   const { isCollapsed, isMobileOpen, toggleCollapse, closeMobileSidebar, } = useSidebarStore();
@@ -41,6 +41,14 @@ const AdminSidebar = () => {
       setOpenMenu(activeParent.label);
     }
   }, [location.pathname, isCollapsed, isMobileOpen]);
+
+  useEffect(() => {
+    document.body.style.overflow = isMobileOpen ? "hidden" : "";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileOpen]);
 
   const showText = !isCollapsed || isMobileOpen;
 

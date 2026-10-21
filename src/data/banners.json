@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "title": "Summer Sale 2026",
+        "description": "Enjoy exclusive discounts on selected products during our summer sale.",
+        "bannerUrl": "https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&w=1200&q=80",
+        "isActive": true,
+        "startDate": "15 Oct 2026",
+        "endDate": "15 Nov 2026"
+    },
+    {
+        "id": 2,
+        "title": "New Arrivals",
+        "description": "Discover our latest collection of trending products.",
+        "bannerUrl": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80",
+        "isActive": true,
+        "startDate": "18 Oct 2026",
+        "endDate": "31 Dec 2026"
+    },
+    {
+        "id": 3,
+        "title": "Festival Special",
+        "description": "Celebrate the festive season with special offers and exciting deals.",
+        "bannerUrl": "https://images.unsplash.com/photo-1512909006721-3d6018887383?auto=format&fit=crop&w=1200&q=80",
+        "isActive": true,
+        "startDate": "20 Oct 2026",
+        "endDate": "10 Nov 2026"
+    },
+    {
+        "id": 4,
+        "title": "Free Shipping Offer",
+        "description": "Shop your favorite products and enjoy free shipping on eligible orders.",
+        "bannerUrl": "https://images.unsplash.com/photo-1607083206968-13611e3d76db?auto=format&fit=crop&w=1200&q=80",
+        "isActive": false,
+        "startDate": "01 Oct 2026",
+        "endDate": "15 Oct 2026"
+    },
+    {
+        "id": 5,
+        "title": "Exclusive Deals",
+        "description": "Explore exclusive deals and limited-time offers available on our platform.",
+        "bannerUrl": "https://images.unsplash.com/photo-1607082350899-7e105aa886ae?auto=format&fit=crop&w=1200&q=80",
+        "isActive": true,
+        "startDate": "22 Oct 2026",
+        "endDate": "30 Nov 2026"
+    },
+    {
+        "id": 6,
+        "title": "Clearance Sale",
+        "description": "Find amazing prices on selected products while stocks last.",
+        "bannerUrl": "https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=1200&q=80",
+        "isActive": false,
+        "startDate": "01 Sep 2026",
+        "endDate": "30 Sep 2026"
+    }
+]

@@ -11,17 +11,17 @@ import Button from '../components/Button';
 // theme
 import theme from '../theme/theme';
 
-// utils
-import { getAuth } from '../utils/auth';
+
 
 // store
+import useAuthStore from '../store/authStore';
 import useSidebarStore from "../store/useSidebarStore";
 
 const AdminNavbar = () => {
 
   const matches = useMatches();
 
-  const user = getAuth()
+  const { user } = useAuthStore();
 
   const { toggleCollapse, toggleMobileSidebar } = useSidebarStore();
 

@@ -58,14 +58,6 @@ const menuItems = [
                 path: "/admin/refunds",
                 label: "Refunds",
             },
-            // {
-            //     path: "/admin/payouts",
-            //     label: "Payouts",
-            // },
-            // {
-            //     path: "/admin/pricing-fees",
-            //     label: "Pricing & Fees",
-            // },
         ],
     },
     {
