@@ -13,7 +13,7 @@ export const useNotifications = () => {
     return useQuery({
         queryKey: NOTIFICATIONS_KEY,
         queryFn: getNotifications,
-        staleTime: 5 * 60 * 1000,
-        retry: false,
+        // staleTime: 5 * 60 * 1000,
+        // retry: false,
     });
 };

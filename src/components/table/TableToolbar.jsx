@@ -17,7 +17,7 @@ const TableToolbar = ({
     onExport,
 }) => {
     return (
-        <div className={`grid grid-cols-2 items-end gap-3 rounded-md shadow-sm bg-white p-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 ${className}`}>
+        <div className={`grid grid-cols-2 items-end gap-3 rounded-md shadow-sm bg-white p-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 ${className}`}>
             {searchFields.map((field) => (
                 <Input
                     key={field.key}

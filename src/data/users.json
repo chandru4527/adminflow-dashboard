@@ -1,0 +1,322 @@
+[
+    {
+        "id": 1,
+        "name": "Arun Kumar",
+        "email": "arun.kumar@example.com",
+        "username": "arunkumar",
+        "gender": "male",
+        "mobile": "+91 9876543210",
+        "profilePicture": "https://i.pravatar.cc/150?img=12",
+        "isActive": true,
+        "isVerified": true,
+        "address": {
+            "city": "Chennai",
+            "state": "Tamil Nadu",
+            "country": "India",
+            "pincode": "600001"
+        },
+        "dob": "1998-04-15",
+        "createdAt": "2025-01-12T09:30:00Z",
+        "role": "user"
+    },
+    {
+        "id": 2,
+        "name": "Priya Sharma",
+        "email": "priya.sharma@example.com",
+        "username": "priyasharma",
+        "gender": "female",
+        "mobile": "+91 9876543211",
+        "profilePicture": "https://i.pravatar.cc/150?img=47",
+        "isActive": true,
+        "isVerified": true,
+        "address": {
+            "city": "Coimbatore",
+            "state": "Tamil Nadu",
+            "country": "India",
+            "pincode": "641001"
+        },
+        "dob": "1999-08-22",
+        "createdAt": "2025-02-18T11:15:00Z",
+        "role": "user"
+    },
+    {
+        "id": 3,
+        "name": "Rahul Verma",
+        "email": "rahul.verma@example.com",
+        "username": "rahulverma",
+        "gender": "male",
+        "mobile": "+91 9876543212",
+        "profilePicture": "https://i.pravatar.cc/150?img=13",
+        "isActive": true,
+        "isVerified": false,
+        "address": {
+            "city": "Bengaluru",
+            "state": "Karnataka",
+            "country": "India",
+            "pincode": "560001"
+        },
+        "dob": "1997-11-10",
+        "createdAt": "2025-03-05T08:45:00Z",
+        "role": "user"
+    },
+    {
+        "id": 4,
+        "name": "Sneha Patel",
+        "email": "sneha.patel@example.com",
+        "username": "snehapatel",
+        "gender": "female",
+        "mobile": "+91 9876543213",
+        "profilePicture": "https://i.pravatar.cc/150?img=44",
+        "isActive": false,
+        "isVerified": true,
+        "address": {
+            "city": "Mumbai",
+            "state": "Maharashtra",
+            "country": "India",
+            "pincode": "400001"
+        },
+        "dob": "2000-02-17",
+        "createdAt": "2025-03-21T14:20:00Z",
+        "role": "user"
+    },
+    {
+        "id": 5,
+        "name": "Vikram Singh",
+        "email": "vikram.singh@example.com",
+        "username": "vikramsingh",
+        "gender": "male",
+        "mobile": "+91 9876543214",
+        "profilePicture": "https://i.pravatar.cc/150?img=14",
+        "isActive": true,
+        "isVerified": true,
+        "address": {
+            "city": "Delhi",
+            "state": "Delhi",
+            "country": "India",
+            "pincode": "110001"
+        },
+        "dob": "1996-06-08",
+        "createdAt": "2025-04-02T10:10:00Z",
+        "role": "user"
+    },
+    {
+        "id": 6,
+        "name": "Ananya Reddy",
+        "email": "ananya.reddy@example.com",
+        "username": "ananyareddy",
+        "gender": "female",
+        "mobile": "+91 9876543215",
+        "profilePicture": "https://i.pravatar.cc/150?img=45",
+        "isActive": true,
+        "isVerified": false,
+        "address": {
+            "city": "Hyderabad",
+            "state": "Telangana",
+            "country": "India",
+            "pincode": "500001"
+        },
+        "dob": "2001-09-12",
+        "createdAt": "2025-04-19T12:00:00Z",
+        "role": "user"
+    },
+    {
+        "id": 7,
+        "name": "Karthik Raj",
+        "email": "karthik.raj@example.com",
+        "username": "karthikraj",
+        "gender": "male",
+        "mobile": "+91 9876543216",
+        "profilePicture": "https://i.pravatar.cc/150?img=15",
+        "isActive": true,
+        "isVerified": true,
+        "address": {
+            "city": "Madurai",
+            "state": "Tamil Nadu",
+            "country": "India",
+            "pincode": "625001"
+        },
+        "dob": "1998-12-03",
+        "createdAt": "2025-05-10T09:00:00Z",
+        "role": "user"
+    },
+    {
+        "id": 8,
+        "name": "Divya Menon",
+        "email": "divya.menon@example.com",
+        "username": "divyamenon",
+        "gender": "female",
+        "mobile": "+91 9876543217",
+        "profilePicture": "https://i.pravatar.cc/150?img=48",
+        "isActive": false,
+        "isVerified": false,
+        "address": {
+            "city": "Kochi",
+            "state": "Kerala",
+            "country": "India",
+            "pincode": "682001"
+        },
+        "dob": "1999-03-25",
+        "createdAt": "2025-05-28T15:30:00Z",
+        "role": "user"
+    },
+    {
+        "id": 9,
+        "name": "Rohan Mehta",
+        "email": "rohan.mehta@example.com",
+        "username": "rohanmehta",
+        "gender": "male",
+        "mobile": "+91 9876543218",
+        "profilePicture": "https://i.pravatar.cc/150?img=16",
+        "isActive": true,
+        "isVerified": true,
+        "address": {
+            "city": "Pune",
+            "state": "Maharashtra",
+            "country": "India",
+            "pincode": "411001"
+        },
+        "dob": "1997-07-19",
+        "createdAt": "2025-06-14T07:45:00Z",
+        "role": "user"
+    },
+    {
+        "id": 10,
+        "name": "Meera Krishnan",
+        "email": "meera.krishnan@example.com",
+        "username": "meerakrishnan",
+        "gender": "female",
+        "mobile": "+91 9876543219",
+        "profilePicture": "https://i.pravatar.cc/150?img=49",
+        "isActive": true,
+        "isVerified": false,
+        "address": {
+            "city": "Tiruppur",
+            "state": "Tamil Nadu",
+            "country": "India",
+            "pincode": "641601"
+        },
+        "dob": "2000-10-05",
+        "createdAt": "2025-07-01T13:25:00Z",
+        "role": "user"
+    },
+    {
+        "id": 11,
+        "name": "Sanjay Kumar",
+        "email": "sanjay.kumar@example.com",
+        "username": "sanjaykumar",
+        "gender": "male",
+        "mobile": "+91 9876543220",
+        "profilePicture": "https://i.pravatar.cc/150?img=17",
+        "isActive": true,
+        "isVerified": true,
+        "address": {
+            "city": "Salem",
+            "state": "Tamil Nadu",
+            "country": "India",
+            "pincode": "636001"
+        },
+        "dob": "1995-01-29",
+        "createdAt": "2025-07-16T10:50:00Z",
+        "role": "user"
+    },
+    {
+        "id": 12,
+        "name": "Pooja Nair",
+        "email": "pooja.nair@example.com",
+        "username": "poojanair",
+        "gender": "female",
+        "mobile": "+91 9876543221",
+        "profilePicture": "https://i.pravatar.cc/150?img=50",
+        "isActive": false,
+        "isVerified": true,
+        "address": {
+            "city": "Thiruvananthapuram",
+            "state": "Kerala",
+            "country": "India",
+            "pincode": "695001"
+        },
+        "dob": "1998-05-14",
+        "createdAt": "2025-08-03T08:20:00Z",
+        "role": "user"
+    },
+    {
+        "id": 13,
+        "name": "Aditya Joshi",
+        "email": "aditya.joshi@example.com",
+        "username": "adityajoshi",
+        "gender": "male",
+        "mobile": "+91 9876543222",
+        "profilePicture": "https://i.pravatar.cc/150?img=18",
+        "isActive": true,
+        "isVerified": true,
+        "address": {
+            "city": "Jaipur",
+            "state": "Rajasthan",
+            "country": "India",
+            "pincode": "302001"
+        },
+        "dob": "1996-09-30",
+        "createdAt": "2025-08-22T16:10:00Z",
+        "role": "user"
+    },
+    {
+        "id": 14,
+        "name": "Lakshmi Devi",
+        "email": "lakshmi.devi@example.com",
+        "username": "lakshmidevi",
+        "gender": "female",
+        "mobile": "+91 9876543223",
+        "profilePicture": "https://i.pravatar.cc/150?img=51",
+        "isActive": true,
+        "isVerified": false,
+        "address": {
+            "city": "Erode",
+            "state": "Tamil Nadu",
+            "country": "India",
+            "pincode": "638001"
+        },
+        "dob": "2002-04-11",
+        "createdAt": "2025-09-09T11:40:00Z",
+        "role": "user"
+    },
+    {
+        "id": 15,
+        "name": "Naveen Kumar",
+        "email": "naveen.kumar@example.com",
+        "username": "naveenkumar",
+        "gender": "male",
+        "mobile": "+91 9876543224",
+        "profilePicture": "https://i.pravatar.cc/150?img=19",
+        "isActive": false,
+        "isVerified": false,
+        "address": {
+            "city": "Trichy",
+            "state": "Tamil Nadu",
+            "country": "India",
+            "pincode": "620001"
+        },
+        "dob": "1999-12-20",
+        "createdAt": "2025-10-05T09:15:00Z",
+        "role": "user"
+    },
+    {
+        "id": 16,
+        "name": "Ishita Gupta",
+        "email": "ishita.gupta@example.com",
+        "username": "ishitagupta",
+        "gender": "female",
+        "mobile": "+91 9876543225",
+        "profilePicture": "https://i.pravatar.cc/150?img=52",
+        "isActive": true,
+        "isVerified": true,
+        "address": {
+            "city": "Kolkata",
+            "state": "West Bengal",
+            "country": "India",
+            "pincode": "700001"
+        },
+        "dob": "2001-01-16",
+        "createdAt": "2025-11-17T14:35:00Z",
+        "role": "user"
+    }
+]

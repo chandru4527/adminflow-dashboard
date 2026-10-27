@@ -103,7 +103,6 @@ const Notifications = () => {
             title: "Notification Details",
             content: <NotificationView data={data} />,
             size: "md",
-            // showFooter: false,
         });
     };
 

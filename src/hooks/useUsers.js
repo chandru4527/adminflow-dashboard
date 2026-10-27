@@ -1,20 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
-import { get } from "../api/axios";
-import { Endpoints } from "../api/endpoints";
+import usersData from "../data/users.json";
 
-export const useUsers = (params = {}) =>
-    useQuery({
-        queryKey: ["users", params],
-        queryFn: async () => {
-            const endpoint = params.q ? `${Endpoints.USERS}/search` : Endpoints.USERS;
+const getUsers = async () => {
+    await new Promise((resolve) => setTimeout(resolve, 800));
+    return usersData;
+};
 
-            const { q, ...restParams } = params;
+const USERS_KEY = ["users"];
 
-            return await get(endpoint, {
-                params: {
-                    ...restParams,
-                    ...(q ? { q } : {}),
-                },
-            });
-        },
+export const useUsers = () => {
+    return useQuery({
+        queryKey: USERS_KEY,
+        queryFn: getUsers,
+        // staleTime: 5 * 60 * 1000,
+        // retry: false,
     });
+};

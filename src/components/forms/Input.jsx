@@ -11,7 +11,7 @@ const Input = ({
     icon: Icon,
     iconPosition = "left",
     iconSize = 20,
-    iconClassName = "text-gray-400",
+    iconClassName = "text-[#ac1e44]",
     placeholder,
     error,
     errorClassName = "",
