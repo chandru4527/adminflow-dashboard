@@ -1,7 +1,7 @@
 import React, { memo, useState } from "react";
 
 // icons
-import { MdPerson, MdEmail, MdPhone, MdCalendarToday, MdLocationCity, } from "react-icons/md";
+import { MdPerson, MdEmail, MdPhone, MdCalendarToday, MdLocationOn, } from "react-icons/md";
 
 // form
 import { useForm } from "react-hook-form";
@@ -155,7 +155,7 @@ const EditProfile = memo(({ user, formId }) => {
                 <Input
                     label="Address"
                     placeholder="Enter your city"
-                    icon={MdLocationCity}
+                    icon={MdLocationOn}
                     error={errors.address?.message}
                     {...register("address")}
                 />

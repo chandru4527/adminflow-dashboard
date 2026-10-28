@@ -60,7 +60,7 @@ const Avatar = ({
         circle: "rounded-full",
         rounded: "rounded-lg",
         soft: "rounded-2xl",
-        square: "rounded-none",
+        square: "rounded-md",
         pill: "rounded-full",
         hex: "",
     };

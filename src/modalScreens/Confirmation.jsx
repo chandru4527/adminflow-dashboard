@@ -28,7 +28,7 @@ const Confirmation = ({
             {Icon && (
                 <div
                     className={twMerge(
-                        "mb-4 flex h-12 w-12 items-center justify-center rounded-md",
+                        "mb-2 flex h-12 w-12 items-center justify-center rounded-md",
                         currentVariant.icon,
                         iconClassName
                     )}
@@ -43,11 +43,11 @@ const Confirmation = ({
                 <p className="mt-2 text-sm leading-5 text-gray-600">{message}</p>
             )}
             {data && (
-                <div className={twMerge("mt-4 w-full px-4 py-3 text-sm font-medium text-gray-900", dataClassName)}>
+                <div className={twMerge("mt-3 w-full px-4 py-3 text-sm font-medium text-gray-900", dataClassName)}>
                     {data}
                 </div>
             )}
-            {children && <div className="mt-4 w-full">{children}</div>}
+            {children && <div className="mt-3 w-full">{children}</div>}
         </div>
     );
 };

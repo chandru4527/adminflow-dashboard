@@ -1,0 +1,66 @@
+[
+    {
+        "id": 1,
+        "name": "Electronics",
+        "slug": "electronics",
+        "description": "Discover the latest electronics, including headphones, speakers, smart devices, accessories, and everyday tech essentials.",
+        "order": 1,
+        "isActive": true
+    },
+    {
+        "id": 2,
+        "name": "Fashion",
+        "slug": "fashion",
+        "description": "Explore trendy clothing, stylish outfits, everyday essentials, and modern apparel for every occasion.",
+        "order": 2,
+        "isActive": true
+    },
+    {
+        "id": 3,
+        "name": "Accessories",
+        "slug": "accessories",
+        "description": "Complete your look with watches, bags, wallets, sunglasses, jewelry, and other stylish accessories.",
+        "order": 3,
+        "isActive": true
+    },
+    {
+        "id": 4,
+        "name": "Footwear",
+        "slug": "footwear",
+        "description": "Find comfortable and fashionable footwear, including sneakers, running shoes, sandals, and casual shoes.",
+        "order": 4,
+        "isActive": true
+    },
+    {
+        "id": 5,
+        "name": "Home & Kitchen",
+        "slug": "home-kitchen",
+        "description": "Shop home decor, kitchen essentials, drinkware, lighting, storage solutions, and practical household products.",
+        "order": 5,
+        "isActive": true
+    },
+    {
+        "id": 6,
+        "name": "Beauty",
+        "slug": "beauty",
+        "description": "Explore skincare, cosmetics, makeup tools, personal care products, and beauty essentials for your daily routine.",
+        "order": 6,
+        "isActive": true
+    },
+    {
+        "id": 7,
+        "name": "Sports & Fitness",
+        "slug": "sports-fitness",
+        "description": "Discover fitness equipment, workout accessories, yoga essentials, sports gear, and products for an active lifestyle.",
+        "order": 7,
+        "isActive": true
+    },
+    {
+        "id": 8,
+        "name": "Travel",
+        "slug": "travel",
+        "description": "Prepare for your next adventure with travel bags, luggage accessories, travel pillows, organizers, and journey essentials.",
+        "order": 8,
+        "isActive": true
+    }
+]

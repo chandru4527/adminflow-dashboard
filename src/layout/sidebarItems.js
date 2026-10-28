@@ -22,20 +22,7 @@ const menuItems = [
     {
         label: "Products",
         icon: MdSell,
-        children: [
-            {
-                path: "/admin/products",
-                label: "All Products",
-            },
-            {
-                path: "/admin/categories",
-                label: "Categories",
-            },
-            {
-                path: "/admin/reviews",
-                label: "Reviews",
-            },
-        ],
+        path: "/admin/products",
     },
     {
         label: "Orders",

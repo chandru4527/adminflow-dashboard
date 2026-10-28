@@ -13,7 +13,10 @@ import Login from "../pages/Login";
 // pages
 import Dashboard from "../pages/Dashboard";
 import Users from "../pages/Users";
+import Products from "../pages/Products";
+
 import Revenue from "../pages/Revenue";
+import Analytics from "../pages/Analytics";
 import Banners from "../pages/Banners";
 import Notifications from "../pages/Notifications";
 import Settings from "../pages/Settings";
@@ -22,7 +25,6 @@ import About from "../pages/About";
 
 // not found
 import NotFound from "../pages/notFound/NotFound";
-import Analytics from "../pages/Analytics";
 
 const Routers = createBrowserRouter([
     {
@@ -64,6 +66,13 @@ const Routers = createBrowserRouter([
                         element: <Users />,
                         handle: {
                             title: "Users Management",
+                        },
+                    },
+                    {
+                        path: "products",
+                        element: <Products />,
+                        handle: {
+                            title: "Product Management",
                         },
                     },
                     {

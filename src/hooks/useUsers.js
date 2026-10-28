@@ -8,11 +8,9 @@ const getUsers = async () => {
 
 const USERS_KEY = ["users"];
 
-export const useUsers = () => {
-    return useQuery({
-        queryKey: USERS_KEY,
-        queryFn: getUsers,
-        // staleTime: 5 * 60 * 1000,
-        // retry: false,
-    });
-};
+export const useUsers = () => useQuery({
+    queryKey: USERS_KEY,
+    queryFn: getUsers,
+    // staleTime: 5 * 60 * 1000,
+    // retry: false,
+});

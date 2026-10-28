@@ -91,7 +91,7 @@ const Banners = () => {
             size: "lg",
             formId,
             action: {
-                label: "Save Changes",
+                label: "Update",
                 variant: "themeDark",
                 loadingText: "Updating...",
             },

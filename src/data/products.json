@@ -1,0 +1,1063 @@
+[
+    {
+        "id": 1,
+        "name": "Premium Wireless Headphones",
+        "slug": "premium-wireless-headphones",
+        "description": "Experience immersive audio with premium wireless headphones featuring active noise cancellation, deep bass, comfortable ear cushions, and long-lasting battery life.",
+        "shortDescription": "Wireless headphones with active noise cancellation.",
+        "category": "Electronics",
+        "brand": "SoundMax",
+        "price": 2499,
+        "originalPrice": 3999,
+        "offer": {
+            "title": "Launch Offer",
+            "discountPercentage": 37,
+            "isActive": true,
+            "startDate": "2026-10-01T00:00:00.000Z",
+            "endDate": "2026-12-31T23:59:59.000Z"
+        },
+        "images": [
+            "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800",
+            "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=800",
+            "https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=800",
+            "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800"
+        ],
+        "stock": 45,
+        "sku": "SM-WH-001",
+        "isActive": true,
+        "isFeatured": true,
+        "rating": 4.7,
+        "reviewsCount": 128,
+        "tags": [
+            "headphones",
+            "wireless",
+            "audio",
+            "bluetooth"
+        ],
+        "specifications": {
+            "color": "Black",
+            "connectivity": "Bluetooth 5.3",
+            "batteryLife": "40 hours",
+            "warranty": "1 year"
+        },
+        "createdAt": "2026-10-01T10:00:00.000Z",
+        "updatedAt": "2026-10-20T10:00:00.000Z"
+    },
+    {
+        "id": 2,
+        "name": "Classic Cotton T-Shirt",
+        "slug": "classic-cotton-t-shirt",
+        "description": "A versatile everyday T-shirt made from soft, breathable cotton with durable stitching and a comfortable regular fit.",
+        "shortDescription": "Soft cotton T-shirt for everyday wear.",
+        "category": "Fashion",
+        "brand": "UrbanWear",
+        "price": 599,
+        "originalPrice": 999,
+        "offer": {
+            "title": "Festive Sale",
+            "discountPercentage": 40,
+            "isActive": true,
+            "startDate": "2026-10-15T00:00:00.000Z",
+            "endDate": "2026-11-15T23:59:59.000Z"
+        },
+        "images": [
+            "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800",
+            "https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=800",
+            "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=800",
+            "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800"
+        ],
+        "stock": 120,
+        "sku": "UW-TS-002",
+        "isActive": true,
+        "isFeatured": false,
+        "rating": 4.4,
+        "reviewsCount": 86,
+        "tags": [
+            "tshirt",
+            "cotton",
+            "casual",
+            "fashion"
+        ],
+        "specifications": {
+            "material": "100% Cotton",
+            "fit": "Regular",
+            "availableSizes": [
+                "S",
+                "M",
+                "L",
+                "XL"
+            ],
+            "color": "White",
+            "careInstructions": "Machine wash"
+        },
+        "createdAt": "2026-10-02T10:00:00.000Z",
+        "updatedAt": "2026-10-18T10:00:00.000Z"
+    },
+    {
+        "id": 3,
+        "name": "Minimalist Wrist Watch",
+        "slug": "minimalist-wrist-watch",
+        "description": "A sophisticated wristwatch with a minimalist dial, premium strap, and precise quartz movement for everyday styling and special occasions.",
+        "shortDescription": "Elegant minimalist watch with quartz movement.",
+        "category": "Accessories",
+        "brand": "TimeCraft",
+        "price": 1799,
+        "originalPrice": 2999,
+        "offer": {
+            "title": "Special Discount",
+            "discountPercentage": 40,
+            "isActive": true,
+            "startDate": "2026-10-01T00:00:00.000Z",
+            "endDate": "2026-11-30T23:59:59.000Z"
+        },
+        "images": [
+            "https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=800",
+            "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800",
+            "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=800",
+            "https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=800"
+        ],
+        "stock": 8,
+        "sku": "TC-WT-003",
+        "isActive": true,
+        "isFeatured": true,
+        "rating": 4.6,
+        "reviewsCount": 94,
+        "tags": [
+            "watch",
+            "wristwatch",
+            "accessories",
+            "minimalist"
+        ],
+        "specifications": {
+            "movement": "Quartz",
+            "strapMaterial": "Leather",
+            "dialColor": "Black",
+            "waterResistance": "3 ATM",
+            "warranty": "1 year"
+        },
+        "createdAt": "2026-10-03T10:00:00.000Z",
+        "updatedAt": "2026-10-21T10:00:00.000Z"
+    },
+    {
+        "id": 4,
+        "name": "Everyday Running Shoes",
+        "slug": "everyday-running-shoes",
+        "description": "Lightweight running shoes featuring a breathable upper, cushioned sole, and durable outsole for walking, jogging, workouts, and casual wear.",
+        "shortDescription": "Lightweight running shoes with cushioned soles.",
+        "category": "Footwear",
+        "brand": "StrideFit",
+        "price": 2199,
+        "originalPrice": 3499,
+        "offer": {
+            "title": "Sports Season Sale",
+            "discountPercentage": 37,
+            "isActive": true,
+            "startDate": "2026-10-10T00:00:00.000Z",
+            "endDate": "2026-12-10T23:59:59.000Z"
+        },
+        "images": [
+            "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800",
+            "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=800",
+            "https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?w=800",
+            "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&h=900"
+        ],
+        "stock": 32,
+        "sku": "SF-RS-004",
+        "isActive": true,
+        "isFeatured": true,
+        "rating": 4.5,
+        "reviewsCount": 156,
+        "tags": [
+            "shoes",
+            "running",
+            "sports",
+            "footwear"
+        ],
+        "specifications": {
+            "material": "Mesh and Synthetic",
+            "sole": "Rubber",
+            "availableSizes": [
+                6,
+                7,
+                8,
+                9,
+                10,
+                11
+            ],
+            "color": "Red",
+            "warranty": "6 months"
+        },
+        "createdAt": "2026-10-04T10:00:00.000Z",
+        "updatedAt": "2026-10-22T10:00:00.000Z"
+    },
+    {
+        "id": 5,
+        "name": "Portable Bluetooth Speaker",
+        "slug": "portable-bluetooth-speaker",
+        "description": "Enjoy powerful sound with a compact Bluetooth speaker featuring clear audio, wireless connectivity, and a rechargeable battery for home and outdoor listening.",
+        "shortDescription": "Portable speaker with powerful wireless audio.",
+        "category": "Electronics",
+        "brand": "SoundMax",
+        "price": 1299,
+        "originalPrice": 1999,
+        "offer": {
+            "title": "Weekend Deal",
+            "discountPercentage": 35,
+            "isActive": false,
+            "startDate": "2026-10-01T00:00:00.000Z",
+            "endDate": "2026-10-15T23:59:59.000Z"
+        },
+        "images": [
+            "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=800",
+            "https://images.unsplash.com/photo-1608156639585-b3a032ef9689?w=800",
+            "https://images.unsplash.com/photo-1589003077984-894e133dabab?w=800",
+            "https://images.unsplash.com/photo-1608539073628-7f9e5f9f0d44?w=800"
+        ],
+        "stock": 0,
+        "sku": "SM-BS-005",
+        "isActive": false,
+        "isFeatured": false,
+        "rating": 4.2,
+        "reviewsCount": 63,
+        "tags": [
+            "speaker",
+            "bluetooth",
+            "portable",
+            "audio"
+        ],
+        "specifications": {
+            "connectivity": "Bluetooth 5.0",
+            "batteryLife": "12 hours",
+            "chargingPort": "USB-C",
+            "waterResistance": "IPX5",
+            "warranty": "1 year"
+        },
+        "createdAt": "2026-10-05T10:00:00.000Z",
+        "updatedAt": "2026-10-23T10:00:00.000Z"
+    },
+    {
+        "id": 6,
+        "name": "Smart Fitness Band",
+        "slug": "smart-fitness-band",
+        "description": "Track your daily steps, heart rate, sleep, and workouts with a lightweight fitness band featuring a bright display and convenient smartphone notifications.",
+        "shortDescription": "Fitness tracker for daily activity and workouts.",
+        "category": "Electronics",
+        "brand": "FitPulse",
+        "price": 1499,
+        "originalPrice": 2499,
+        "offer": {
+            "title": "Fitness Deal",
+            "discountPercentage": 40,
+            "isActive": true,
+            "startDate": "2026-10-20T00:00:00.000Z",
+            "endDate": "2026-11-30T23:59:59.000Z"
+        },
+        "images": [
+            "https://images.unsplash.com/photo-1557935728-e6d1eaabe558?w=800",
+            "https://images.unsplash.com/photo-1576243345690-4e4b79b63288?w=800",
+            "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=800",
+            "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800"
+        ],
+        "stock": 54,
+        "sku": "FP-FB-006",
+        "isActive": true,
+        "isFeatured": false,
+        "rating": 4.3,
+        "reviewsCount": 71,
+        "tags": [
+            "fitness",
+            "smartband",
+            "health",
+            "wearable"
+        ],
+        "specifications": {
+            "display": "AMOLED",
+            "batteryLife": "7 days",
+            "waterResistance": "5 ATM",
+            "connectivity": "Bluetooth",
+            "warranty": "1 year"
+        },
+        "createdAt": "2026-10-06T10:00:00.000Z",
+        "updatedAt": "2026-10-22T10:00:00.000Z"
+    },
+    {
+        "id": 7,
+        "name": "Leather Crossbody Bag",
+        "slug": "leather-crossbody-bag",
+        "description": "A stylish crossbody bag featuring a premium leather finish, adjustable strap, secure zipper, and practical compartments for everyday essentials.",
+        "shortDescription": "Elegant crossbody bag with multiple compartments.",
+        "category": "Accessories",
+        "brand": "CarryCraft",
+        "price": 1899,
+        "originalPrice": 2799,
+        "offer": {
+            "title": "Style Sale",
+            "discountPercentage": 32,
+            "isActive": true,
+            "startDate": "2026-10-01T00:00:00.000Z",
+            "endDate": "2026-12-15T23:59:59.000Z"
+        },
+        "images": [
+            "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=800",
+            "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800",
+            "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=800",
+            "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800"
+        ],
+        "stock": 19,
+        "sku": "CC-CB-007",
+        "isActive": true,
+        "isFeatured": true,
+        "rating": 4.6,
+        "reviewsCount": 112,
+        "tags": [
+            "bag",
+            "crossbody",
+            "leather",
+            "fashion"
+        ],
+        "specifications": {
+            "material": "Faux Leather",
+            "closure": "Zipper",
+            "strap": "Adjustable",
+            "color": "Brown",
+            "warranty": "6 months"
+        },
+        "createdAt": "2026-10-07T10:00:00.000Z",
+        "updatedAt": "2026-10-20T10:00:00.000Z"
+    },
+    {
+        "id": 8,
+        "name": "Stainless Steel Water Bottle",
+        "slug": "stainless-steel-water-bottle",
+        "description": "A reusable insulated water bottle designed to keep drinks hot or cold for extended periods. Its leak-resistant lid and durable stainless steel body make it ideal for travel and workouts.",
+        "shortDescription": "Insulated reusable bottle for hot and cold drinks.",
+        "category": "Home & Kitchen",
+        "brand": "HydroLife",
+        "price": 699,
+        "originalPrice": 1199,
+        "offer": {
+            "title": "Daily Essentials",
+            "discountPercentage": 42,
+            "isActive": true,
+            "startDate": "2026-10-01T00:00:00.000Z",
+            "endDate": "2026-12-31T23:59:59.000Z"
+        },
+        "images": [
+            "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=800",
+            "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=800",
+            "https://images.unsplash.com/photo-1523362628745-0c100150b504?w=800",
+            "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800"
+        ],
+        "stock": 85,
+        "sku": "HL-WB-008",
+        "isActive": true,
+        "isFeatured": false,
+        "rating": 4.5,
+        "reviewsCount": 203,
+        "tags": [
+            "waterbottle",
+            "reusable",
+            "fitness",
+            "kitchen"
+        ],
+        "specifications": {
+            "material": "Stainless Steel",
+            "capacity": "750 ml",
+            "insulation": "Double Wall",
+            "leakProof": true,
+            "color": "Silver"
+        },
+        "createdAt": "2026-10-08T10:00:00.000Z",
+        "updatedAt": "2026-10-21T10:00:00.000Z"
+    },
+    {
+        "id": 9,
+        "name": "Classic Denim Jeans",
+        "slug": "classic-denim-jeans",
+        "description": "Classic denim jeans crafted for everyday comfort with durable stitching, a versatile wash, and a timeless fit suitable for casual and smart-casual outfits.",
+        "shortDescription": "Everyday denim jeans with a timeless fit.",
+        "category": "Fashion",
+        "brand": "UrbanWear",
+        "price": 1299,
+        "originalPrice": 1999,
+        "offer": {
+            "title": "Denim Days",
+            "discountPercentage": 35,
+            "isActive": true,
+            "startDate": "2026-10-10T00:00:00.000Z",
+            "endDate": "2026-11-20T23:59:59.000Z"
+        },
+        "images": [
+            "https://images.unsplash.com/photo-1542272604-787c3835535d?w=800",
+            "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=800",
+            "https://images.unsplash.com/photo-1475178626620-a4d074967452?w=800",
+            "https://images.unsplash.com/photo-1511196044526-5cb3bcb7071b?w=800"
+        ],
+        "stock": 67,
+        "sku": "UW-DJ-009",
+        "isActive": true,
+        "isFeatured": false,
+        "rating": 4.3,
+        "reviewsCount": 91,
+        "tags": [
+            "jeans",
+            "denim",
+            "clothing",
+            "casual"
+        ],
+        "specifications": {
+            "material": "Denim Cotton Blend",
+            "fit": "Slim",
+            "availableSizes": [
+                "28",
+                "30",
+                "32",
+                "34",
+                "36"
+            ],
+            "color": "Blue",
+            "careInstructions": "Machine wash"
+        },
+        "createdAt": "2026-10-09T10:00:00.000Z",
+        "updatedAt": "2026-10-22T10:00:00.000Z"
+    },
+    {
+        "id": 10,
+        "name": "Mechanical Gaming Keyboard",
+        "slug": "mechanical-gaming-keyboard",
+        "description": "A responsive mechanical keyboard designed for gaming and productivity, featuring tactile keys, customizable RGB lighting, and a durable frame.",
+        "shortDescription": "Mechanical keyboard with customizable RGB lighting.",
+        "category": "Electronics",
+        "brand": "GameCore",
+        "price": 2899,
+        "originalPrice": 4499,
+        "offer": {
+            "title": "Gaming Week",
+            "discountPercentage": 36,
+            "isActive": true,
+            "startDate": "2026-10-15T00:00:00.000Z",
+            "endDate": "2026-11-15T23:59:59.000Z"
+        },
+        "images": [
+            "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800",
+            "https://images.unsplash.com/photo-1595225476474-87563907a212?w=800",
+            "https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=800",
+            "https://images.unsplash.com/photo-1595044426077-d36d9236d54a?w=800"
+        ],
+        "stock": 23,
+        "sku": "GC-KB-010",
+        "isActive": true,
+        "isFeatured": true,
+        "rating": 4.8,
+        "reviewsCount": 174,
+        "tags": [
+            "keyboard",
+            "gaming",
+            "mechanical",
+            "computer"
+        ],
+        "specifications": {
+            "switchType": "Mechanical",
+            "connectivity": "USB",
+            "lighting": "RGB",
+            "layout": "Full Size",
+            "warranty": "2 years"
+        },
+        "createdAt": "2026-10-10T10:00:00.000Z",
+        "updatedAt": "2026-10-23T10:00:00.000Z"
+    },
+    {
+        "id": 11,
+        "name": "Ceramic Coffee Mug Set",
+        "slug": "ceramic-coffee-mug-set",
+        "description": "A contemporary ceramic mug set featuring a smooth glazed finish and comfortable handles, perfect for coffee, tea, and serving guests.",
+        "shortDescription": "Elegant ceramic mugs for coffee and tea.",
+        "category": "Home & Kitchen",
+        "brand": "HomeNest",
+        "price": 499,
+        "originalPrice": 799,
+        "offer": {
+            "title": "Home Refresh",
+            "discountPercentage": 38,
+            "isActive": true,
+            "startDate": "2026-10-01T00:00:00.000Z",
+            "endDate": "2026-12-31T23:59:59.000Z"
+        },
+        "images": [
+            "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=800",
+            "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800",
+            "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800",
+            "https://images.unsplash.com/photo-1511920170033-f8396924c348?w=800"
+        ],
+        "stock": 74,
+        "sku": "HN-CM-011",
+        "isActive": true,
+        "isFeatured": false,
+        "rating": 4.4,
+        "reviewsCount": 58,
+        "tags": [
+            "mug",
+            "ceramic",
+            "coffee",
+            "kitchen"
+        ],
+        "specifications": {
+            "material": "Ceramic",
+            "quantity": 2,
+            "capacity": "350 ml",
+            "dishwasherSafe": true,
+            "color": "White"
+        },
+        "createdAt": "2026-10-11T10:00:00.000Z",
+        "updatedAt": "2026-10-20T10:00:00.000Z"
+    },
+    {
+        "id": 12,
+        "name": "Everyday Running Backpack",
+        "slug": "everyday-running-backpack",
+        "description": "A practical backpack with spacious compartments, padded shoulder straps, and a lightweight design for commuting, college, travel, and everyday adventures.",
+        "shortDescription": "Lightweight backpack for college and travel.",
+        "category": "Accessories",
+        "brand": "CarryCraft",
+        "price": 1099,
+        "originalPrice": 1799,
+        "offer": {
+            "title": "Travel Essentials",
+            "discountPercentage": 39,
+            "isActive": true,
+            "startDate": "2026-10-10T00:00:00.000Z",
+            "endDate": "2026-12-10T23:59:59.000Z"
+        },
+        "images": [
+            "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800",
+            "https://images.unsplash.com/photo-1622560480654-d96214fdc887?w=800",
+            "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&sat=-50",
+            "https://images.unsplash.com/photo-1581605405669-fcdf81165afa?w=800"
+        ],
+        "stock": 41,
+        "sku": "CC-BP-012",
+        "isActive": true,
+        "isFeatured": false,
+        "rating": 4.5,
+        "reviewsCount": 104,
+        "tags": [
+            "backpack",
+            "travel",
+            "college",
+            "bag"
+        ],
+        "specifications": {
+            "material": "Polyester",
+            "capacity": "25 L",
+            "laptopCompartment": true,
+            "waterResistant": true,
+            "color": "Black"
+        },
+        "createdAt": "2026-10-12T10:00:00.000Z",
+        "updatedAt": "2026-10-22T10:00:00.000Z"
+    },
+    {
+        "id": 13,
+        "name": "Hydrating Face Moisturizer",
+        "slug": "hydrating-face-moisturizer",
+        "description": "A lightweight facial moisturizer designed to leave skin feeling soft and hydrated. Its smooth texture absorbs comfortably and works well as part of a daily skincare routine.",
+        "shortDescription": "Lightweight daily moisturizer for hydrated skin.",
+        "category": "Beauty",
+        "brand": "GlowCare",
+        "price": 399,
+        "originalPrice": 599,
+        "offer": {
+            "title": "Beauty Essentials",
+            "discountPercentage": 33,
+            "isActive": true,
+            "startDate": "2026-10-01T00:00:00.000Z",
+            "endDate": "2026-12-31T23:59:59.000Z"
+        },
+        "images": [
+            "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=800",
+            "https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?w=800",
+            "https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?w=800",
+            "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=800"
+        ],
+        "stock": 63,
+        "sku": "GC-FM-013",
+        "isActive": true,
+        "isFeatured": true,
+        "rating": 4.3,
+        "reviewsCount": 142,
+        "tags": [
+            "skincare",
+            "moisturizer",
+            "beauty",
+            "hydration"
+        ],
+        "specifications": {
+            "skinType": "Normal to Dry",
+            "quantity": "50 ml",
+            "texture": "Lightweight Cream",
+            "usage": "Daily",
+            "shelfLife": "24 months"
+        },
+        "createdAt": "2026-10-13T10:00:00.000Z",
+        "updatedAt": "2026-10-21T10:00:00.000Z"
+    },
+    {
+        "id": 14,
+        "name": "Polarized Sunglasses",
+        "slug": "polarized-sunglasses",
+        "description": "Modern polarized sunglasses with a lightweight frame and UV protection, designed to complement casual outfits while improving visual comfort outdoors.",
+        "shortDescription": "Stylish sunglasses with polarized lenses.",
+        "category": "Accessories",
+        "brand": "SunStyle",
+        "price": 899,
+        "originalPrice": 1499,
+        "offer": {
+            "title": "Summer Style",
+            "discountPercentage": 40,
+            "isActive": false,
+            "startDate": "2026-05-01T00:00:00.000Z",
+            "endDate": "2026-06-30T23:59:59.000Z"
+        },
+        "images": [
+            "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=800",
+            "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=800",
+            "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800",
+            "https://images.unsplash.com/photo-1508296695146-257a814070b4?w=800"
+        ],
+        "stock": 27,
+        "sku": "SS-SG-014",
+        "isActive": true,
+        "isFeatured": false,
+        "rating": 4.2,
+        "reviewsCount": 67,
+        "tags": [
+            "sunglasses",
+            "eyewear",
+            "fashion",
+            "accessories"
+        ],
+        "specifications": {
+            "frameMaterial": "Polycarbonate",
+            "lensType": "Polarized",
+            "uvProtection": "UV400",
+            "frameColor": "Black",
+            "warranty": "6 months"
+        },
+        "createdAt": "2026-10-14T10:00:00.000Z",
+        "updatedAt": "2026-10-22T10:00:00.000Z"
+    },
+    {
+        "id": 15,
+        "name": "Portable Power Bank",
+        "slug": "portable-power-bank",
+        "description": "Keep your devices powered while traveling with a compact power bank featuring multiple charging ports, reliable battery capacity, and a convenient portable design.",
+        "shortDescription": "Portable charger for smartphones and accessories.",
+        "category": "Electronics",
+        "brand": "VoltEdge",
+        "price": 1199,
+        "originalPrice": 1999,
+        "offer": {
+            "title": "Tech Savings",
+            "discountPercentage": 40,
+            "isActive": true,
+            "startDate": "2026-10-15T00:00:00.000Z",
+            "endDate": "2026-11-30T23:59:59.000Z"
+        },
+        "images": [
+            "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=800",
+            "https://images.unsplash.com/photo-1609592806596-b43bada5d4f5?w=800",
+            "https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=800",
+            "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=800&h=900"
+        ],
+        "stock": 0,
+        "sku": "VE-PB-015",
+        "isActive": true,
+        "isFeatured": false,
+        "rating": 4.5,
+        "reviewsCount": 119,
+        "tags": [
+            "powerbank",
+            "charger",
+            "mobile",
+            "electronics"
+        ],
+        "specifications": {
+            "capacity": "20000 mAh",
+            "output": "22.5 W",
+            "ports": [
+                "USB-A",
+                "USB-C"
+            ],
+            "fastCharging": true,
+            "warranty": "1 year"
+        },
+        "createdAt": "2026-10-15T10:00:00.000Z",
+        "updatedAt": "2026-10-23T10:00:00.000Z"
+    },
+    {
+        "id": 16,
+        "name": "Casual Canvas Sneakers",
+        "slug": "casual-canvas-sneakers",
+        "description": "Versatile canvas sneakers featuring a flexible sole, comfortable interior, and classic low-top design for everyday casual outfits.",
+        "shortDescription": "Classic canvas sneakers for casual everyday wear.",
+        "category": "Footwear",
+        "brand": "StrideFit",
+        "price": 999,
+        "originalPrice": 1599,
+        "offer": {
+            "title": "Casual Wear Sale",
+            "discountPercentage": 38,
+            "isActive": true,
+            "startDate": "2026-10-10T00:00:00.000Z",
+            "endDate": "2026-11-25T23:59:59.000Z"
+        },
+        "images": [
+            "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=800",
+            "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=800&sat=-30",
+            "https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?w=800",
+            "https://images.unsplash.com/photo-1520256862855-398228c41684?w=800"
+        ],
+        "stock": 38,
+        "sku": "SF-CS-016",
+        "isActive": true,
+        "isFeatured": false,
+        "rating": 4.1,
+        "reviewsCount": 49,
+        "tags": [
+            "sneakers",
+            "canvas",
+            "shoes",
+            "casual"
+        ],
+        "specifications": {
+            "material": "Canvas",
+            "sole": "Rubber",
+            "availableSizes": [
+                6,
+                7,
+                8,
+                9,
+                10
+            ],
+            "color": "White",
+            "closure": "Lace-up"
+        },
+        "createdAt": "2026-10-16T10:00:00.000Z",
+        "updatedAt": "2026-10-22T10:00:00.000Z"
+    },
+    {
+        "id": 17,
+        "name": "Decorative Table Lamp",
+        "slug": "decorative-table-lamp",
+        "description": "A modern decorative table lamp with a warm glow and elegant silhouette, ideal for bedside tables, study desks, and cozy living spaces.",
+        "shortDescription": "Modern table lamp for warm ambient lighting.",
+        "category": "Home & Kitchen",
+        "brand": "HomeNest",
+        "price": 1399,
+        "originalPrice": 2199,
+        "offer": {
+            "title": "Home Decor Sale",
+            "discountPercentage": 36,
+            "isActive": true,
+            "startDate": "2026-10-01T00:00:00.000Z",
+            "endDate": "2026-12-15T23:59:59.000Z"
+        },
+        "images": [
+            "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=800",
+            "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=800&h=900",
+            "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=800&sat=-40",
+            "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=800&fit=crop"
+        ],
+        "stock": 16,
+        "sku": "HN-TL-017",
+        "isActive": true,
+        "isFeatured": true,
+        "rating": 4.6,
+        "reviewsCount": 82,
+        "tags": [
+            "lamp",
+            "lighting",
+            "homedecor",
+            "interior"
+        ],
+        "specifications": {
+            "material": "Metal and Fabric",
+            "lightType": "LED Compatible",
+            "powerSource": "Electric",
+            "color": "Beige",
+            "usage": "Indoor"
+        },
+        "createdAt": "2026-10-17T10:00:00.000Z",
+        "updatedAt": "2026-10-22T10:00:00.000Z"
+    },
+    {
+        "id": 18,
+        "name": "Professional Makeup Brush Set",
+        "slug": "professional-makeup-brush-set",
+        "description": "A versatile makeup brush set with soft synthetic bristles and comfortable handles for blending, contouring, powder application, and everyday makeup routines.",
+        "shortDescription": "Soft makeup brushes for smooth makeup application.",
+        "category": "Beauty",
+        "brand": "GlowCare",
+        "price": 749,
+        "originalPrice": 1299,
+        "offer": {
+            "title": "Beauty Bundle",
+            "discountPercentage": 42,
+            "isActive": true,
+            "startDate": "2026-10-10T00:00:00.000Z",
+            "endDate": "2026-11-30T23:59:59.000Z"
+        },
+        "images": [
+            "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=800",
+            "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800",
+            "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800",
+            "https://images.unsplash.com/photo-1631214540242-0a6c1f3f3c9a?w=800"
+        ],
+        "stock": 51,
+        "sku": "GC-MB-018",
+        "isActive": true,
+        "isFeatured": false,
+        "rating": 4.4,
+        "reviewsCount": 97,
+        "tags": [
+            "makeup",
+            "brushes",
+            "beauty",
+            "cosmetics"
+        ],
+        "specifications": {
+            "quantity": 12,
+            "bristleMaterial": "Synthetic",
+            "handleMaterial": "Wood",
+            "caseIncluded": true,
+            "usage": "Face and Eyes"
+        },
+        "createdAt": "2026-10-18T10:00:00.000Z",
+        "updatedAt": "2026-10-23T10:00:00.000Z"
+    },
+    {
+        "id": 19,
+        "name": "Insulated Lunch Box",
+        "slug": "insulated-lunch-box",
+        "description": "A practical lunch box with separate food compartments and an insulated design to help keep meals organized for school, office, travel, and everyday use.",
+        "shortDescription": "Compartment lunch box for work and school.",
+        "category": "Home & Kitchen",
+        "brand": "HydroLife",
+        "price": 549,
+        "originalPrice": 899,
+        "offer": {
+            "title": "Daily Essentials Sale",
+            "discountPercentage": 39,
+            "isActive": true,
+            "startDate": "2026-10-15T00:00:00.000Z",
+            "endDate": "2026-12-20T23:59:59.000Z"
+        },
+        "images": [
+            "https://images.unsplash.com/photo-1547592180-85f173990554?w=800",
+            "https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800",
+            "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800",
+            "https://images.unsplash.com/photo-1547592180-85f173990554?w=800&h=900"
+        ],
+        "stock": 0,
+        "sku": "HL-LB-019",
+        "isActive": false,
+        "isFeatured": false,
+        "rating": 4.2,
+        "reviewsCount": 44,
+        "tags": [
+            "lunchbox",
+            "foodstorage",
+            "kitchen",
+            "office"
+        ],
+        "specifications": {
+            "material": "Food-grade Stainless Steel",
+            "compartments": 3,
+            "leakResistant": true,
+            "capacity": "900 ml",
+            "color": "Silver"
+        },
+        "createdAt": "2026-10-19T10:00:00.000Z",
+        "updatedAt": "2026-10-23T10:00:00.000Z"
+    },
+    {
+        "id": 20,
+        "name": "Premium Yoga Mat",
+        "slug": "premium-yoga-mat",
+        "description": "A comfortable exercise mat with a cushioned surface and textured grip designed for yoga, stretching, Pilates, and home workouts.",
+        "shortDescription": "Non-slip exercise mat for yoga and fitness.",
+        "category": "Sports & Fitness",
+        "brand": "FitPulse",
+        "price": 899,
+        "originalPrice": 1499,
+        "offer": {
+            "title": "Fitness Essentials",
+            "discountPercentage": 40,
+            "isActive": true,
+            "startDate": "2026-10-01T00:00:00.000Z",
+            "endDate": "2026-12-31T23:59:59.000Z"
+        },
+        "images": [
+            "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=800",
+            "https://images.unsplash.com/photo-1592432678016-e910b452f9a2?w=800",
+            "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800",
+            "https://images.unsplash.com/photo-1599447421416-3414500d18a5?w=800"
+        ],
+        "stock": 29,
+        "sku": "FP-YM-020",
+        "isActive": true,
+        "isFeatured": true,
+        "rating": 4.7,
+        "reviewsCount": 136,
+        "tags": [
+            "yoga",
+            "fitness",
+            "exercise",
+            "workout"
+        ],
+        "specifications": {
+            "material": "TPE",
+            "thickness": "6 mm",
+            "length": "183 cm",
+            "nonSlip": true,
+            "color": "Purple"
+        },
+        "createdAt": "2026-10-20T10:00:00.000Z",
+        "updatedAt": "2026-10-23T10:00:00.000Z"
+    },
+    {
+        "id": 21,
+        "name": "Premium Ceramic Planter",
+        "slug": "premium-ceramic-planter",
+        "description": "A contemporary ceramic planter with a clean finish that complements indoor plants, succulents, and decorative arrangements in living rooms and workspaces.",
+        "shortDescription": "Minimal ceramic planter for indoor plants.",
+        "category": "Home & Kitchen",
+        "brand": "HomeNest",
+        "price": 449,
+        "originalPrice": 699,
+        "offer": {
+            "title": "Green Living",
+            "discountPercentage": 36,
+            "isActive": false,
+            "startDate": "2026-08-01T00:00:00.000Z",
+            "endDate": "2026-09-30T23:59:59.000Z"
+        },
+        "images": [
+            "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=800",
+            "https://images.unsplash.com/photo-1483794344563-d27a8d18014e?w=800",
+            "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=800",
+            "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800"
+        ],
+        "stock": 14,
+        "sku": "HN-PL-021",
+        "isActive": true,
+        "isFeatured": false,
+        "rating": 4.5,
+        "reviewsCount": 52,
+        "tags": [
+            "planter",
+            "plants",
+            "homedecor",
+            "ceramic"
+        ],
+        "specifications": {
+            "material": "Ceramic",
+            "height": "15 cm",
+            "drainageHole": true,
+            "usage": "Indoor",
+            "color": "White"
+        },
+        "createdAt": "2026-10-21T10:00:00.000Z",
+        "updatedAt": "2026-10-23T10:00:00.000Z"
+    },
+    {
+        "id": 22,
+        "name": "Travel Neck Pillow",
+        "slug": "travel-neck-pillow",
+        "description": "A soft travel neck pillow designed to provide comfortable support during flights, road trips, train journeys, and long-distance travel.",
+        "shortDescription": "Comfortable neck support pillow for travel.",
+        "category": "Travel",
+        "brand": "CarryCraft",
+        "price": 399,
+        "originalPrice": 699,
+        "offer": {
+            "title": "Travel Deal",
+            "discountPercentage": 43,
+            "isActive": true,
+            "startDate": "2026-10-15T00:00:00.000Z",
+            "endDate": "2026-11-30T23:59:59.000Z"
+        },
+        "images": [
+            "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800",
+            "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800",
+            "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800",
+            "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800"
+        ],
+        "stock": 0,
+        "sku": "CC-NP-022",
+        "isActive": true,
+        "isFeatured": false,
+        "rating": 4.1,
+        "reviewsCount": 37,
+        "tags": [
+            "travel",
+            "neckpillow",
+            "comfort",
+            "accessories"
+        ],
+        "specifications": {
+            "material": "Memory Foam",
+            "cover": "Washable Fabric",
+            "closure": "Snap Button",
+            "portable": true,
+            "color": "Grey"
+        },
+        "createdAt": "2026-10-22T10:00:00.000Z",
+        "updatedAt": "2026-10-23T10:00:00.000Z"
+    },
+    {
+        "id": 23,
+        "name": "Premium Leather Wallet",
+        "slug": "premium-leather-wallet",
+        "description": "A compact everyday wallet featuring a refined leather finish, multiple card slots, a dedicated cash compartment, and a slim design that fits comfortably in your pocket.",
+        "shortDescription": "Slim wallet with multiple card slots.",
+        "category": "Accessories",
+        "brand": "UrbanWear",
+        "price": 799,
+        "originalPrice": 1299,
+        "offer": {
+            "title": "Accessories Sale",
+            "discountPercentage": 38,
+            "isActive": true,
+            "startDate": "2026-10-20T00:00:00.000Z",
+            "endDate": "2026-12-15T23:59:59.000Z"
+        },
+        "images": [
+            "https://images.unsplash.com/photo-1627123424574-724758594e93?w=800",
+            "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?w=800",
+            "https://images.unsplash.com/photo-1627123424574-724758594e93?w=800&h=900",
+            "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800"
+        ],
+        "stock": 36,
+        "sku": "UW-WL-023",
+        "isActive": true,
+        "isFeatured": true,
+        "rating": 4.6,
+        "reviewsCount": 88,
+        "tags": [
+            "wallet",
+            "leather",
+            "accessories",
+            "fashion"
+        ],
+        "specifications": {
+            "material": "Faux Leather",
+            "cardSlots": 6,
+            "cashCompartment": true,
+            "closure": "Fold",
+            "color": "Brown"
+        },
+        "createdAt": "2026-10-23T10:00:00.000Z",
+        "updatedAt": "2026-10-23T10:00:00.000Z"
+    }
+]
