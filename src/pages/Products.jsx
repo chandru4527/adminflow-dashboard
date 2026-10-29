@@ -14,6 +14,11 @@ import TableActionButtons from "../components/table/TableActionButtons";
 import Table from "../components/table/Table";
 import EmptyState from "../components/EmptyState";
 
+// modal screens
+import PrroductView from "../modalScreens/products/PrroductView";
+import ProductForm from "../modalScreens/products/ProductForm";
+import Confirmation from '../modalScreens/Confirmation';
+
 // Hooks
 import { useProducts } from "../hooks/useProducts";
 import { useCategories } from "../hooks/useCategories";
@@ -86,22 +91,78 @@ const Products = () => {
         setCurrentPage(1);
     };
 
+    // add product
+    const handleAdd = () => {
+        const formId = "product-form";
+        openModal({
+            title: "Edit Product",
+            size: "xl",
+            icon: MdInventory2,
+            formId,
+            content: <ProductForm formId={formId} categories={categories} mode="add" />,
+            action: {
+                label: "Add Product",
+                variant: "theme",
+                loadingText: "adding...",
+            },
+        })
+    }
+
     // View product
     const handleView = (product) => {
-        console.log("View product:", product);
-        toastify.info("Product details will be available soon.");
+        openModal({
+            icon: MdInventory2,
+            title: "Product Dtails",
+            size: 'xl',
+            content: (
+                <PrroductView product={product} />
+            ),
+        })
     };
 
     // Edit product
     const handleEdit = (product) => {
-        console.log("Edit product:", product);
-        toastify.info("Product editing will be available soon.");
+        const formId = "product-form";
+        openModal({
+            title: "Edit Product",
+            size: "xl",
+            icon: MdInventory2,
+            formId,
+            content: <ProductForm product={product} formId={formId} categories={categories} mode="edit" />,
+            action: {
+                label: "Update",
+                variant: "theme",
+                loadingText: "Updating...",
+            },
+        });
     };
 
     // Delete product
     const handleDelete = (product) => {
-        console.log("Delete product:", product);
-        toastify.info("Product deletion will be available soon.");
+        openModal({
+            icon: MdInventory2,
+            title: "Delete Product",
+            content: (
+                <Confirmation
+                    message="Are you sure you want to delete this product?"
+                    data={product?.name}
+                />
+            ),
+            action: {
+                label: "Delete",
+                variant: "danger",
+                loadingText: "Deleting...",
+                onClick: () => {
+                    setActionLoading(true);
+
+                    setTimeout(() => {
+                        closeModal();
+                        setActionLoading(false);
+                        toastify.success("product deleted successfully!");
+                    }, 1000);
+                },
+            },
+        });
     };
 
     // Table columns
@@ -309,7 +370,7 @@ const Products = () => {
                 actionLabel="Add Product"
                 actionVariant="theme"
                 actionIcon={MdAdd}
-                onClick={() => {}}
+                onClick={handleAdd}
             />
 
             <TableToolbar

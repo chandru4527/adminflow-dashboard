@@ -143,7 +143,7 @@ const EmptyState = ({
             role="status"
             aria-live="polite"
             className={twMerge(
-                "flex w-full flex-col items-center justify-center rounded-xl text-center",
+                "flex w-full flex-col items-center justify-center rounded-md text-center",
                 currentSize.container,
                 currentVariant.container,
                 className
