@@ -25,6 +25,7 @@ import About from "../pages/About";
 
 // not found
 import NotFound from "../pages/notFound/NotFound";
+import Orders from "../pages/Orders";
 
 const Routers = createBrowserRouter([
     {
@@ -76,10 +77,18 @@ const Routers = createBrowserRouter([
                         },
                     },
                     {
+                        path: "orders",
+                        element: <Orders />,
+                        handle: {
+                            title: "Orders Management",
+                        },
+                    }
+                    ,
+                    {
                         path: "revenue",
                         element: <Revenue />,
                         handle: {
-                            title: "Users Management",
+                            title: "Revenue Management",
                         },
                     },
                     {

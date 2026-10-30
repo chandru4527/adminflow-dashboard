@@ -1,6 +1,7 @@
 import {
-    MdDashboard, MdGroup, MdSell, MdShoppingCart, MdPerson, MdAnalytics, MdSettings,
+    MdDashboard, MdGroup, MdShoppingCart, MdPerson, MdAnalytics, MdSettings,
     MdInfoOutline, MdNotifications, MdViewCarousel, MdCurrencyRupee,
+    MdInventory2,
 } from "react-icons/md";
 
 const menuItems = [
@@ -21,7 +22,7 @@ const menuItems = [
     },
     {
         label: "Products",
-        icon: MdSell,
+        icon: MdInventory2,
         path: "/admin/products",
     },
     {

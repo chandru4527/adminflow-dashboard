@@ -34,9 +34,7 @@ const Products = () => {
 
     const { openModal, closeModal, setActionLoading } = useModalStore();
 
-
     const { data: products = [], isLoading, isError, refetch, isFetching, } = useProducts();
-
     const { data: categories = [] } = useCategories();
 
     const PAGE_SIZE = 10;
