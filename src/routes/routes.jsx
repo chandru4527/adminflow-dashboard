@@ -14,8 +14,10 @@ import Login from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
 import Users from "../pages/Users";
 import Products from "../pages/Products";
-
+import Orders from "../pages/Orders";
 import Revenue from "../pages/Revenue";
+import Transactions from "../pages/Transactions";
+import Refunds from "../pages/Refunds";
 import Analytics from "../pages/Analytics";
 import Banners from "../pages/Banners";
 import Notifications from "../pages/Notifications";
@@ -25,7 +27,6 @@ import About from "../pages/About";
 
 // not found
 import NotFound from "../pages/notFound/NotFound";
-import Orders from "../pages/Orders";
 
 const Routers = createBrowserRouter([
     {
@@ -82,11 +83,24 @@ const Routers = createBrowserRouter([
                         handle: {
                             title: "Orders Management",
                         },
-                    }
-                    ,
+                    },
                     {
                         path: "revenue",
                         element: <Revenue />,
+                        handle: {
+                            title: "Revenue Management",
+                        },
+                    },
+                    {
+                        path: "transactions",
+                        element: <Transactions />,
+                        handle: {
+                            title: "Revenue Management",
+                        },
+                    },
+                    {
+                        path: "refunds",
+                        element: <Refunds />,
                         handle: {
                             title: "Revenue Management",
                         },

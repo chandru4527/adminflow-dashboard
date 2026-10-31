@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
 // icons
-import { MdDashboard, MdClose, MdExpandMore, MdGroup, MdPerson, MdSell, MdShoppingCart, } from "react-icons/md";
+import { MdClose, MdExpandMore, } from "react-icons/md";
 
 // components
 import Image from '../components/media/Image';
@@ -100,7 +100,7 @@ const AdminSidebar = () => {
             <Image
               src={showText ? mainLogo : miniLogo}
               alt="logo"
-              className={`object-contain ${showText ? "h-16 w-auto max-w-44 rounded" : "h-10 w-10"
+              className={`object-contain ${showText ? "h-7  rounded" : "h-10"
                 }`}
             />
           </NavLink>

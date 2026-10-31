@@ -32,7 +32,7 @@ import useModalStore from "../store/modalStore";
 const Users = () => {
 
   const { openModal, closeModal, setActionLoading } = useModalStore();
-  const { data: users = [], isLoading, isError, refetch } = useUsers();
+  const { data: users = [], isLoading, isError, refetch, isFetching } = useUsers();
 
   const PAGE_SIZE = 10;
 
@@ -272,11 +272,11 @@ const Users = () => {
     <div className="space-y-5">
 
       <PageHeader
-        title="Users Management"
+        title="Users"
         titleIcon={MdGroup}
         description="View, search, and manage all registered users in your application."
         onRefresh={refetch}
-        refreshLoading={isLoading}
+        refreshLoading={isFetching}
       />
 
       <TableToolbar

@@ -1,0 +1,164 @@
+{
+    "summary": {
+        "totalUsers": 1250,
+        "activeUsers": 1080,
+        "inactiveUsers": 170,
+        "totalProducts": 350,
+        "totalOrders": 820,
+        "cancelledOrders": 50,
+        "totalRevenue": 583750,
+        "totalTransactions": 1250
+    },
+    "monthlyRevenue": [
+        {
+            "month": "Jan",
+            "revenue": 25000
+        },
+        {
+            "month": "Feb",
+            "revenue": 32000
+        },
+        {
+            "month": "Mar",
+            "revenue": 28000
+        },
+        {
+            "month": "Apr",
+            "revenue": 41000
+        },
+        {
+            "month": "May",
+            "revenue": 35000
+        },
+        {
+            "month": "Jun",
+            "revenue": 48000
+        },
+        {
+            "month": "Jul",
+            "revenue": 39000
+        },
+        {
+            "month": "Aug",
+            "revenue": 52000
+        },
+        {
+            "month": "Sep",
+            "revenue": 45000
+        },
+        {
+            "month": "Oct",
+            "revenue": 58000
+        },
+        {
+            "month": "Nov",
+            "revenue": 42000
+        },
+        {
+            "month": "Dec",
+            "revenue": 138750
+        }
+    ],
+    "monthlyOrders": [
+        {
+            "month": "Jan",
+            "orders": 45
+        },
+        {
+            "month": "Feb",
+            "orders": 60
+        },
+        {
+            "month": "Mar",
+            "orders": 55
+        },
+        {
+            "month": "Apr",
+            "orders": 75
+        },
+        {
+            "month": "May",
+            "orders": 68
+        },
+        {
+            "month": "Jun",
+            "orders": 90
+        },
+        {
+            "month": "Jul",
+            "orders": 82
+        },
+        {
+            "month": "Aug",
+            "orders": 105
+        },
+        {
+            "month": "Sep",
+            "orders": 95
+        },
+        {
+            "month": "Oct",
+            "orders": 120
+        },
+        {
+            "month": "Nov",
+            "orders": 65
+        },
+        {
+            "month": "Dec",
+            "orders": 60
+        }
+    ],
+    "paymentStatus": [
+        {
+            "name": "Success",
+            "value": 1180
+        },
+        {
+            "name": "Pending",
+            "value": 45
+        },
+        {
+            "name": "Failed",
+            "value": 25
+        }
+    ],
+    "recentOrders": [],
+    "recentActivities": [
+        {
+            "id": 1,
+            "title": "New user registered",
+            "description": "A new customer joined the platform.",
+            "time": "2026-10-30T09:30:00",
+            "type": "user"
+        },
+        {
+            "id": 2,
+            "title": "New order received",
+            "description": "A new customer order was placed.",
+            "time": "2026-10-30T09:15:00",
+            "type": "order"
+        },
+        {
+            "id": 3,
+            "title": "Payment received",
+            "description": "A customer payment was successfully received.",
+            "time": "2026-10-30T08:45:00",
+            "type": "payment"
+        },
+        {
+            "id": 4,
+            "title": "New product added",
+            "description": "A new product was added to the store.",
+            "time": "2026-10-29T17:30:00",
+            "type": "product"
+        },
+        {
+            "id": 5,
+            "title": "Order delivered",
+            "description": "A customer order was successfully delivered.",
+            "time": "2026-10-29T15:20:00",
+            "type": "delivery"
+        }
+    ]
+}
