@@ -13,6 +13,7 @@ import Login from "../pages/Login";
 // pages
 import Dashboard from "../pages/Dashboard";
 import Users from "../pages/Users";
+import SubAdmins from "../pages/SubAdmins";
 import Products from "../pages/Products";
 import Orders from "../pages/Orders";
 import Revenue from "../pages/Revenue";
@@ -66,6 +67,13 @@ const Routers = createBrowserRouter([
                     {
                         path: "users",
                         element: <Users />,
+                        handle: {
+                            title: "Users Management",
+                        },
+                    },
+                    {
+                        path: "sub-admins",
+                        element: <SubAdmins />,
                         handle: {
                             title: "Users Management",
                         },

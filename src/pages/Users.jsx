@@ -142,10 +142,10 @@ const Users = () => {
     {
       key: "name",
       header: "Name",
+      minWidth: "120px",
       render: (row) => (
         <p className="font-semibold text-slate-800">{row.name}</p>
       ),
-      minWidth: "120px",
     },
     {
       key: "email",

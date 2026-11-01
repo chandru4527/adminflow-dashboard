@@ -1,0 +1,225 @@
+{
+    "summary": {
+        "totalRevenue": 583750,
+        "totalTransactions": 1250,
+        "successfulPayments": 1180,
+        "pendingPayments": 45,
+        "failedPayments": 25,
+        "refundedAmount": 18500,
+        "averageTransaction": 467,
+        "totalTax": 42500
+    },
+    "monthlyRevenue": [
+        {
+            "month": "Jan",
+            "revenue": 25000
+        },
+        {
+            "month": "Feb",
+            "revenue": 32000
+        },
+        {
+            "month": "Mar",
+            "revenue": 28000
+        },
+        {
+            "month": "Apr",
+            "revenue": 41000
+        },
+        {
+            "month": "May",
+            "revenue": 35000
+        },
+        {
+            "month": "Jun",
+            "revenue": 48000
+        },
+        {
+            "month": "Jul",
+            "revenue": 39000
+        },
+        {
+            "month": "Aug",
+            "revenue": 52000
+        },
+        {
+            "month": "Sep",
+            "revenue": 45000
+        },
+        {
+            "month": "Oct",
+            "revenue": 58000
+        },
+        {
+            "month": "Nov",
+            "revenue": 42000
+        },
+        {
+            "month": "Dec",
+            "revenue": 138750
+        }
+    ],
+    "paymentStatus": [
+        {
+            "name": "Success",
+            "value": 1180
+        },
+        {
+            "name": "Pending",
+            "value": 45
+        },
+        {
+            "name": "Failed",
+            "value": 25
+        }
+    ],
+    "paymentMethods": [
+        {
+            "name": "UPI",
+            "transactions": 580,
+            "amount": 245000
+        },
+        {
+            "name": "Credit Card",
+            "transactions": 250,
+            "amount": 135000
+        },
+        {
+            "name": "Debit Card",
+            "transactions": 180,
+            "amount": 85000
+        },
+        {
+            "name": "Net Banking",
+            "transactions": 140,
+            "amount": 73500
+        },
+        {
+            "name": "Wallet",
+            "transactions": 100,
+            "amount": 45250
+        }
+    ],
+    "recentTransactions": [
+        {
+            "id": 1,
+            "transactionId": "TXN-2026-1001",
+            "orderId": "ORD-2026-5001",
+            "customerName": "Arun Kumar",
+            "customerEmail": "arun@example.com",
+            "paymentMethod": "UPI",
+            "paymentProvider": "Google Pay",
+            "amount": 2500,
+            "paymentStatus": "Success",
+            "transactionDate": "2026-10-30T09:30:00"
+        },
+        {
+            "id": 2,
+            "transactionId": "TXN-2026-1002",
+            "orderId": "ORD-2026-5002",
+            "customerName": "Rahul Sharma",
+            "customerEmail": "rahul@example.com",
+            "paymentMethod": "Credit Card",
+            "paymentProvider": "Visa",
+            "amount": 1800,
+            "paymentStatus": "Pending",
+            "transactionDate": "2026-10-30T09:15:00"
+        },
+        {
+            "id": 3,
+            "transactionId": "TXN-2026-1003",
+            "orderId": "ORD-2026-5003",
+            "customerName": "Priya Kumar",
+            "customerEmail": "priya@example.com",
+            "paymentMethod": "Net Banking",
+            "paymentProvider": "HDFC Bank",
+            "amount": 3200,
+            "paymentStatus": "Failed",
+            "transactionDate": "2026-10-30T08:45:00"
+        },
+        {
+            "id": 4,
+            "transactionId": "TXN-2026-1004",
+            "orderId": "ORD-2026-5004",
+            "customerName": "Vijay Kumar",
+            "customerEmail": "vijay@example.com",
+            "paymentMethod": "Debit Card",
+            "paymentProvider": "Mastercard",
+            "amount": 4500,
+            "paymentStatus": "Success",
+            "transactionDate": "2026-10-29T17:30:00"
+        },
+        {
+            "id": 5,
+            "transactionId": "TXN-2026-1005",
+            "orderId": "ORD-2026-5005",
+            "customerName": "Sneha Raj",
+            "customerEmail": "sneha@example.com",
+            "paymentMethod": "UPI",
+            "paymentProvider": "PhonePe",
+            "amount": 1200,
+            "paymentStatus": "Success",
+            "transactionDate": "2026-10-29T15:20:00"
+        },
+        {
+            "id": 6,
+            "transactionId": "TXN-2026-1006",
+            "orderId": "ORD-2026-5006",
+            "customerName": "Karthik Raj",
+            "customerEmail": "karthik@example.com",
+            "paymentMethod": "Wallet",
+            "paymentProvider": "Paytm",
+            "amount": 2800,
+            "paymentStatus": "Success",
+            "transactionDate": "2026-10-29T14:10:00"
+        },
+        {
+            "id": 7,
+            "transactionId": "TXN-2026-1007",
+            "orderId": "ORD-2026-5007",
+            "customerName": "Divya S",
+            "customerEmail": "divya@example.com",
+            "paymentMethod": "Credit Card",
+            "paymentProvider": "Visa",
+            "amount": 3500,
+            "paymentStatus": "Success",
+            "transactionDate": "2026-10-28T11:45:00"
+        },
+        {
+            "id": 8,
+            "transactionId": "TXN-2026-1008",
+            "orderId": "ORD-2026-5008",
+            "customerName": "Manoj Kumar",
+            "customerEmail": "manoj@example.com",
+            "paymentMethod": "UPI",
+            "paymentProvider": "Google Pay",
+            "amount": 950,
+            "paymentStatus": "Pending",
+            "transactionDate": "2026-10-28T10:30:00"
+        },
+        {
+            "id": 9,
+            "transactionId": "TXN-2026-1009",
+            "orderId": "ORD-2026-5009",
+            "customerName": "Nithya R",
+            "customerEmail": "nithya@example.com",
+            "paymentMethod": "Debit Card",
+            "paymentProvider": "RuPay",
+            "amount": 2100,
+            "paymentStatus": "Success",
+            "transactionDate": "2026-10-27T16:20:00"
+        },
+        {
+            "id": 10,
+            "transactionId": "TXN-2026-1010",
+            "orderId": "ORD-2026-5010",
+            "customerName": "Suresh B",
+            "customerEmail": "suresh@example.com",
+            "paymentMethod": "Net Banking",
+            "paymentProvider": "SBI",
+            "amount": 1750,
+            "paymentStatus": "Failed",
+            "transactionDate": "2026-10-27T12:15:00"
+        }
+    ]
+}

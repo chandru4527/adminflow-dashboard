@@ -1,7 +1,8 @@
+// icons
 import {
-    MdDashboard, MdGroup, MdShoppingCart, MdPerson, MdAnalytics, MdSettings,
-    MdInfoOutline, MdNotifications, MdViewCarousel, MdCurrencyRupee,
-    MdInventory2,
+    MdDashboard, MdGroup, MdShoppingCart, MdPerson, MdCategory, MdSettings, MdInfoOutline,
+    MdNotifications, MdViewCarousel, MdCurrencyRupee, MdInventory2,
+
 } from "react-icons/md";
 
 const menuItems = [
@@ -17,6 +18,10 @@ const menuItems = [
             {
                 path: "/admin/users",
                 label: "Users",
+            },
+            {
+                path: "/admin/sub-admins",
+                label: "Sub-Admins",
             },
         ],
     },
@@ -49,8 +54,8 @@ const menuItems = [
         ],
     },
     {
-        label: "Analytics",
-        icon: MdAnalytics,
+        label: "Masters",
+        icon: MdCategory,
         path: "/admin/analytics",
     },
     {
