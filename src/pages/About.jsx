@@ -2,7 +2,8 @@ import React from "react";
 
 // icons
 import {
-    MdInfoOutline, MdApps, MdCode, MdPerson, MdCopyright, MdVerified, MdLanguage, MdStorage, MdAccountTree, MdDashboard,
+    MdInfoOutline, MdApps, MdCode, MdPerson, MdCopyright, MdVerified, MdLanguage, MdStorage,
+    MdAccountTree, MdDashboard,
 } from "react-icons/md";
 
 // components

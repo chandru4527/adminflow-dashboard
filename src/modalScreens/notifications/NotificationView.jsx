@@ -5,6 +5,7 @@ import { MdNotifications, MdPeople, MdSchedule, MdEmail, MdCheckCircle, MdError 
 import Badge from "../../components/Badge";
 
 const NotificationView = ({ data }) => {
+    
     const isSent = data?.isSent;
 
     const details = [

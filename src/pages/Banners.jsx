@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { useDebounce } from "use-debounce";
 
 // Icons
@@ -6,6 +6,7 @@ import { MdAdd, MdViewCarousel } from "react-icons/md";
 
 // Components
 import Image from "../components/media/Image";
+import Button from "../components/Button";
 import PageHeader from "../components/PageHeader";
 import Switch from "../components/forms/Switch";
 import TableToolbar from "../components/table/TableToolbar";
@@ -30,7 +31,7 @@ import { toastify } from "../utils/toastify";
 const Banners = () => {
 
     const { openModal, closeModal, setActionLoading } = useModalStore();
-    const { data: banners = [], isLoading, isError } = useBanners();
+    const { data: banners = [], isLoading, isError, isFetching, refetch } = useBanners();
 
     const PAGE_SIZE = 10;
 
@@ -218,18 +219,20 @@ const Banners = () => {
     ];
 
     // Search and filter banners
-    const filteredBanners = banners.filter((banner) => {
-        const matchesSearch = banner.title
-            .toLowerCase()
-            .includes(debouncedSearch.toLowerCase());
+    const filteredBanners = useMemo(() => {
+        return (banners || []).filter((banner) => {
+            const matchesSearch = banner.title
+                ?.toLowerCase()
+                .includes(debouncedSearch.trim().toLowerCase());
 
-        const matchesStatus =
-            !filterValues.status ||
-            (filterValues.status === "active" && banner.isActive) ||
-            (filterValues.status === "inactive" && !banner.isActive);
+            const matchesStatus =
+                !filterValues.status ||
+                (filterValues.status === "active" && banner.isActive) ||
+                (filterValues.status === "inactive" && !banner.isActive);
 
-        return matchesSearch && matchesStatus;
-    });
+            return matchesSearch && matchesStatus;
+        });
+    }, [banners, debouncedSearch, filterValues.status]);
 
     const totalPages = Math.max(1, Math.ceil(filteredBanners.length / pageSize));
 
@@ -239,9 +242,22 @@ const Banners = () => {
 
     if (isError) {
         return (
-            <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-600">
-                Failed to load banners. Please try again.
-            </div>
+            <EmptyState
+                icon={MdViewCarousel}
+                variant='minimal'
+                title="Failed to Load Banners"
+                description="Something went wrong while fetching Banners records. Please try again."
+                size="md"
+                action={
+                    <Button
+                        type="button"
+                        variant="themeDark"
+                        onClick={refetch}
+                        disabled={isFetching}
+                        text={isFetching ? "Retrying..." : "Try Again"}
+                    />
+                }
+            />
         );
     }
 
@@ -252,10 +268,14 @@ const Banners = () => {
                 titleIcon={MdViewCarousel}
                 title="Banners"
                 description="Manage promotional banners displayed on your platform."
+
                 actionLabel="New Banner"
                 actionIcon={MdAdd}
                 actionVariant="theme"
                 onClick={handleAddBanner}
+
+                onRefresh={refetch}
+                refreshLoading={isLoading || isFetching}
             />
 
             <TableToolbar

@@ -1,19 +1,23 @@
 import React from "react";
-import {
-    MdImage,
-    MdCalendarMonth,
-    MdCheckCircle,
-    MdCancel,
-    MdDescription,
-    MdSchedule,
-    MdViewCarousel,
-} from "react-icons/md";
+
+// icons
+import { MdCalendarMonth, MdCheckCircle, MdCancel, MdDescription, MdSchedule, MdViewCarousel, } from "react-icons/md";
 
 // Components
 import Badge from "../../components/Badge";
 import Image from "../../components/media/Image";
+import EmptyState from "../../components/EmptyState";
 
 const BannerView = ({ data }) => {
+
+    if (!data) return (
+        <EmptyState
+            icon={MdViewCarousel}
+            variant="minimal"
+            title="No Banners Found"
+            description="No banners are available. Try adjusting your search or add a new banner."
+        />
+    )
 
     const isActive = data?.isActive;
 
@@ -34,6 +38,7 @@ const BannerView = ({ data }) => {
 
     return (
         <div className="space-y-5">
+
             <div className="relative overflow-hidden rounded-md border border-gray-200 bg-gray-50">
                 <Image
                     src={data?.bannerUrl}
@@ -124,6 +129,7 @@ const BannerView = ({ data }) => {
                     </p>
                 </div>
             </div>
+            
         </div>
     );
 };

@@ -35,7 +35,6 @@ const SendNotificationForm = ({ formId }) => {
 
             await new Promise((resolve) => setTimeout(resolve, 1000));
 
-            console.log("Notification submitted:", data);
             toastify.success("Notification sent successfully!");
             closeModal();
         } catch (error) {

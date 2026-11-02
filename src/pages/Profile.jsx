@@ -1,9 +1,10 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
 
+// icons
 import {
-       MdEdit, MdEmail, MdLocationOn, MdPerson, MdPhone, MdCalendarToday, MdBadge,
-       MdVerifiedUser, MdLogout, MdLockReset, MdLock
+  MdEdit, MdEmail, MdLocationOn, MdPerson, MdPhone, MdCalendarToday, MdBadge,
+  MdVerifiedUser, MdLogout, MdLockReset, MdLock
 } from 'react-icons/md';
 
 // components
@@ -14,9 +15,9 @@ import Container from '../components/Container';
 import Badge from "../components/Badge";
 
 // modal screens
-import Confirmation from "../modalScreens/Confirmation";
-import ChangePassword from '../modalScreens/profile/ChangePassword';
 import EditProfile from '../modalScreens/profile/EditProfile';
+import ChangePassword from '../modalScreens/profile/ChangePassword';
+import Confirmation from "../modalScreens/Confirmation";
 
 // store
 import useModalStore from '../store/modalStore';
@@ -35,17 +36,51 @@ const Profile = () => {
   const { user: admin, logout } = useAuthStore();
 
   const personalDetails = [
-    { label: "Full Name", value: admin?.name || "Not provided", icon: MdPerson, iconBg: "bg-blue-50", iconColor: "text-blue-600" },
-    { label: "Username", value: admin?.userName || "Not provided", icon: MdPerson, iconBg: "bg-violet-50", iconColor: "text-violet-600" },
-    { label: "Email Address", value: admin?.email || "Not provided", icon: MdEmail, iconBg: "bg-emerald-50", iconColor: "text-emerald-600" },
-    { label: "Mobile Number", value: admin?.mobile || "Not provided", icon: MdPhone, iconBg: "bg-amber-50", iconColor: "text-amber-600" },
-    { label: "Member Since", value: admin?.createdAt ? formatDate(admin.createdAt) : "Not available", icon: MdCalendarToday, iconBg: "bg-purple-50", iconColor: "text-purple-600" },
-    { label: "Address", value: admin?.address || "Not provided", icon: MdLocationOn, iconBg: "bg-rose-50", iconColor: "text-rose-600" },
+    {
+      label: "Full Name",
+      value: admin?.name || "Not provided",
+      icon: MdPerson, iconBg: "bg-blue-50",
+      iconColor: "text-blue-600"
+    },
+    {
+      label: "Username",
+      value: admin?.userName || "Not provided",
+      icon: MdPerson,
+      iconBg: "bg-violet-50",
+      iconColor: "text-violet-600"
+    },
+    {
+      label: "Email Address",
+      value: admin?.email || "Not provided",
+      icon: MdEmail,
+      iconBg: "bg-emerald-50",
+      iconColor: "text-emerald-600"
+    },
+    {
+      label: "Mobile Number",
+      value: admin?.mobile || "Not provided",
+      icon: MdPhone,
+      iconBg: "bg-amber-50",
+      iconColor: "text-amber-600"
+    },
+    {
+      label: "Member Since",
+      value: admin?.createdAt ? formatDate(admin.createdAt) : "Not available",
+      icon: MdCalendarToday,
+      iconBg: "bg-purple-50",
+      iconColor: "text-purple-600"
+    },
+    {
+      label: "Address",
+      value: admin?.address || "Not provided",
+      icon: MdLocationOn,
+      iconBg: "bg-rose-50",
+      iconColor: "text-rose-600"
+    },
   ];
 
   // edit profile
   const handleEditProfile = () => {
-
     const formId = 'edit-profile-form'
     openModal({
       title: "Edit Profile",
@@ -75,7 +110,6 @@ const Profile = () => {
         variant: "themeDark",
         loadingText: "Saving Changes...",
       }
-
     });
   };
 
@@ -106,7 +140,7 @@ const Profile = () => {
             setActionLoading(false);
             toastify.success("Logged out successfully!");
             navigate("/login", { replace: true });
-          }, 1500)
+          }, 1000)
 
         },
       },
@@ -121,6 +155,7 @@ const Profile = () => {
         title="Admin Profile"
         titleIcon={MdPerson}
         description="View and update your profile information and account details."
+
         onClick={handleEditProfile}
         actionLabel='Edit profile'
         actionVariant="theme"
@@ -131,7 +166,7 @@ const Profile = () => {
 
         {/* Admin Profile Overview */}
         <Container className="flex h-full min-w-0 rounded-md border border-gray-200 bg-white p-5 shadow-sm sm:p-6">
-          <div className="flex flex-1 flex-row items-center gap-4 sm:gap-5 lg:flex-col lg:justify-center lg:gap-2">
+          <div className="flex flex-1 flex-row items-center gap-4 sm:gap-5 md:flex-col lg:justify-center lg:gap-2">
             <div className="flex h-30 w-30 shrink-0 items-center justify-center overflow-hidden rounded-xl border-4 border-white bg-gray-100 shadow-md ring-1 ring-gray-200 sm:h-32 sm:w-32 lg:h-40 lg:w-40">
               {admin?.profileImage ? (
                 <Image

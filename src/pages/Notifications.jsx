@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { useDebounce } from "use-debounce";
 
 // icons
@@ -8,14 +8,15 @@ import { MdAdd, MdNotifications } from 'react-icons/md'
 import PageHeader from '../components/PageHeader';
 import EmptyState from "../components/EmptyState";
 import Badge from '../components/Badge';
+import Button from '../components/Button';
 import TableToolbar from '../components/table/TableToolbar';
 import Table from '../components/table/Table';
 import TableActionButtons from '../components/table/TableActionButtons';
 
 // modal screens
-import Confirmation from "../modalScreens/Confirmation";
 import SendNotificationForm from '../modalScreens/notifications/SendNotificationForm';
 import NotificationView from '../modalScreens/notifications/NotificationView';
+import Confirmation from "../modalScreens/Confirmation";
 
 // hook
 import { useNotifications } from '../hooks/useNotifications';
@@ -30,7 +31,7 @@ const Notifications = () => {
 
     const { openModal, closeModal, setActionLoading } = useModalStore();
 
-    const { data, isLoading } = useNotifications();
+    const { data, isLoading, isError,refetch,isFetching } = useNotifications();
 
     const [searchValues, setSearchValues] = useState({
         title: "",
@@ -62,22 +63,24 @@ const Notifications = () => {
         setPage(1);
     };
 
-    const filteredNotifications = (data || []).filter((notification) => {
-        const matchesTitle = notification.title
-            ?.toLowerCase()
-            .includes(debouncedSearch.trim().toLowerCase());
+    const filteredNotifications = useMemo(() => {
+        return (data || []).filter((notification) => {
+            const matchesTitle = notification.title
+                ?.toLowerCase()
+                .includes(debouncedSearch.trim().toLowerCase());
 
-        const matchesStatus =
-            !filterValues.status ||
-            (filterValues.status === "sent" && notification.isSent === true) ||
-            (filterValues.status === "failed" && notification.isSent === false);
+            const matchesStatus =
+                !filterValues.status ||
+                (filterValues.status === "sent" && notification.isSent === true) ||
+                (filterValues.status === "failed" && notification.isSent === false);
 
-        const matchesChannel =
-            !filterValues.channel ||
-            notification.channel?.toLowerCase() === filterValues.channel;
+            const matchesChannel =
+                !filterValues.channel ||
+                notification.channel?.toLowerCase() === filterValues.channel.toLowerCase();
 
-        return matchesTitle && matchesStatus && matchesChannel;
-    });
+            return matchesTitle && matchesStatus && matchesChannel;
+        });
+    }, [data, debouncedSearch, filterValues.status, filterValues.channel]);
 
     // send notification
     const handleSendNotification = () => {
@@ -132,6 +135,28 @@ const Notifications = () => {
             },
         });
     };
+
+    // Error state
+    if (isError) {
+        return (
+            <EmptyState
+                icon={MdNotifications}
+                variant='minimal'
+                title="Failed to Load Notifications"
+                description="Something went wrong while fetching Notifications records. Please try again."
+                size="md"
+                action={
+                    <Button
+                        type="button"
+                        variant="themeDark"
+                        onClick={refetch}
+                        disabled={isFetching}
+                        text={isFetching ? "Retrying..." : "Try Again"}
+                    />
+                }
+            />
+        );
+    }
 
     // columns
     const columns = [
@@ -198,6 +223,7 @@ const Notifications = () => {
                 title="Notifications"
                 titleIcon={MdNotifications}
                 description="Send announcements and important updates to your users."
+
                 actionLabel="New Notification"
                 actionIcon={MdAdd}
                 actionVariant="theme"

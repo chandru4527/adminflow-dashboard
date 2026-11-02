@@ -50,7 +50,7 @@ const EmptyState = ({
         },
         md: {
             container: "px-6 py-6",
-            icon: 56,
+            icon: 50,
             iconWrapper: "mb-4",
             title: "text-lg",
             description: "text-sm",
@@ -58,7 +58,7 @@ const EmptyState = ({
         },
         lg: {
             container: "px-8 py-10",
-            icon: 72,
+            icon: 62,
             iconWrapper: "mb-5",
             title: "text-xl",
             description: "text-base",

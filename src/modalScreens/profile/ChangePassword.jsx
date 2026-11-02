@@ -1,4 +1,6 @@
 import React, { memo } from "react";
+
+// icons
 import { MdLock } from "react-icons/md";
 
 // form
@@ -51,7 +53,6 @@ const ChangePassword = memo(({ formId }) => {
       setActionLoading(false);
       toastify.success("Password changed successfully!");
     }, 1500)
-    console.log(data);
   };
 
   return (

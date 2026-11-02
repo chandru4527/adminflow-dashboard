@@ -53,12 +53,10 @@ const profileSchema = z.object({
 });
 
 const EditProfile = memo(({ user, formId }) => {
-    console.log(user);
 
     const { closeModal, setActionLoading } = useModalStore();
 
     const [selectedImage, setSelectedImage] = useState(null);
-
 
     const { register, handleSubmit, formState: { errors }, } = useForm({
         resolver: zodResolver(profileSchema),
