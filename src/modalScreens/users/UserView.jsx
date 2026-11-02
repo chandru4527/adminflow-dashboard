@@ -12,12 +12,9 @@ import Image from "../../components/media/Image";
 import EmptyState from '../../components/EmptyState';
 
 // utils
-import { formatDate } from '../../utils/formatters'
-
+import { formatDate } from '../../utils/formatters';
 
 const UserView = ({ user }) => {
-
-  console.log("view", user);
 
   if (!user) {
     return (
@@ -107,7 +104,7 @@ const UserView = ({ user }) => {
   ];
 
   return (
-    <div className="mx-auto w-full max-w-4xl overflow-hidden">
+    <div className="mx-auto overflow-hidden">
 
       {/* Profile Header */}
       <div className="relative border-b border-gray-100 bg-linear-to-r from-blue-50 via-blue-50 to-blue-100 
@@ -193,7 +190,7 @@ const UserView = ({ user }) => {
           })}
         </div>
       </div>
-      
+
     </div>
   );
 }

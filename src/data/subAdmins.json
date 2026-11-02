@@ -1,0 +1,87 @@
+[
+    {
+        "id": 1,
+        "name": "Ishita",
+        "email": "ishita@example.com",
+        "username": "ishita",
+        "mobile": "9876501237",
+        "profilePicture": "https://i.pravatar.cc/150?img=45",
+        "role": "sub-admin",
+        "isActive": true,
+        "isVerified": true,
+        "permissions": [
+            "orders",
+            "refunds"
+        ],
+        "createdAt": "2026-02-10T12:30:00"
+    },
+    {
+        "id": 2,
+        "name": "Chandru",
+        "email": "chandru@example.com",
+        "username": "chandru4527",
+        "mobile": "9876501234",
+        "profilePicture": "https://res.cloudinary.com/dyiuqcqg2/image/upload/v1792065096/uploads/krp2m9zlevlrzj2pvbvt.jpg",
+        "role": "sub-admin",
+        "isActive": true,
+        "isVerified": true,
+        "permissions": [
+            "users",
+            "products",
+            "orders"
+        ],
+        "createdAt": "2026-01-10T09:30:00"
+    },
+    {
+        "id": 3,
+        "name": "CK",
+        "email": "ck@example.com",
+        "username": "kavyanair",
+        "mobile": "9876501235",
+        "profilePicture": "https://res.cloudinary.com/dyiuqcqg2/image/upload/v1792776405/uploads/xifwh691hddaydbfscak.jpg",
+        "role": "sub-admin",
+        "isActive": true,
+        "isVerified": false,
+        "permissions": [
+            "users",
+            "reports",
+            "analytics"
+        ],
+        "createdAt": "2026-01-15T10:15:00"
+    },
+    {
+        "id": 4,
+        "name": "Sung Jin-Woo",
+        "email": "jinwoo@example.com",
+        "username": "shadowjinwoo",
+        "mobile": "9876501236",
+        "profilePicture": "https://res.cloudinary.com/dyiuqcqg2/image/upload/v1793452814/Gemini_Generated_Image_oavsun.png",
+        "role": "sub-admin",
+        "isActive": false,
+        "isVerified": false,
+        "permissions": [
+            "products",
+            "categories"
+        ],
+        "dob": "1994-02-18",
+        "createdAt": "2026-02-02T11:00:00"
+    },
+    {
+        "id": 5,
+        "name": "Yumiko",
+        "email": "yumiko@example.com",
+        "username": "yumiko",
+        "mobile": "9876501238",
+        "profilePicture": "https://res.cloudinary.com/dyiuqcqg2/image/upload/v1793452104/anime_girl_ahjmdl.avif",
+        "role": "sub-admin",
+        "isActive": true,
+        "isVerified": true,
+        "permissions": [
+            "users",
+            "orders",
+            "masters"
+        ],
+        "dob": "1993-06-14",
+        "createdAt": "2026-02-18T09:45:00"
+    }
+]

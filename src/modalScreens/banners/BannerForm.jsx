@@ -33,7 +33,6 @@ const BannerForm = ({ data = null, mode = "add", formId }) => {
 
     const onSubmit = (formData) => {
         setActionLoading(true);
-        console.log(formData);
 
         setTimeout(() => {
             if (mode === "edit") {

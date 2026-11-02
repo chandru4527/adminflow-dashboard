@@ -45,14 +45,15 @@ const Modal = () => {
             }
         };
 
-        if (isOpen) {
-            document.addEventListener("keydown", handleEscape);
-            document.body.style.overflow = "hidden";
-        }
+        if (!isOpen) return;
+
+        document.addEventListener("keydown", handleEscape);
+        const main = document.querySelector("main");
+        main.style.overflow = "hidden"
 
         return () => {
             document.removeEventListener("keydown", handleEscape);
-            document.body.style.overflow = "";
+            main.style.overflow = "";
         };
     }, [isOpen, action.loading, closeModal]);
 

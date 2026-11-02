@@ -55,8 +55,6 @@ const profileSchema = z.object({
 
 const UserForm = ({ user = null, formId }) => {
 
-  console.log(user);
-
   const { closeModal, setActionLoading } = useModalStore();
 
   const [selectedImage, setSelectedImage] = useState(null);

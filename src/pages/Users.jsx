@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { useDebounce } from "use-debounce";
 
 // Icons
@@ -28,6 +28,7 @@ import { formatPhoneNumber } from '../utils/formatters';
 
 // Store
 import useModalStore from "../store/modalStore";
+import Button from "../components/Button";
 
 const Users = () => {
 
@@ -230,41 +231,52 @@ const Users = () => {
   ];
 
   // Search and filter users
-  const filteredUsers = users.filter((user) => {
-    const matchesName = (user?.name || "")
-      .toLowerCase()
-      .includes(debouncedName.toLowerCase());
+  const filteredUsers = useMemo(() => {
+    return users.filter((user) => {
+      const matchesName = (user?.name || "")
+        .toLowerCase()
+        .includes(debouncedName.toLowerCase());
 
-    const matchesEmail = (user?.email || "")
-      .toLowerCase()
-      .includes(debouncedEmail.toLowerCase());
+      const matchesEmail = (user?.email || "")
+        .toLowerCase()
+        .includes(debouncedEmail.toLowerCase());
 
-    const matchesStatus =
-      !filterValues.status ||
-      (filterValues.status === "active" && user.isActive) ||
-      (filterValues.status === "inactive" && !user.isActive);
+      const matchesStatus =
+        !filterValues.status ||
+        (filterValues.status === "active" && user.isActive) ||
+        (filterValues.status === "inactive" && !user.isActive);
 
-    const matchesGender =
-      !filterValues.gender ||
-      user?.gender?.toLowerCase() === filterValues.gender;
+      const matchesGender =
+        !filterValues.gender ||
+        user?.gender?.toLowerCase() === filterValues.gender;
 
-    return matchesName && matchesEmail && matchesStatus && matchesGender;
-  });
+      return matchesName && matchesEmail && matchesStatus && matchesGender;
+    });
+  }, [users, debouncedName, debouncedEmail, filterValues.status, filterValues.gender]);
 
   const totalPages = Math.max(1, Math.ceil(filteredUsers.length / pageSize));
   const safePage = Math.min(currentPage, totalPages);
 
   const isResetDisabled =
-    !searchValues.name &&
-    !searchValues.email &&
-    !filterValues.status &&
-    !filterValues.gender;
+    !searchValues.name && !searchValues.email &&
+    !filterValues.status && !filterValues.gender;
 
   if (isError) {
     return (
-      <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-600">
-        Failed to load users. Please try again.
-      </div>
+      <EmptyState
+        icon={MdPerson}
+        variant="minimal"
+        title="No users found"
+        description="There are no users available at the moment."
+        action={
+          <Button
+            text="Retry"
+            variant="theme"
+            loading={isFetching}
+            onClick={refetch}
+          />
+        }
+      />
     );
   }
 
@@ -338,7 +350,7 @@ const Users = () => {
             variant="minimal"
             size="sm"
             title="No users found"
-            description="No users match your search or filter criteria. Try adjusting your filters."
+            description="No users match your search or filter criteria."
           />
         }
       />
