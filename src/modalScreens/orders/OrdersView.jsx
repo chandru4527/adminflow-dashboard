@@ -1,12 +1,16 @@
 import React from "react";
 
 // icons
-import { MdShoppingBag, MdPerson, MdLocationOn, MdPayment, MdLocalShipping, MdCalendarToday } from "react-icons/md";
+import {
+    MdShoppingBag, MdPerson, MdLocationOn, MdPayment, MdLocalShipping,
+    MdCalendarToday, MdShoppingCart
+} from "react-icons/md";
 
 // components
 import Badge from "../../components/Badge";
 import Image from '../../components/media/Image';
 import Container from "../../components/Container";
+import EmptyState from "../../components/EmptyState";
 
 // utils
 import { formatCurrency, formatDateTime } from '../../utils/formatters';
@@ -47,13 +51,14 @@ const Detail = ({ label, value }) => (
 );
 
 const OrdersView = ({ order }) => {
-    if (!order) {
-        return (
-            <div className="py-10 text-center text-sm text-gray-500">
-                No order details available.
-            </div>
-        );
-    }
+    if (!order) return (
+        <EmptyState
+            icon={MdShoppingCart}
+            variant="minimal"
+            title="No Order Found"
+            description="No Order are available right now."
+        />
+    )
 
     const address = order.shippingAddress;
     const items = order.items ?? [];

@@ -31,7 +31,7 @@ const Notifications = () => {
 
     const { openModal, closeModal, setActionLoading } = useModalStore();
 
-    const { data, isLoading, isError,refetch,isFetching } = useNotifications();
+    const { data, isLoading, isError, refetch, isFetching } = useNotifications();
 
     const [searchValues, setSearchValues] = useState({
         title: "",
@@ -228,6 +228,9 @@ const Notifications = () => {
                 actionIcon={MdAdd}
                 actionVariant="theme"
                 onClick={handleSendNotification}
+
+                onRefresh={refetch}
+                refreshLoading={isLoading || isFetching}
             />
 
             <TableToolbar
@@ -293,7 +296,6 @@ const Notifications = () => {
                     />
                 }
             />
-
 
         </div>
     )

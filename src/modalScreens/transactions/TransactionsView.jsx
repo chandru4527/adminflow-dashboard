@@ -3,29 +3,32 @@ import React from "react";
 // Icons
 import {
     MdReceiptLong, MdShoppingBag, MdPerson, MdEmail, MdPhone, MdCreditCard, MdAccountBalance,
-    MdCalendarToday, MdPayments, MdCheckCircle, MdError, MdInfo, MdCurrencyRupee, MdRefresh, MdDescription, MdTag,
+    MdCalendarToday, MdPayments, MdError, MdInfo, MdCurrencyRupee, MdRefresh, MdDescription,
 } from "react-icons/md";
 
 // Components
 import Badge from "../../components/Badge";
+import EmptyState from "../../components/EmptyState";
 
 // Utils
 import { formatCurrency, formatDateTime } from "../../utils/formatters";
 
 const TransactionsView = ({ Trans = {} }) => {
 
+    if (!Trans) return (
+        <EmptyState
+            icon={MdReceiptLong}
+            variant="minimal"
+            title="No Transactions Found"
+            description="No Transactions are available right now."
+        />
+    )
+
     const statusVariants = {
         Success: "success",
         Pending: "warning",
         Failed: "danger",
         Refunded: "info",
-    };
-
-    const statusIcons = {
-        Success: MdCheckCircle,
-        Pending: MdInfo,
-        Failed: MdError,
-        Refunded: MdRefresh,
     };
 
     const InfoItem = ({
@@ -353,7 +356,7 @@ const TransactionsView = ({ Trans = {} }) => {
                     </p>
                 </div>
             )}
-            
+
         </div>
     );
 };

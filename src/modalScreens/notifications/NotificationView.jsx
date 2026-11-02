@@ -1,11 +1,25 @@
 import React from "react";
+
+// icons
 import { MdNotifications, MdPeople, MdSchedule, MdEmail, MdCheckCircle, MdError } from "react-icons/md";
 
 // components
 import Badge from "../../components/Badge";
+import EmptyState from "../../components/EmptyState";
 
 const NotificationView = ({ data }) => {
-    
+
+    if (!data) {
+        return (
+            <EmptyState
+                icon={MdNotifications}
+                variant="minimal"
+                title="No Notification Found"
+                description="No banners are available. Try adjusting your search or add a new Notification."
+            />
+        );
+    }
+
     const isSent = data?.isSent;
 
     const details = [

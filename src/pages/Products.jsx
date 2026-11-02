@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { useDebounce } from "use-debounce";
 
 // Icons
@@ -7,6 +7,7 @@ import { MdAdd, MdInventory2, MdStar } from "react-icons/md";
 // Components
 import Avatar from "../components/Avatar";
 import Badge from "../components/Badge";
+import Button from "../components/Button";
 import Switch from "../components/forms/Switch";
 import PageHeader from "../components/PageHeader";
 import TableToolbar from "../components/table/TableToolbar";
@@ -312,31 +313,39 @@ const Products = () => {
     ];
 
     // Search and filter products
-    const filteredProducts = products.filter((product) => {
-        const matchesName = (product?.name || "")
-            .toLowerCase()
-            .includes(debouncedName.trim().toLowerCase());
+    const filteredProducts = useMemo(() => {
+        return (products || []).filter((product) => {
+            const matchesName = (product?.name || "")
+                .toLowerCase()
+                .includes(debouncedName.trim().toLowerCase());
 
-        const matchesBrand = (product?.brand || "")
-            .toLowerCase()
-            .includes(debouncedBrand.trim().toLowerCase());
+            const matchesBrand = (product?.brand || "")
+                .toLowerCase()
+                .includes(debouncedBrand.trim().toLowerCase());
 
-        const matchesCategory =
-            !filterValues.category ||
-            product?.category === filterValues.category;
+            const matchesCategory =
+                !filterValues.category ||
+                product?.category === filterValues.category;
 
-        const matchesStatus =
-            !filterValues.status ||
-            (filterValues.status === "active" && product?.isActive) ||
-            (filterValues.status === "inactive" && !product?.isActive);
+            const matchesStatus =
+                !filterValues.status ||
+                (filterValues.status === "active" && product?.isActive) ||
+                (filterValues.status === "inactive" && !product?.isActive);
 
-        return (
-            matchesName &&
-            matchesBrand &&
-            matchesCategory &&
-            matchesStatus
-        );
-    });
+            return (
+                matchesName &&
+                matchesBrand &&
+                matchesCategory &&
+                matchesStatus
+            );
+        });
+    }, [
+        products,
+        debouncedName,
+        debouncedBrand,
+        filterValues.category,
+        filterValues.status,
+    ]);
 
     const totalPages = Math.max(1, Math.ceil(filteredProducts.length / pageSize));
 
@@ -350,14 +359,28 @@ const Products = () => {
 
     if (isError) {
         return (
-            <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-600">
-                Failed to load products. Please try again.
-            </div>
+            <EmptyState
+                icon={MdInventory2}
+                variant='minimal'
+                title="Failed to Load Products"
+                description="Something went wrong while fetching Products. Please try again."
+                size="md"
+                action={
+                    <Button
+                        type="button"
+                        variant="themeDark"
+                        onClick={refetch}
+                        disabled={isFetching}
+                        text={isFetching ? "Retrying..." : "Try Again"}
+                    />
+                }
+            />
         );
     }
 
     return (
         <div className="space-y-5">
+
             <PageHeader
                 title="Products Management"
                 titleIcon={MdInventory2}

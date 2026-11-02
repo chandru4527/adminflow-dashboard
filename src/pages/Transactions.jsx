@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { useDebounce } from "use-debounce";
 
 // Icons
@@ -98,6 +98,27 @@ const Transactions = () => {
         });
     };
 
+    if (isError) {
+        return (
+            <EmptyState
+                icon={MdReceiptLong}
+                variant='minimal'
+                title="Failed to Load Transactions"
+                description="Something went wrong while fetching  Transactions. Please try again."
+                size="md"
+                action={
+                    <Button
+                        type="button"
+                        variant="themeDark"
+                        onClick={refetch}
+                        disabled={isFetching}
+                        text={isFetching ? "Retrying..." : "Try Again"}
+                    />
+                }
+            />
+        );
+    }
+
     const columns = [
         {
             key: "transactionId",
@@ -187,30 +208,38 @@ const Transactions = () => {
         },
     ];
 
-    const filteredTransactions = transactions.filter((transaction) => {
-        const matchesTransactionId = (transaction?.transactionId || "")
-            .toLowerCase()
-            .includes(debouncedTransactionId.trim().toLowerCase());
+    const filteredTransactions = useMemo(() => {
+        return (transactions || []).filter((transaction) => {
+            const matchesTransactionId = (transaction?.transactionId || "")
+                .toLowerCase()
+                .includes(debouncedTransactionId.trim().toLowerCase());
 
-        const matchesOrderId = (transaction?.orderId || "")
-            .toLowerCase()
-            .includes(debouncedOrderId.trim().toLowerCase());
+            const matchesOrderId = (transaction?.orderId || "")
+                .toLowerCase()
+                .includes(debouncedOrderId.trim().toLowerCase());
 
-        const matchesPaymentStatus =
-            !filterValues.paymentStatus ||
-            transaction?.paymentStatus === filterValues.paymentStatus;
+            const matchesPaymentStatus =
+                !filterValues.paymentStatus ||
+                transaction?.paymentStatus === filterValues.paymentStatus;
 
-        const matchesPaymentMethod =
-            !filterValues.paymentMethod ||
-            transaction?.paymentMethod === filterValues.paymentMethod;
+            const matchesPaymentMethod =
+                !filterValues.paymentMethod ||
+                transaction?.paymentMethod === filterValues.paymentMethod;
 
-        return (
-            matchesTransactionId &&
-            matchesOrderId &&
-            matchesPaymentStatus &&
-            matchesPaymentMethod
-        );
-    });
+            return (
+                matchesTransactionId &&
+                matchesOrderId &&
+                matchesPaymentStatus &&
+                matchesPaymentMethod
+            );
+        });
+    }, [
+        transactions,
+        debouncedTransactionId,
+        debouncedOrderId,
+        filterValues.paymentStatus,
+        filterValues.paymentMethod,
+    ]);
 
     const totalPages = Math.max(1, Math.ceil(filteredTransactions.length / pageSize));
     const safePage = Math.min(currentPage, totalPages);
@@ -221,33 +250,13 @@ const Transactions = () => {
         !filterValues.paymentStatus &&
         !filterValues.paymentMethod;
 
-    if (isError) {
-        return (
-            <EmptyState
-                icon={MdReceiptLong}
-                iconClassName="text-sm text-[#ac1e44]"
-                title="Failed to Load Transactions"
-                description="Something went wrong while fetching transactions. Please try again."
-                size="md"
-                action={
-                    <Button
-                        type="button"
-                        variant="themeDark"
-                        onClick={() => refetch()}
-                        disabled={isFetching}
-                        text={isFetching ? "Retrying..." : "Try Again"}
-                    />
-                }
-            />
-        );
-    }
-
     return (
         <div className="space-y-5">
             <PageHeader
                 titleIcon={MdReceiptLong}
                 title="Transactions"
                 description="Monitor, track, and manage all payment transactions."
+
                 onRefresh={refetch}
                 refreshLoading={isLoading || isFetching}
             />

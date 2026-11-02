@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { useDebounce } from "use-debounce";
 
 // Icons
@@ -28,6 +28,7 @@ import useModalStore from "../store/modalStore";
 const PAGE_SIZE = 10;
 
 const Refunds = () => {
+
   const { openModal } = useModalStore();
   const { data: refunds = [], isLoading, isError, refetch, isFetching } = useRefunds();
 
@@ -98,7 +99,6 @@ const Refunds = () => {
       content: (<RefundsView refund={refund} />),
     });
   };
-
 
   const columns = [
     {
@@ -215,32 +215,40 @@ const Refunds = () => {
   ];
 
   // Search and filter
-  const filteredRefunds = refunds.filter((refund) => {
-    const matchesRefundId = (refund?.refundId || "")
-      .toLowerCase()
-      .includes(debouncedRefundId.trim().toLowerCase());
+  const filteredRefunds = useMemo(() => {
+    return (refunds || []).filter((refund) => {
+      const matchesRefundId = (refund?.refundId || "")
+        .toLowerCase()
+        .includes(debouncedRefundId.trim().toLowerCase());
 
-    const matchesTransactionId = (refund?.transactionId || "")
-      .toLowerCase()
-      .includes(debouncedTransactionId.trim().toLowerCase());
+      const matchesTransactionId = (refund?.transactionId || "")
+        .toLowerCase()
+        .includes(debouncedTransactionId.trim().toLowerCase());
 
-    const matchesRefundStatus =
-      !filterValues.refundStatus ||
-      refund?.refundStatus === filterValues.refundStatus;
+      const matchesRefundStatus =
+        !filterValues.refundStatus ||
+        refund?.refundStatus === filterValues.refundStatus;
 
-    const matchesPaymentMethod =
-      !filterValues.paymentMethod ||
-      (filterValues.paymentMethod === "Card"
-        ? ["Credit Card", "Debit Card"].includes(refund?.paymentMethod)
-        : refund?.paymentMethod === filterValues.paymentMethod);
+      const matchesPaymentMethod =
+        !filterValues.paymentMethod ||
+        (filterValues.paymentMethod === "Card"
+          ? ["Credit Card", "Debit Card"].includes(refund?.paymentMethod)
+          : refund?.paymentMethod === filterValues.paymentMethod);
 
-    return (
-      matchesRefundId &&
-      matchesTransactionId &&
-      matchesRefundStatus &&
-      matchesPaymentMethod
-    );
-  });
+      return (
+        matchesRefundId &&
+        matchesTransactionId &&
+        matchesRefundStatus &&
+        matchesPaymentMethod
+      );
+    });
+  }, [
+    refunds,
+    debouncedRefundId,
+    debouncedTransactionId,
+    filterValues.refundStatus,
+    filterValues.paymentMethod,
+  ]);
 
   // Pagination
   const totalPages = Math.max(1, Math.ceil(filteredRefunds.length / pageSize));
@@ -258,8 +266,8 @@ const Refunds = () => {
     return (
       <EmptyState
         icon={MdCurrencyExchange}
-        iconClassName="text-sm text-[#ac1e44]"
         title="Failed to Load Refunds"
+        variant="minimal"
         description="Something went wrong while fetching refunds. Please try again."
         size="md"
         action={
@@ -282,6 +290,7 @@ const Refunds = () => {
         titleIcon={MdCurrencyExchange}
         title="Refunds"
         description="Track, monitor, and manage all customer refund requests."
+
         onRefresh={refetch}
         refreshLoading={isLoading || isFetching}
       />

@@ -8,6 +8,7 @@ import {
 
 // Components
 import Badge from "../../components/Badge";
+import EmptyState from "../../components/EmptyState";
 
 // Utils
 import { formatCurrency, formatDateTime } from "../../utils/formatters";
@@ -33,6 +34,16 @@ const InfoItem = ({
 );
 
 const RefundsView = ({ refund = {} }) => {
+
+    if (!refund) return (
+        <EmptyState
+            icon={MdCurrencyExchange}
+            variant="minimal"
+            title="No Refund Found"
+            description="No Refund are available right now."
+        />
+    )
+
     const statusVariant = {
         Completed: "success",
         Processing: "info",
@@ -233,7 +244,7 @@ const RefundsView = ({ refund = {} }) => {
                     </p>
                 </div>
             </div>
-            
+
         </div>
     );
 };

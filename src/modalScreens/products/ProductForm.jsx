@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
 // icons
-import { MdAdd, MdClose, MdDelete, MdInventory2, MdLocalOffer, MdImage, MdOutlineCategory, MdMessage, } from "react-icons/md";
+import { MdAdd, MdClose, MdDelete, MdInventory2, MdLocalOffer, MdOutlineCategory, MdMessage, } from "react-icons/md";
 
 // components
 import Input from "../../components/forms/Input";
@@ -159,8 +159,6 @@ const ProductForm = ({ product = null, formId, categories = [], mode = "add" }) 
     };
 
     const onSubmit = (values) => {
-
-        console.log(values);
 
         setActionLoading(true)
 

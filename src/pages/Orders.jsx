@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { useDebounce } from "use-debounce";
 
 // Icons
@@ -28,6 +28,7 @@ import useModalStore from "../store/modalStore";
 const PAGE_SIZE = 10;
 
 const Orders = () => {
+
     const { openModal } = useModalStore();
     const { data: orders = [], isLoading, isError, refetch, isFetching } = useOrders();
 
@@ -192,30 +193,38 @@ const Orders = () => {
         },
     ];
 
-    const filteredOrders = orders.filter((order) => {
-        const matchesOrderNumber = (order?.orderNumber || "")
-            .toLowerCase()
-            .includes(debouncedOrderNumber.trim().toLowerCase());
+    const filteredOrders = useMemo(() => {
+        return (orders || []).filter((order) => {
+            const matchesOrderNumber = (order?.orderNumber || "")
+                .toLowerCase()
+                .includes(debouncedOrderNumber.trim().toLowerCase());
 
-        const matchesTrackingNumber = (order?.trackingNumber || "")
-            .toLowerCase()
-            .includes(debouncedTrackingNumber.trim().toLowerCase());
+            const matchesTrackingNumber = (order?.trackingNumber || "")
+                .toLowerCase()
+                .includes(debouncedTrackingNumber.trim().toLowerCase());
 
-        const matchesOrderStatus =
-            !filterValues.orderStatus ||
-            order?.orderStatus === filterValues.orderStatus;
+            const matchesOrderStatus =
+                !filterValues.orderStatus ||
+                order?.orderStatus === filterValues.orderStatus;
 
-        const matchesPaymentMethod =
-            !filterValues.paymentMethod ||
-            order?.paymentMethod === filterValues.paymentMethod;
+            const matchesPaymentMethod =
+                !filterValues.paymentMethod ||
+                order?.paymentMethod === filterValues.paymentMethod;
 
-        return (
-            matchesOrderNumber &&
-            matchesTrackingNumber &&
-            matchesOrderStatus &&
-            matchesPaymentMethod
-        );
-    });
+            return (
+                matchesOrderNumber &&
+                matchesTrackingNumber &&
+                matchesOrderStatus &&
+                matchesPaymentMethod
+            );
+        });
+    }, [
+        orders,
+        debouncedOrderNumber,
+        debouncedTrackingNumber,
+        filterValues.orderStatus,
+        filterValues.paymentMethod,
+    ]);
 
     const totalPages = Math.max(1, Math.ceil(filteredOrders.length / pageSize));
 
@@ -231,7 +240,7 @@ const Orders = () => {
         return (
             <EmptyState
                 icon={MdShoppingCart}
-                iconClassName="text-sm text-[#ac1e44]"
+                variant="minimal"
                 title="Failed to Load Orders"
                 description="Something went wrong while fetching orders. Please try again."
                 size="md"

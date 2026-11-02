@@ -1,4 +1,6 @@
 import React from "react";
+
+// icons
 import {
     MdAccountBalance, MdCurrencyExchange, MdCurrencyRupee, MdError, MdPayments,
     MdPendingActions, MdReceiptLong, MdTrendingUp
@@ -6,6 +8,8 @@ import {
 
 // components
 import Badge from "../components/Badge";
+import EmptyState from "../components/EmptyState";
+import Button from "../components/Button";
 import PageHeader from "../components/PageHeader";
 import Table from '../components/table/Table';
 
@@ -143,6 +147,27 @@ const Revenue = () => {
     // recent transaction
     const transactions = data?.recentTransactions || [];
 
+    if (isError) {
+        return (
+            <EmptyState
+                icon={MdCurrencyRupee}
+                variant='minimal'
+                title="Failed to Load Revenues"
+                description="Something went wrong while fetching Revenue records. Please try again."
+                size="md"
+                action={
+                    <Button
+                        type="button"
+                        variant="themeDark"
+                        onClick={refetch}
+                        disabled={isFetching}
+                        text={isFetching ? "Retrying..." : "Try Again"}
+                    />
+                }
+            />
+        );
+    }
+
     const columns = [
         {
             key: "transactionId",
@@ -208,6 +233,7 @@ const Revenue = () => {
 
     return (
         <div className="space-y-5">
+
             <PageHeader
                 titleIcon={MdCurrencyRupee}
                 title="Revenue Overview"
