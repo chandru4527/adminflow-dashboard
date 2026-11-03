@@ -38,12 +38,10 @@ const Dashboard = () => {
           <Button
             type="button"
             onClick={() => refetch()}
+            variant="themeDark"
             disabled={isFetching}
             text={isFetching ? "Retrying..." : "Try Again"}
-            className="rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 disabled:opacity-50"
-          >
-
-          </Button>
+          />
         }
       />
     );

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // icons
-import { MdEmail, MdLock, MdLogin } from "react-icons/md";
+import { MdAdminPanelSettings, MdEmail, MdLock, MdLogin } from "react-icons/md";
 
 // form
 import { useForm } from "react-hook-form";
@@ -14,6 +14,7 @@ import theme from '../theme/theme';
 import Button from "../components/Button";
 import Input from "../components/forms/Input";
 import Image from "../components/media/Image";
+import Select from '../components/forms/Select';
 
 // assets
 const MainLogo = "https://res.cloudinary.com/dyiuqcqg2/image/upload/v1792398894/adminflow1_ntfic8.png";
@@ -46,7 +47,6 @@ const LoginPage = () => {
   const onSubmit = async (data) => {
     try {
       setIsLoading(true);
-      console.log("Login data:", data);
 
       await new Promise((resolve) => setTimeout(resolve, 1500));
 
@@ -54,7 +54,6 @@ const LoginPage = () => {
       toastify.success("Login successful!");
       navigate("/admin", { replace: true });
     } catch (error) {
-      console.error("Login failed:", error);
       toastify.error(error?.message || "Login failed!");
     } finally {
       setIsLoading(false);
@@ -147,7 +146,7 @@ const LoginPage = () => {
             </div>
 
             {/* Login Form */}
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <Input
                 label="Email Address"
                 type="email"
@@ -182,6 +181,23 @@ const LoginPage = () => {
                   },
                 })}
               />
+
+              <Select
+                label="Select Role"
+                labelClassName={`font-bold ${theme.text_primary}`}
+                name="role"
+                icon={MdAdminPanelSettings}
+                iconClassName={theme.text_primary}
+                options={[
+                  { label: "Admin", value: "admin" },
+                  { label: "Sub Admin", value: "sub-admin" },
+                ]}
+                {...register("role", {
+                  required: "Please select a role",
+                })}
+                error={errors.role?.message}
+              />
+
               <Button
                 type="submit"
                 size="md"

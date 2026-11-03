@@ -14,12 +14,16 @@ import EmptyState from '../../components/EmptyState';
 // utils
 import { formatDate } from '../../utils/formatters';
 
-
-
 const SubAdminView = ({ admin = null }) => {
 
     if (!admin) return (
-        <EmptyState />
+        <EmptyState
+            icon={MdAdminPanelSettings}
+            variant="minimal"
+            size="md"
+            title="No Sub-Admin Found"
+            description="Sub-Admin information is not available."
+        />
     )
 
     const details = [

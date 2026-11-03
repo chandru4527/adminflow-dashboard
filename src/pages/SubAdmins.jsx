@@ -7,6 +7,7 @@ import { MdAdd, MdAdminPanelSettings } from "react-icons/md";
 // Components
 import Avatar from "../components/Avatar";
 import Badge from "../components/Badge";
+import Switch from "../components/forms/Switch";
 import Button from "../components/Button";
 import PageHeader from "../components/PageHeader";
 import TableToolbar from "../components/table/TableToolbar";
@@ -15,6 +16,7 @@ import Table from "../components/table/Table";
 import EmptyState from "../components/EmptyState";
 
 // modal screens
+import SubAdminView from "../modalScreens/subadmin/SubAdminView";
 import SubAdminForm from "../modalScreens/subadmin/SubAdminForm";
 import Confirmation from '../modalScreens/Confirmation';
 
@@ -27,7 +29,6 @@ import { formatDate, formatPhoneNumber } from "../utils/formatters";
 
 // Store
 import useModalStore from "../store/modalStore";
-import SubAdminView from "../modalScreens/subadmin/SubAdminView";
 
 const PAGE_SIZE = 10;
 
@@ -125,7 +126,7 @@ const SubAdmins = () => {
         });
     };
 
-    // add sub-admin
+    // edit sub-admin
     const handleEdit = (admin) => {
         const formId = "sub-admin-form"
         openModal({
@@ -202,13 +203,13 @@ const SubAdmins = () => {
                 <p className="font-medium">@{row?.username || "-"}</p>
             ),
         },
-        {
-            key: "mobile",
-            header: "Mobile",
-            accessor: "mobile",
-            minWidth: "120px",
-            render: (row) => formatPhoneNumber(row.mobile)
-        },
+        // {
+        //     key: "mobile",
+        //     header: "Mobile",
+        //     accessor: "mobile",
+        //     minWidth: "120px",
+        //     render: (row) => formatPhoneNumber(row.mobile)
+        // },
         {
             key: "permissions",
             header: "Permissions",
@@ -243,12 +244,23 @@ const SubAdmins = () => {
         //     ),
         // },
         {
-            key: "isActive",
+            key: "status",
             header: "Status",
+            accessor: "isActive",
             render: (row) => (
-                <Badge
-                    text={row?.isActive ? "Active" : "Inactive"}
-                    variant={row?.isActive ? "success" : "danger"}
+                <Switch
+                    checked={row?.isActive}
+                    label={row?.isActive ? "Active" : "Inactive"}
+                    labelPosition="right"
+                    onCheckedChange={(checked) => {
+                        // console.log("Product status:", row.id, checked);
+                        toastify.success(
+                            "Su-admin status changed successfully!"
+                        );
+                    }}
+                    activeColor="bg-green-600"
+                    size="sm"
+                    ariaLabel={`Toggle ${row?.name} status`}
                 />
             ),
         },
@@ -315,8 +327,8 @@ const SubAdmins = () => {
         return (
             <EmptyState
                 icon={MdAdminPanelSettings}
-                iconClassName="text-sm text-[#ac1e44]"
                 title="Failed to Load Sub-Admins"
+                variant="minimal"
                 description="Something went wrong while fetching sub-admin records. Please try again."
                 size="md"
                 action={

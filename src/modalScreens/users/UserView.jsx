@@ -14,7 +14,7 @@ import EmptyState from '../../components/EmptyState';
 // utils
 import { formatDate } from '../../utils/formatters';
 
-const UserView = ({ user }) => {
+const UserView = ({ user = {} }) => {
 
   if (!user) {
     return (

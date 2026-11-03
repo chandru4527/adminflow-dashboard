@@ -8,6 +8,7 @@ import { MdGroup, MdPerson } from "react-icons/md";
 import Avatar from "../components/Avatar";
 import Badge from "../components/Badge";
 import Switch from "../components/forms/Switch";
+import Button from "../components/Button";
 import PageHeader from "../components/PageHeader";
 import TableToolbar from "../components/table/TableToolbar";
 import TableActionButtons from "../components/table/TableActionButtons";
@@ -28,7 +29,6 @@ import { formatPhoneNumber } from '../utils/formatters';
 
 // Store
 import useModalStore from "../store/modalStore";
-import Button from "../components/Button";
 
 const Users = () => {
 
@@ -207,7 +207,6 @@ const Users = () => {
           label={row.isActive ? "Active" : "Inactive"}
           labelPosition="right"
           onCheckedChange={(checked) => {
-            console.log("User status:", row.id, checked);
             toastify.success("User status changed successfully!");
           }}
           activeColor="bg-green-600"
@@ -265,15 +264,17 @@ const Users = () => {
     return (
       <EmptyState
         icon={MdPerson}
-        variant="minimal"
-        title="No users found"
-        description="There are no users available at the moment."
+        variant='minimal'
+        title="Failed to Load Users"
+        description="Something went wrong while fetching Users. Please try again."
+        size="md"
         action={
           <Button
-            text="Retry"
-            variant="theme"
-            loading={isFetching}
+            type="button"
+            variant="themeDark"
             onClick={refetch}
+            disabled={isFetching}
+            text={isFetching ? "Retrying..." : "Try Again"}
           />
         }
       />

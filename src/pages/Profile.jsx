@@ -160,6 +160,7 @@ const Profile = () => {
         actionLabel='Edit profile'
         actionVariant="theme"
         actionIcon={MdEdit}
+        actionDisabled={admin.role === "sub-admin"}
       />
 
       <div className="grid grid-cols-1 items-stretch gap-5 md:grid-cols-3">
@@ -248,6 +249,7 @@ const Profile = () => {
               text="Change Password"
               className="w-full"
               onClick={handleChangePassword}
+              disabled={admin.role === "sub-admin"}
             />
             <Button
               type="button"

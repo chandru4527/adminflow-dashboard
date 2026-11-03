@@ -13,12 +13,17 @@ import theme from '../theme/theme';
 
 // store
 import useSidebarStore from "../store/useSidebarStore";
+import useAuthStore from "../store/authStore";
 
-import menuItems from './sidebarItems';
+import getMenuItems from './sidebarItems';
 
 const AdminSidebar = () => {
 
   const location = useLocation();
+
+  const user = useAuthStore(state => state.user);
+
+  const menuItems = getMenuItems(user);
 
   const mainLogo = 'https://res.cloudinary.com/dyiuqcqg2/image/upload/v1792398894/adminflow1_ntfic8.png'
   const miniLogo = 'https://res.cloudinary.com/dyiuqcqg2/image/upload/v1792157864/adminflow_mini_kngjua.png'

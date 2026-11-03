@@ -3,6 +3,7 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 // protect routes
 import AdminRoute from "./AdminRoute";
 import PublicRoute from "./PublicRoute";
+import SubAdminRoute from './SubAdminRoute';
 
 // layout
 import AdminLayout from "../layout/AdminLayout";
@@ -19,12 +20,14 @@ import Orders from "../pages/Orders";
 import Revenue from "../pages/Revenue";
 import Transactions from "../pages/Transactions";
 import Refunds from "../pages/Refunds";
-import Analytics from "../pages/Analytics";
 import Banners from "../pages/Banners";
 import Notifications from "../pages/Notifications";
 import Settings from "../pages/Settings";
 import Profile from "../pages/Profile";
 import About from "../pages/About";
+
+import Masters from "../pages/Masters";
+import Categories from "../pages/Categories";
 
 // not found
 import NotFound from "../pages/notFound/NotFound";
@@ -73,10 +76,16 @@ const Routers = createBrowserRouter([
                     },
                     {
                         path: "sub-admins",
-                        element: <SubAdmins />,
-                        handle: {
-                            title: "Users Management",
-                        },
+                        element: <SubAdminRoute />,
+                        children: [
+                            {
+                                index: true,
+                                element: <SubAdmins />,
+                                handle: {
+                                    title: "Users Management",
+                                },
+                            }
+                        ]
                     },
                     {
                         path: "products",
@@ -114,11 +123,18 @@ const Routers = createBrowserRouter([
                         },
                     },
                     {
-                        path: "analytics",
-                        element: <Analytics />,
-                        handle: {
-                            title: "Analytics"
-                        },
+                        path: "masters",
+                        element: <Masters />,
+                        children: [
+                            { index: true, element: <Navigate to="categories" replace /> },
+                            {
+                                path: "categories",
+                                element: <Categories />,
+                                handle: {
+                                    title: "Masters",
+                                },
+                            },
+                        ],
                     },
                     {
                         path: "banners",

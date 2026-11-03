@@ -1,11 +1,10 @@
-// icons
 import {
-    MdDashboard, MdGroup, MdShoppingCart, MdPerson, MdCategory, MdSettings, MdInfoOutline,
-    MdNotifications, MdViewCarousel, MdCurrencyRupee, MdInventory2,
-
+    MdDashboard, MdGroup, MdShoppingCart, MdPerson, MdCategory,
+    MdSettings, MdInfoOutline, MdNotifications, MdViewCarousel,
+    MdCurrencyRupee, MdInventory2,
 } from "react-icons/md";
 
-const menuItems = [
+const getMenuItems = (user) => [
     {
         label: "Dashboard",
         icon: MdDashboard,
@@ -19,10 +18,12 @@ const menuItems = [
                 path: "/admin/users",
                 label: "Users",
             },
-            {
-                path: "/admin/sub-admins",
-                label: "Sub-Admins",
-            },
+            ...(user?.role === "admin"
+                ? [{
+                    path: "/admin/sub-admins",
+                    label: "Sub-Admins",
+                }]
+                : []),
         ],
     },
     {
@@ -39,24 +40,15 @@ const menuItems = [
         label: "Revenue Management",
         icon: MdCurrencyRupee,
         children: [
-            {
-                path: "/admin/revenue",
-                label: "Overview",
-            },
-            {
-                path: "/admin/transactions",
-                label: "Transactions",
-            },
-            {
-                path: "/admin/refunds",
-                label: "Refunds",
-            },
+            { path: "/admin/revenue", label: "Overview" },
+            { path: "/admin/transactions", label: "Transactions" },
+            { path: "/admin/refunds", label: "Refunds" },
         ],
     },
     {
         label: "Masters",
         icon: MdCategory,
-        path: "/admin/analytics",
+        path: "/admin/masters",
     },
     {
         label: "Banners",
@@ -85,4 +77,4 @@ const menuItems = [
     },
 ];
 
-export default menuItems;
+export default getMenuItems;

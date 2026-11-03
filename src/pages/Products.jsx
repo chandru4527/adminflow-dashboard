@@ -287,7 +287,7 @@ const Products = () => {
                     label={row?.isActive ? "Active" : "Inactive"}
                     labelPosition="right"
                     onCheckedChange={(checked) => {
-                        console.log("Product status:", row.id, checked);
+                        // console.log("Product status:", row.id, checked);
                         toastify.success(
                             "Product status changed successfully!"
                         );
@@ -385,6 +385,7 @@ const Products = () => {
                 title="Products Management"
                 titleIcon={MdInventory2}
                 description="Manage your products, pricing, stock, and availability."
+                
                 onRefresh={refetch}
                 refreshLoading={isLoading || isFetching}
 
