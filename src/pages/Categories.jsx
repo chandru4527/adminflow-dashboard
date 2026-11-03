@@ -179,7 +179,7 @@ const Categories = () => {
             minWidth: "250px",
             render: row => (
                 <p
-                    className="max-w-75 truncate text-sm text-slate-500"
+                    className="max-w-80 truncate text-sm text-slate-500"
                     title={row?.description}
                 >
                     {row?.description || "-"}
@@ -188,8 +188,7 @@ const Categories = () => {
         },
         {
             key: "order",
-            header: "Display Order",
-            minWidth: "110px",
+            header: "Order",
             render: row => (
                 <span className="font-medium text-slate-700">
                     {row?.order}
@@ -221,7 +220,7 @@ const Categories = () => {
             header: "Created Date",
             minWidth: "120px",
             render: row => (
-                <span className="text-xs">
+                <span className="text-sm">
                     {formatDate(row?.createdAt)}
                 </span>
             ),
